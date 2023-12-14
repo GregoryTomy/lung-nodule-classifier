@@ -1,11 +1,33 @@
-# Automated Lung Nodule Classification Through Deep Learning
-The paper detailing the project methodologies, results, and discussions can be found here: [CSCI_5502_Project.pdf](CSCI_5502_Project.pdf).
+# Automated Lung Cancer Detection Through Deep Learning
 
 ## Motivation
 Lung cancer remains the predominant cause of cancer-related mortality on a global scale. Despite technological advances, early detection of lung cancer remains a challenge, often requiring highly specialized manual review of Computed Tomography (CT) scans. This project aims to develop an automated method for identifying potential malignancies in lung CT scans. Working on this problem offers the opportunity to delve deep into state-of-the-art deep learning frameworks, particularly PyTorch.
 
-## Literature Survey
-The landscape of lung cancer detection has seen significant advancements in the application of machine learning and computer vision technologies. Initial approaches were heavily dependent on manual radiological interpretations, which are time-consuming and susceptible to human error. Over the years, research has pivoted towards automated techniques to improve both accuracy and efficiency. A focus on segmentation techniques has emerged as an essential pre-processing step to isolate lung nodules for further analysis [Wang 2022]. Once nodules are segmented, various machine learning algorithms, including Support Vector Machines and Random Forests, have been applied to classify the nodules as benign or malignant [Kadir and Gleeson 2018]. In recent years, the application of deep learning algorithms, specifically Convolutional Neural Networks (CNNs), has emerged as a cutting-edge approach in the automated diagnosis of various diseases [Hosseini et al. 2023]. These algorithms excel at identifying intricate patterns in complex data types, such as medical images, offering a significant advantage over traditional diagnostic methods.
+## Project Scope
+This project proposes an end-to-end deep learning solution (CNNs) for identifying and classifying lung nodules as benign or malignant, based on the [LUNA16 Grand Challenge](https://luna16.grand-challenge.org) dataset. It will have 3 stages:
+1. Segmentation: Deploy a model to identify potential nodule locations in CT scans.
+2. Nodule Candidate Classification: Implement a model to classify regions of interest as nodule or non-nodule.
+3. Malignancy Classification: Implement a model to classify identified nodules as benign or malignant.
 
-## Proposed Work
-This project proposes an end-to-end deep learning solution (CNNs) for identifying and classifying lung nodules as benign or malignant, based on the [LUNA16 Grand Challenge](https://luna16.grand-challenge.org) dataset. The methodology comprises several stages, from initial data ingestion and preprocessing, to the segmentation and classification of regions within the lungs.
+
+## Part 1: Segmentation of CT Scans (Pending).
+## Part 3: Classification of Nodules. (Pending)
+
+## Part 2: Classification of Candidate Nodules.
+The paper detailing the project methodologies, results, and discussions can be found here: [CSCI_5502_Project.pdf](CSCI_5502_Project.pdf).
+
+
+## Results
+Below are the visual representations of the outcomes from our models:
+
+### Results Table
+![Results Table](images/results_table.png)
+*The table above outlines the performance metrics of our classification model, including accuracy, precision, recall, and F1 score.*
+
+### Confusion Matrix
+![Confusion Matrix](./images/confusion_matrix.png)
+*The confusion matrix provides insight into the true positive, false positive, true negative, and false negative rates of the nodule candidate classification model.*
+
+### FROC Curve
+![FROC Curve](images/froc.jpg)
+*The FROC curve illustrates the trade-off between sensitivity and the average number of false positives per scan, showcasing the performance of our malignancy classification model.*
