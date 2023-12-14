@@ -1,2 +1,2 @@
 # lung-nodule-classifier
-("CSCI_5502_Project.pdf")
+[paper]("CSCI_5502_Project.pdf")
