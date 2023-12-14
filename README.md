@@ -18,16 +18,26 @@ The paper detailing the project methodologies, results, and discussions can be f
 
 
 ## Results
-Below are the visual representations of the outcomes from our models:
 
 ### Results Table
-![Results Table](images/results_table.png)
-*The table above outlines the performance metrics of our classification model, including accuracy, precision, recall, and F1 score.*
+
+| Metric    | Value    |
+|-----------|----------|
+| FROC      | 99.27%   |
+| F2        | 12.46%   |
+| Recall    | 95.51%   |
+| FPR       | 6.91%    |
+| Precision | 2.78%    |
+
 
 ### Confusion Matrix
-![Confusion Matrix](./images/confusion_matrix.png)
-*The confusion matrix provides insight into the true positive, false positive, true negative, and false negative rates of the nodule candidate classification model.*
+
+|                  | Predicted Positive | Predicted Negative |
+|------------------|--------------------|--------------------|
+| **Actual Positive** | 149                | 7                  |
+| **Actual Negative** | 5207               | 70135              |
+
 
 ### FROC Curve
 ![FROC Curve](images/froc.jpg)
-*The FROC curve illustrates the trade-off between sensitivity and the average number of false positives per scan, showcasing the performance of our malignancy classification model.*
+*The FROC curve illustrates the trade-off between sensitivity and the average number of false positives per scan, showcasing the performance of our model.*
