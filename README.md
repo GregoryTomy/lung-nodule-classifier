@@ -1,2 +1,2 @@
 # lung-nodule-classifier
-[Paper]("/CSCI_5502_Project.pdf")
+[Paper]("https://github.com/GregoryTomy/lung-nodule-classifier/blob/main/CSCI_5502_Project.pdf")
