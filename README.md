@@ -10,7 +10,7 @@ This project proposes an end-to-end deep learning solution (CNNs) for identifyin
 3. Malignancy Classification: Implement a model to classify identified nodules as benign or malignant.
 
 
-## Part 1: Segmentation of CT Scans (Pending).
+## Part 1: Segmentation of CT Scans (Ongoing).
 ## Part 3: Classification of Nodules. (Pending)
 
 ## Part 2: Classification of Candidate Nodules.
