@@ -16,7 +16,7 @@ This project proposes an end-to-end deep learning solution (CNNs) for identifyin
 ## Part 2: Classification of Candidate Nodules.
 The paper detailing the project methodologies, results, and discussions can be found here: [CSCI_5502_Project.pdf](CSCI_5502_Project.pdf).
 
-[![Alt text for your video])](https://youtu.be/ovUrZZ6Hyj8)
+[[Watch the presentation]](https://youtu.be/ovUrZZ6Hyj8)
 
 
 ## Results
