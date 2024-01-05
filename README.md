@@ -18,8 +18,8 @@ The paper detailing the project methodologies, results, and discussions can be f
 
 [[Watch the presentation]](https://youtu.be/ovUrZZ6Hyj8)
 
-### Classification Model
-![Classification Model Arechitecture](images/model_arch.jpeg)
+### Classification Model Architecture
+![Classification Model Architecture](images/model_arch.jpeg)
 
 ## Results
 
