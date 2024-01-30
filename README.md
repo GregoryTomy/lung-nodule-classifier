@@ -22,9 +22,9 @@ The paper detailing the project methodologies, results, and discussions can be f
 ### Classification Model Architecture
 ![Classification Model Architecture](images/model_arch.jpeg)
 
-## Results
+### Results
 
-### Results Table
+#### Results Table
 
 | Metric    | Value    |
 |-----------|----------|
@@ -35,7 +35,7 @@ The paper detailing the project methodologies, results, and discussions can be f
 | Precision | 2.78%    |
 
 
-### Confusion Matrix
+#### Confusion Matrix
 
 |                  | Predicted Positive | Predicted Negative |
 |------------------|--------------------|--------------------|
@@ -43,6 +43,6 @@ The paper detailing the project methodologies, results, and discussions can be f
 | **Actual Negative** | 5207               | 70135              |
 
 
-### FROC Curve
+#### FROC Curve
 ![FROC Curve](images/froc.jpg)
 *The FROC curve illustrates the trade-off between sensitivity and the average number of false positives per scan, showcasing the performance of our model.*
