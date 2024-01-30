@@ -21,13 +21,11 @@ log.setLevel(logging.DEBUG)
 raw_cache = get_cache("full")
 
 
-ANNOTATIONS_CSV = "Data/annotations.csv"
-CANDIDATES_CSV = "Data/candidates_V2.csv"
-
-
+ANNOTATIONS_CSV = "Data/annotations_with_malignancy.csv"
+CANDIDATES_CSV = "Data/candidates.csv"
 
 CandidateInfoTuple = namedtuple(
-    "CandidateInfoTuple", "is_nodule_bool, diameter_mm, series_uid, center_xyz"
+    "CandidateInfoTuple", "is_nodule_bool, has_annotation_bool, is_mal_bool , diameter_mm, series_uid, center_xyz"
 )
 
 def read_csv(filepath):
@@ -41,64 +39,39 @@ def read_csv(filepath):
     except FileNotFoundError:
         print(f"File {filepath} not found")
 
-
-def parse_diameter_dict(rows):
-    """
-    Function takes the rows of a CSV file (presumably read by read_csv) and parses it to create a
-    dictionary (diameter_dict). 
-    """
-
-    diameter_dict = {}
-    for series_uid, *coords, diameter in rows[1:]:
-        diameter_dict.setdefault(series_uid, []).append(
-            (tuple(map(float, coords)), float(diameter))
-        )
-    return diameter_dict
-
-def parse_candidate_info(diameter_dict, rows):
-    """
-    This function takes a dictionary of diameter information and a list of rows to generate a list 
-    of candidates, each represented as a CandidateInfoTuple. It matches candidates to nodules based 
-    on their center coordinates and sets the candidate diameter to the nodule diameter if they are 
-    considered a match.
-    """
-    candidate_info_list = []
-    for row in rows[1:]:
-        series_uid = row[0]
-        is_nodule_bool = bool(int(row[4]))
-        cand_center_xyz = tuple(float(x) for x in row[1:4])
-
-        cand_diameter = 0.0
-        # iterate over all annotations that have the same `series_id` as
-        # the current candidate
-        for anno_tuple in diameter_dict.get(series_uid, []):
-            anno_center_xyz, anno_diameter = anno_tuple
-            # if the absolute difference in any dimension is greater
-            # than a quarter of the annotation diameter then the current
-            # candidate is not considered to be a match for this annotation.
-            if all(
-                abs(cand_center_xyz[i] - anno_center_xyz[i]) <= anno_diameter / 4
-                for i in range(3)
-            ):
-                cand_diameter = anno_diameter
-                break
-
-        candidate_info_list.append(
-            CandidateInfoTuple(
-                is_nodule_bool, cand_diameter, series_uid, cand_center_xyz
-            )
-        )
-    return sorted(candidate_info_list, reverse=True)
-
 @functools.lru_cache(1)
 def get_candidate_info_list():
-    annotations_rows = read_csv(ANNOTATIONS_CSV)
+    annotation_rows = read_csv(ANNOTATIONS_CSV)
     candidate_rows = read_csv(CANDIDATES_CSV)
 
-    diameter_dict = parse_diameter_dict(annotations_rows)
-    candidate_info_list =parse_candidate_info(diameter_dict, candidate_rows)
-   
+    candidate_info_list = []
+    # loop over the annotations to get the actual nodules
+    for row in annotation_rows[1:]:
+        series_uid = row[0]
+        annotations_center_xyz = tuple([float(x) for x in row[1:4]])
+        annotations_diameter_mm = float(row[4])
+        is_malignant_bool = {"False": False, "True": True}[row[5]]
+
+        candidate_info_list.append(CandidateInfoTuple(
+            True, True, is_malignant_bool, annotations_diameter_mm, series_uid, annotations_center_xyz
+        ))
+
+    # loop over the candidates to get but only for non-nodules since we have nodules from the annotations
+    for row in candidate_rows[1:]:
+        series_uid = row[0]
+        is_nodule_bool = bool(int(row[4]))
+        candidate_center_xyz = tuple([float(x) for x in row[1:4]])
+        
+        # as these are not nodules, the nodules specific info is fulled as False and 0
+        if not is_nodule_bool:
+            candidate_info_list.append(CandidateInfoTuple(
+                False, False, False, 0.0, series_uid, candidate_center_xyz
+            )) 
+
+    candidate_info_list.sort(reverse=True)
+
     return candidate_info_list
+
 
 
 class Ct:
@@ -172,6 +145,18 @@ def get_ct_candidate(series_uid, center_xyz, width_irc):
     ct_chunk, center_irc = ct.get_raw_candidate(center_xyz, width_irc)
     return ct_chunk, center_irc
 
+@functools.lru_cache(1)
+def get_candidate_info_dict():
+    """
+    Same information as get_candidate_info_list but grouped by series uid.
+    """
+    candidate_info_list = get_candidate_info_list()
+    candidate_info_dict = {}
+
+    for candidate_info_tuple in candidate_info_list:
+        candidate_info_dict.setdefault(candidate_info_tuple.series_uid, []).append(candidate_info_tuple)
+
+    return candidate_info_dict
 
 class LunaDataset(Dataset):
     def __init__(
@@ -193,17 +178,30 @@ class LunaDataset(Dataset):
             self.use_cache = True
 
         if series_uid:
-            self.candidate_info_list = [
-                x for x in self.candidate_info_list if x.series_uid == series_uid
-            ]
+            self.series_list = [series_uid]
+        else:
+            self.series_list = sorted(get_candidate_info_dict().keys())
 
         if is_val_set_bool:
             assert val_stride > 0, val_stride
-            self.candidate_info_list = self.candidate_info_list[::val_stride]
-            assert self.candidate_info_list
+            self.series_list = self.series_list[::val_stride]   # starting with a series list with all series, we keep only the val_strideth element
+            assert self.series_list
         elif val_stride > 0:
-            del self.candidate_info_list[::val_stride]
-            assert self.candidate_info_list
+            del self.series_list[::val_stride]  # if training, we delete every val_strideth element.
+            assert self.series_list
+
+        # if series_uid:
+        #     self.candidate_info_list = [
+        #         x for x in self.candidate_info_list if x.series_uid == series_uid
+        #     ]
+
+        # if is_val_set_bool:
+        #     assert val_stride > 0, val_stride
+        #     self.candidate_info_list = self.candidate_info_list[::val_stride]
+        #     assert self.candidate_info_list
+        # elif val_stride > 0:
+        #     del self.candidate_info_list[::val_stride]
+        #     assert self.candidate_info_list
 
         if sortby_str == "random":
             random.shuffle(self.candidate_info_list)
@@ -232,7 +230,7 @@ class LunaDataset(Dataset):
 
     def __len__(self):
         if self.ratio_int:
-            return 20000
+            return 50000
         return len(self.candidate_info_list)
 
     def __getitem__(self, IDX):

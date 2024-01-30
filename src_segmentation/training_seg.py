@@ -16,9 +16,9 @@ from torch.optim import Adam
 from torch.utils.data import DataLoader
 from util.util import enum_estimate
 from util.focal_loss import FocalLoss
-from .preprocess import Luna2dSegmentationDataset, TrainingLunda2dSegmentationDataset, get_ct_data
+from .preprocess_seg import Luna2dSegmentationDataset, TrainingLunda2dSegmentationDataset, get_ct_data
 from util.config_log import logging
-from .model import UNetWrapper, SegmentationAugmentation
+from .model_seg import UNetWrapper, SegmentationAugmentation
 
 log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)  

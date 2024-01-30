@@ -5,6 +5,7 @@ import argparse
 import datetime
 import os
 import sys
+import shutil
 import numpy as np
 import pandas as pd
 from torch.utils.tensorboard import SummaryWriter
@@ -13,10 +14,9 @@ import torch.nn as nn
 from torch.optim import SGD
 from torch.utils.data import DataLoader
 from util.util import enum_estimate
-from util.focal_loss import FocalLoss
-from .preprocess import LunaDataset
+from .preprocess_cls import LunaDataset
 from util.config_log import logging
-from .model import LunaModel, CTAugmentation
+from .model_cls import LunaModel, CTAugmentation
 
 log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)
@@ -120,15 +120,15 @@ class LunaTrainingApp:
                 self.model.load_state_dict(checkpoint)
                 # self.model.load_state_dict(torch.load(self.initial_weights_path))
 
-        self.checkpoint_dir = "model_checkpoints"
-        os.makedirs(self.checkpoint_dir, exist_ok=True)
-        self.best_model_state = None
+        # self.checkpoint_dir = "model_checkpoints"
+        # os.makedirs(self.checkpoint_dir, exist_ok=True)
+        # self.best_model_state = None
 
         # early stopping initialization
-        self.best_froc = float(0)
-        self.best_f2 = float(0)
-        self.epochs_no_improve = 0
-        self.early_stopping_patience = 3
+        # self.best_froc = float(0)
+        # self.best_f2 = float(0)
+        # self.epochs_no_improve = 0
+        # self.early_stopping_patience = 3
 
 
     def initialize_model(self):
@@ -386,16 +386,12 @@ class LunaTrainingApp:
         recall    = metrics_dict['pr/recall'] = \
             true_pos_count / np.float32(true_pos_count + false_neg_count)
 
-        # temporary recall storage for weight initialization
-        self.recall = recall
-
         metrics_dict['f/f1_score'] = \
             2 * (precision * recall) / (precision + recall)
         
         f2 = metrics_dict['f/f2_score'] = \
             5 * (precision * recall) / (4 * precision + recall)
         
-        self.f2 = f2
         metrics_dict['f/f05_score'] = \
             (1 + 0.5**2) * (precision * recall) / ((0.5**2 * precision) + recall)
 
@@ -430,6 +426,50 @@ class LunaTrainingApp:
         for key, value in metrics_dict.items():
             writer.add_scalar(key, value, self.total_train_samples_count)
 
+        score = metrics_dict["f/f1_score"]
+
+        return score  
+
+    def save_model(self, type_str, epoch_IDX, is_best=False):
+        """
+        Model parameters are saved (as opposed to the model instance) allowing
+        for loading into models that expect parameters of the same shape
+        """
+        file_path = os.path.join(
+            'classification_models',
+            self.cli_args.tb_dir,
+            f"{type_str}_{self.time_str}_{self.cli_args.comment}_{self.total_train_samples_count}.state"
+        )
+
+        os.makedirs(os.path.dirname(file_path), mode=0o755, exist_ok=True)  # mode assigns permissions (owner can read, write, and execute)
+
+        model = self.model
+        if isinstance(model, torch.nn.DataParallel):
+            model = model.module    # remove the DataParallel wrapper
+    
+        state = {
+            'sys_argv': sys.argv,
+            'time': str(datetime.datetime.now()),
+            'model_state': model.state_dict(),
+            'model_name': type(model).__name__,
+            'optimizer_state': self.optimizer.state_dict(),
+            'optimizer_name': type(self.optimizer).__name__,
+            'epoch': epoch_IDX,
+            'total_training_samples_count': self.total_train_samples_count, # training samples exposed to the model so far
+        }
+
+        torch.save(state, file_path)
+
+        log.info(f"Saving model params to {file_path}")
+
+        if is_best:
+            best_path = os.path.join(
+                'classification_models',
+                self.cli_args.tb_dir,
+                f"{type_str}_{self.time_str}_{self.cli_args.comment}_{self.total_train_samples_count}.best.state"
+            )
+            shutil.copyfile(file_path, best_path)
+            log.info(f"Saving model params to {best_path}")
 
     def train(self):
         log.info("Starting {}, {}".format(type(self).__name__, self.cli_args))
@@ -437,6 +477,8 @@ class LunaTrainingApp:
         train_dl = self.init_train_dl()
         val_dl = self.init_val_dl()
 
+        best_score = 0.0
+        validation_epochs = 5
         for epoch_IDX in range(1, self.cli_args.epochs + 1):
 
             log.info(
@@ -448,64 +490,41 @@ class LunaTrainingApp:
             train_metrics = self.train_one_epoch(epoch_IDX, train_dl)
             self.log_metrics(epoch_IDX, 'trn', train_metrics)
             
-            if epoch_IDX % 5 == 0:
+            if epoch_IDX == 1 or epoch_IDX % validation_epochs == 0:
                 val_metrics = self.val_one_epoch(epoch_IDX, val_dl)
+                # froc, _, _ = self.calculate_froc(val_metrics, epoch_IDX)
+                score = self.log_metrics(epoch_IDX, 'val', val_metrics)
+                best_score = max(score, best_score)
+                self.save_model('cls', epoch_IDX, score==best_score)
 
-                froc, _, _ = self.calculate_froc(val_metrics, epoch_IDX)
-                self.log_metrics(epoch_IDX, 'val', val_metrics)
+        #         # Early stopping check
+        #         if self.f2 > self.best_f2:
+        #             self.best_f2 = self.f2
+        #             self.epochs_no_improve = 0
+        #             self.best_model_state ={
+        #                 "model_state_dict": self.model.state_dict(),
+        #                 "optimizer_state_dict": self.optimizer.state_dict(),
+        #                 "best_f2": self.best_f2,
+        #                 "epoch": epoch_IDX,
+        #             }
+        #         else:
+        #             self.epochs_no_improve += 1
+        #             log.info(f"No improvement in validation loss for {self.epochs_no_improve} epochs")
+        #             if self.epochs_no_improve >= self.early_stopping_patience:
+        #                 log.info("Stopping early due to no improvement in F2")
+        #                 if self.best_model_state is not None:
+        #                     best_model_path = os.path.join(self.checkpoint_dir, f"model_froc_{self.best_froc:.4f}.pth")
+        #                     log.info(f"Saving best model to {best_model_path}")
+        #                     torch.save(self.best_model_state, best_model_path) 
+        #                 break
 
-                # if epoch_IDX == 1 and self.recall not in (0.0, 1.0):
-                #     initial_weights_path = "inital_weights_gpus.pth"
-                #     log.info(f"Saving initial weights to {initial_weights_path}")
-                #     torch.save(self.model.state_dict(), initial_weights_path)
-
-                # Early stopping check
-                if self.f2 > self.best_f2:
-                    self.best_f2 = self.f2
-                    self.epochs_no_improve = 0
-                    self.best_model_state ={
-                        "model_state_dict": self.model.state_dict(),
-                        "optimizer_state_dict": self.optimizer.state_dict(),
-                        "best_f2": self.best_f2,
-                        "epoch": epoch_IDX,
-                    }
-                else:
-                    self.epochs_no_improve += 1
-                    log.info(f"No improvement in validation loss for {self.epochs_no_improve} epochs")
-                    if self.epochs_no_improve >= self.early_stopping_patience:
-                        log.info("Stopping early due to no improvement in F2")
-                        if self.best_model_state is not None:
-                            best_model_path = os.path.join(self.checkpoint_dir, f"model_froc_{self.best_froc:.4f}.pth")
-                            log.info(f"Saving best model to {best_model_path}")
-                            torch.save(self.best_model_state, best_model_path) 
-                        break
-                # if froc > self.best_froc:
-                #     self.best_froc = froc
-                #     self.epochs_no_improve = 0
-                #     self.best_model_state ={
-                #         "model_state_dict": self.model.state_dict(),
-                #         "optimizer_state_dict": self.optimizer.state_dict(),
-                #         "best_froc": self.best_froc,
-                #         "epoch": epoch_IDX,
-                #     }
-                # else:
-                #     self.epochs_no_improve += 1
-                #     log.info(f"No improvement in validation loss for {self.epochs_no_improve} epochs")
-                #     if self.epochs_no_improve >= self.early_stopping_patience:
-                #         log.info("Stopping early due to no improvement in FROC")
-                #         if self.best_model_state is not None:
-                #             best_model_path = os.path.join(self.checkpoint_dir, f"model_froc_{self.best_froc:.4f}.pth")
-                #             log.info(f"Saving best model to {best_model_path}")
-                #             torch.save(self.best_model_state, best_model_path) 
-                #         break
-
-        # if early stopping as not been triggered, save the last best model
-        if self.epochs_no_improve < self.early_stopping_patience:
-            log.info("Training completed without early stopping")
-            if self.best_model_state is not None:
-                best_model_path = os.path.join(self.checkpoint_dir, f"model_froc_{self.best_froc:.4f}.pth")
-                log.info(f"Saving best model to {best_model_path}")
-                torch.save(self.best_model_state, best_model_path) 
+        # # if early stopping as not been triggered, save the last best model
+        # if self.epochs_no_improve < self.early_stopping_patience:
+        #     log.info("Training completed without early stopping")
+        #     if self.best_model_state is not None:
+        #         best_model_path = os.path.join(self.checkpoint_dir, f"model_froc_{self.best_froc:.4f}.pth")
+        #         log.info(f"Saving best model to {best_model_path}")
+        #         torch.save(self.best_model_state, best_model_path) 
                 
         if hasattr(self, 'trn_writer'):
             self.trn_writer.close()
@@ -530,9 +549,7 @@ class LunaTrainingApp:
         self.log_metrics(0, 'val', val_metrics)
 
         if hasattr(self, 'val_writer'):
-            self.val_writer.close()
-       
+            self.val_writer.close()       
 
 if __name__ == '__main__':
     LunaTrainingApp().train()
-

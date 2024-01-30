@@ -44,6 +44,13 @@ def xyz2irc(coord_xyz, origin_xyz, vxsize_xyz, direction_a):
     # Step 4: flip coordinates from CRI to IRC when returning
     return IrcTuple(int(cri_a[2]), int(cri_a[1]), int(cri_a[0]))
 
+def irc2xyz(coord_irc, origin_xyz, vxsize_xyz, direction_a):
+    cri_a = np.array(coord_irc)[::-1]
+    origin_a = np.array(origin_xyz)
+    vxsize_a = np.array(vxsize_xyz)
+    coords_xyz = (direction_a @ (cri_a * vxsize_a)) + origin_a
+
+    return IrcTuple(*coords_xyz)
 
 def enum_estimate(
         iter,
