@@ -113,14 +113,23 @@ class NoduleAnalysisApp:
             "-sm",
             "--segmentation-model-path",
             help="Path to saved segmentation model",
-            #! TOD0: Add default path
+            nargs='?',
+            defualt="final_models/seg_2024-01-22_11.44_final_seg_300000.best.state",
         )
 
         parser.add_argument(
             "-cm",
             "--classification-model-path",
             help="Path to saved classification model",
-            #! TOD0: Add default path
+            nargs='?',
+            defualt="final_models/cls_2024-01-26_10.26._final-nodule-nonnodule.best.state",
+        )
+        
+        parser.add_argument(
+            "--malignancy-model-path",
+            help="Path to the saved malignancy classification model",
+            nargs='?',
+            default="final_models/cls_2024-01-26_10.26._final-nodule-nonnodule.best.state",
         )
 
         parser.add_argument(
@@ -138,11 +147,8 @@ class NoduleAnalysisApp:
         self.use_cuda = torch.cuda.is_available()
         self.device = torch.device("cuda" if self.use_cuda else "cpu")
     
-        # TODO: add malignancy model initialization
-        self.segmentation_model, self.classification_model = self.init_models()
-        self.malignancy_model = None
+        self.segmentation_model, self.classification_model, self.malignancy_model = self.init_models()
 
-        # TODO: Other initializations
     
     def init_models(self):
         log.debug(self.cli_args.segmentation_model_path)
@@ -176,9 +182,18 @@ class NoduleAnalysisApp:
             segmentation_model.to(self.device)
             classification_model.to(self.device)
 
-        # TODO: Malignancy initialization code
+        if self.cli_args.malignancy_path:
+            malignancy_model = LunaModel()
+            malignancy_dict = torch.load(self.cli_args.malignancy_path)
+            malignancy_model.load_state_dict(malignancy_dict["model_state"])
+            malignancy_model.eval()
+            
+            if self.use_cuda:
+                malignancy_model.to(self.device)
+        else:
+            malignancy_model = None
 
-        return segmentation_model, classification_model
+        return segmentation_model, classification_model, malignancy_model
 
     def init_segmentation_dataloader(self, series_uid):
         segmentation_dataset = Luna2dSegmentationDataset(

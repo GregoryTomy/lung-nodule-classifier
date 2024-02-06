@@ -8,9 +8,9 @@ import numpy as np
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from util.util import enum_estimate
-from .preprocess_seg import LunaDataset
+from .preprocess import LunaDataset
 from util.config_log import logging
-from .model_seg import LunaModel
+from .model import LunaModel
 
 log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)

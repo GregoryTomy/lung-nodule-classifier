@@ -8,6 +8,7 @@ import sys
 import shutil
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from torch.utils.tensorboard import SummaryWriter
 import torch
 import torch.nn as nn
@@ -18,13 +19,17 @@ from .preprocess_cls import LunaDataset
 from util.config_log import logging
 from .model_cls import LunaModel, CTAugmentation
 
+import src_classification.model_cls as model_cls
+import src_classification.preprocess_cls as preprocess_cls
+
 log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)
 
 METRICS_LABEL_IDX=0
 METRICS_PRED_IDX=1
-METRICS_LOSS_IDX=2
-METRICS_SIZE = 3
+METRICS_PRED_P_IDX=2
+METRICS_LOSS_IDX=3
+METRICS_SIZE = 4
 
 class LunaTrainingApp:
     def __init__(self, sys_argv=None):
@@ -84,6 +89,40 @@ class LunaTrainingApp:
         )
 
         parser.add_argument(
+            "--model",
+            help="Which model class to use",
+            action='store',
+            default="LunaModel",
+        )
+
+        parser.add_argument(
+            "--malignant",
+            help="Train the model to classify nodules as benign or malignant",
+            action="store_true",
+            default=False,
+        )
+
+        parser.add_argument(
+            "--dataset",
+            help="Which dataset to feed the model (LunaDataset or MalignantLunaDataset).",
+            action="store",
+            default="LunaDataset",
+        )
+
+        parser.add_argument(
+            "--finetune",
+            help="Start finetuning from this model.",
+            default="",
+        )
+
+        parser.add_argument(
+            "--finetune-depth",
+            help="Number of blocks from the head to include in finetuning.",
+            type=int,
+            default=1,
+        ) 
+
+        parser.add_argument(
             'comment', help="Comment suffix for Tensorboard run.", nargs='?', default='',
         )
 
@@ -118,22 +157,37 @@ class LunaTrainingApp:
                 self.model.load_state_dict(checkpoint["model_state_dict"])
             else:
                 self.model.load_state_dict(checkpoint)
-                # self.model.load_state_dict(torch.load(self.initial_weights_path))
-
-        # self.checkpoint_dir = "model_checkpoints"
-        # os.makedirs(self.checkpoint_dir, exist_ok=True)
-        # self.best_model_state = None
-
-        # early stopping initialization
-        # self.best_froc = float(0)
-        # self.best_f2 = float(0)
-        # self.epochs_no_improve = 0
-        # self.early_stopping_patience = 3
 
 
     def initialize_model(self):
-        model = LunaModel()
+        # dynamically get model class specified in command line argument
+        model_class = getattr(model_cls, self.cli_args.model)
+        model = model_class()
         aug_model = CTAugmentation(**self.augmentation_dict)
+
+        # * finetuning block
+        if self.cli_args.finetune:
+            state_dict = torch.load(self.cli_args.finetune, map_location="cpu") # load model state dictionary
+            # return a list of all submodules that have trainable parameters
+            model_blocks = [
+                n for n, sub_module in model.named_children() if len(list(sub_module.parameters())) > 0
+            ]
+            finetune_blocks = model_blocks[-self.cli_args.finetune_depth]   # take the last fientune depth block
+            log.info(f"Finetuning from {self.cli_args.finetune}, blocks {' '.join(finetune_blocks)}")
+
+            # filter out the last linear block
+            model.load_state_dict(
+                {
+                    key: value for key, value in state_dict["model_state"].items()
+                    if key.split('.')[0] not in model_blocks[-1]
+                },
+                strict=False,   # load only certain weights of the module
+            )
+
+            # disable gradients for all blocks except the finetune_blocks
+            for n, parameter in model.named_parameters():
+                if n.split('.')[0] not in finetune_blocks:
+                    parameter.requires_grad_(False)
 
         if self.use_cuda:
             log.info("Using CUDA; {} devices.".format(torch.cuda.device_count()))
@@ -146,10 +200,14 @@ class LunaTrainingApp:
         return model, aug_model
 
     def initialize_optimizer(self):
-        return SGD(self.model.parameters(), lr=0.001, momentum=0.99)
+        learning_rate = 0.003 if self.cli_args.finetune else 0.001
+        return SGD(self.model.parameters(), lr=learning_rate, momentum=0.99)
 
     def init_train_dl(self):
-        train_ds = LunaDataset(
+        # dynamically get datset to feed into the model
+        dataset_class = getattr(preprocess_cls, self.cli_args.dataset)
+
+        train_ds = dataset_class(
             val_stride=10,
             is_val_set_bool=False,
             ratio_int=int(self.cli_args.balanced),
@@ -169,7 +227,8 @@ class LunaTrainingApp:
         return train_dl
 
     def init_val_dl(self):
-        val_ds = LunaDataset(
+        dataset_class = getattr(preprocess_cls, self.cli_args.dataset)
+        val_ds = dataset_class(
             val_stride=10,
             is_val_set_bool=True,
         )
@@ -197,13 +256,13 @@ class LunaTrainingApp:
                 log_dir=log_dir + '-val-' + self.cli_args.comment)
 
     def compute_batch_loss(self, batch_IDX, batch_tup, batch_size, metrics_g):
-        input_t, label_t, _series_list, _center_list = batch_tup
+        input_t, label_t, index_t, _series_list, _center_list = batch_tup
         
         # label_t = label_t[:, 1].unsqueeze(1).float()
 
         input_g = input_t.to(self.device, non_blocking=True)
         label_g = label_t.to(self.device, non_blocking=True)
-
+        index_g = index_t.to(self.device, non_blocking=True)
 
         if self.model.training and self.augmentation_dict:
             input_g = self.aug_model(input_g)
@@ -227,9 +286,12 @@ class LunaTrainingApp:
         start_IDX = batch_IDX * batch_size
         end_IDX = start_IDX + label_t.size(0)
 
-        metrics_g[METRICS_LABEL_IDX, start_IDX:end_IDX] = label_g[:, 1]
+        _, pred_label_g = torch.max(probability_g, dim=1, keepdim=False, out=None)
+
+        metrics_g[METRICS_LABEL_IDX, start_IDX:end_IDX] = index_g
+        metrics_g[METRICS_PRED_IDX, start_IDX:end_IDX] = pred_label_g
         # metrics_g[METRICS_LABEL_IDX, start_IDX:end_IDX] = label_g
-        metrics_g[METRICS_PRED_IDX, start_IDX:end_IDX] = probability_g[:, 1]
+        metrics_g[METRICS_PRED_P_IDX, start_IDX:end_IDX] = probability_g[:, 1]
         metrics_g[METRICS_LOSS_IDX, start_IDX:end_IDX] = loss_g
 
         return loss_g.mean()
@@ -357,8 +419,18 @@ class LunaTrainingApp:
             type(self).__name__,
         ))
 
-        neg_label_mask = metrics_t[METRICS_LABEL_IDX] <= classfication_threshold
-        neg_pred_mask = metrics_t[METRICS_PRED_IDX] <= classfication_threshold
+        if self.cli_args.dataset == "MalignantLunaDataset":
+            pos = 'malignant'
+            neg = 'benign'
+        else:   
+            pos = 'positive'
+            neg = 'negative'
+
+        # neg_label_mask = metrics_t[METRICS_LABEL_IDX] <= classfication_threshold
+        # neg_pred_mask = metrics_t[METRICS_PRED_IDX] <= classfication_threshold
+
+        neg_label_mask = metrics_t[METRICS_LABEL_IDX] == 0
+        neg_pred_mask = metrics_t[METRICS_PRED_IDX] == 0 
 
         pos_label_mask = ~neg_label_mask
         pos_pred_mask = ~neg_pred_mask
@@ -374,12 +446,12 @@ class LunaTrainingApp:
 
         metrics_dict = {}
         metrics_dict['loss/all'] = metrics_t[METRICS_LOSS_IDX].mean()
-        metrics_dict['loss/neg'] = metrics_t[METRICS_LOSS_IDX, neg_label_mask].mean()
-        metrics_dict['loss/pos'] = metrics_t[METRICS_LOSS_IDX, pos_label_mask].mean()
+        metrics_dict['loss/negative'] = metrics_t[METRICS_LOSS_IDX, neg_label_mask].mean()
+        metrics_dict['loss/positive'] = metrics_t[METRICS_LOSS_IDX, pos_label_mask].mean()
 
         metrics_dict['correct/all'] = (pos_correct + neg_correct) / metrics_t.shape[1] * 100
-        metrics_dict['correct/neg'] = (neg_correct) / neg_count * 100
-        metrics_dict['correct/pos'] = (pos_correct) / pos_count * 100
+        metrics_dict['correct/negative'] = (neg_correct) / neg_count * 100
+        metrics_dict['correct/positive'] = (pos_correct) / pos_count * 100
 
         precision = metrics_dict['pr/precision'] = \
             true_pos_count / np.float32(true_pos_count + false_pos_count)
@@ -399,6 +471,22 @@ class LunaTrainingApp:
 
         metrics_dict['pr/FROC'], _, _ = self.calculate_froc(metrics_t, epoch_IDX)
         
+        # AUC calculation
+        threshold = torch.linspace(1, 0, steps=100)
+        true_positive_rate = (
+            metrics_t[None, METRICS_PRED_P_IDX, pos_label_mask] >= threshold[:, None]
+        ).sum(1).float() / pos_count
+
+        false_postive_rate = (
+            metrics_t[None, METRICS_PRED_P_IDX, neg_label_mask] >= threshold[:, None]
+        ).sum(1).float() / neg_count 
+
+        # finding auc using numeric integration by the trapezoidal rule
+        false_positive_difference = false_postive_rate[1:] - false_postive_rate[:-1]
+        true_positive_average = (true_positive_rate[1:] + true_positive_rate[:-1]) / 2
+        auc = (true_positive_average * false_positive_difference).sum()
+        metrics_dict["auc"] = auc
+
         log.info(
             f"E{epoch_IDX} {mode_str:8} {metrics_dict['loss/all']:.4f} loss, "
             f"{metrics_dict['correct/all']:-5.1f}% correct, "
@@ -408,25 +496,53 @@ class LunaTrainingApp:
             f"{metrics_dict['f/f2_score']:.4f} f2 score, "
             f"{metrics_dict['f/f05_score']:.4f} f0.5 score, "
             f"{metrics_dict['pr/fpr']:.4f} fpr, "
-            f"{metrics_dict['pr/FROC']:.4f} FROC"
+            f"{metrics_dict['pr/FROC']:.4f} FROC, "
+            f"{metrics_dict['auc']:.4f} AUC"
         )
 
         log.info(
-            f"E{epoch_IDX} {mode_str + '_neg':8} {metrics_dict['loss/neg']:.4f} loss, "
-            f"{metrics_dict['correct/neg']:-5.1f}% correct ({neg_correct} of {neg_count})"
+            f"E{epoch_IDX} {mode_str + '_' + neg:8} {metrics_dict['loss/negative']:.4f} loss, "
+            f"{metrics_dict['correct/negative']:-5.1f}% correct ({neg_correct} of {neg_count})"
         )
 
         log.info(
-            f"E{epoch_IDX} {mode_str + '_pos':8} {metrics_dict['loss/pos']:.4f} loss, "
-            f"{metrics_dict['correct/pos']:-5.1f}% correct ({pos_correct} of {pos_count})"
+            f"E{epoch_IDX} {mode_str + '_' + pos:8} {metrics_dict['loss/positive']:.4f} loss, "
+            f"{metrics_dict['correct/positive']:-5.1f}% correct ({pos_correct} of {pos_count})"
         )
 
         writer = getattr(self, mode_str + '_writer')
 
         for key, value in metrics_dict.items():
+            key = key.replace('positive', pos)
+            key = key.replace('negative', neg)
             writer.add_scalar(key, value, self.total_train_samples_count)
 
-        score = metrics_dict["f/f1_score"]
+        # Adding ROC cureve to TensorBoard
+        fig = plt.figure()
+        plt.plot(false_postive_rate, true_positive_rate)
+        writer.add_figure('roc', fig, self.total_train_samples_count)
+        writer.add_scalar('auc', auc, self.total_train_samples_count)
+
+        # Histograms 
+        bins = np.linspace(0, 1, 100)
+        writer.add_histogram(
+            'label_negative',
+            metrics_t[METRICS_PRED_P_IDX, neg_label_mask],
+            self.total_train_samples_count,
+            bins=bins,
+        )
+
+        writer.add_histogram(
+            'label_positive',
+            metrics_t[METRICS_PRED_P_IDX, pos_label_mask],
+            self.total_train_samples_count,
+            bins=bins,
+        )
+
+        if not self.cli_args.malignant:
+            score = metrics_dict["f/f1_score"]
+        else:
+            score = metrics_dict["auc"]
 
         return score  
 
@@ -478,7 +594,7 @@ class LunaTrainingApp:
         val_dl = self.init_val_dl()
 
         best_score = 0.0
-        validation_epochs = 5
+        validation_epochs = 5 if not self.cli_args.finetune else 1
         for epoch_IDX in range(1, self.cli_args.epochs + 1):
 
             log.info(
@@ -495,7 +611,10 @@ class LunaTrainingApp:
                 # froc, _, _ = self.calculate_froc(val_metrics, epoch_IDX)
                 score = self.log_metrics(epoch_IDX, 'val', val_metrics)
                 best_score = max(score, best_score)
-                self.save_model('cls', epoch_IDX, score==best_score)
+                if self.cli_args.malignant:
+                    self.save_model('mal', epoch_IDX, score==best_score)
+                else:
+                    self.save_model('cls', epoch_IDX, score==best_score)
 
         #         # Early stopping check
         #         if self.f2 > self.best_f2:

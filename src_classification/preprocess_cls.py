@@ -189,19 +189,11 @@ class LunaDataset(Dataset):
         elif val_stride > 0:
             del self.series_list[::val_stride]  # if training, we delete every val_strideth element.
             assert self.series_list
-
-        # if series_uid:
-        #     self.candidate_info_list = [
-        #         x for x in self.candidate_info_list if x.series_uid == series_uid
-        #     ]
-
-        # if is_val_set_bool:
-        #     assert val_stride > 0, val_stride
-        #     self.candidate_info_list = self.candidate_info_list[::val_stride]
-        #     assert self.candidate_info_list
-        # elif val_stride > 0:
-        #     del self.candidate_info_list[::val_stride]
-        #     assert self.candidate_info_list
+        
+        series_set = set(self.series_list)
+        self.candidate_info_list = [
+            x for x in self.candidate_info_list if x.series_uid in series_set
+        ]
 
         if sortby_str == "random":
             random.shuffle(self.candidate_info_list)
@@ -212,10 +204,11 @@ class LunaDataset(Dataset):
         else:
             raise Exception("Unknown sort: " + repr(sortby_str))
 
-        self.negative_list = [
-            nt for nt in self.candidate_info_list if not nt.is_nodule_bool
-        ]
+        self.negative_list = [nt for nt in self.candidate_info_list if not nt.is_nodule_bool]
         self.pos_list = [nt for nt in self.candidate_info_list if nt.is_nodule_bool]
+
+        self.benign_list = [nt for nt in self.pos_list if not nt.is_mal_bool]
+        self.malignant_list = [nt for nt in self.pos_list if nt.is_mal_bool]
 
         log.info(
             f"{self!r}: {len(self.candidate_info_list)} {'validation' if is_val_set_bool else 'training'} samples, "
@@ -227,6 +220,56 @@ class LunaDataset(Dataset):
         if self.ratio_int:
             random.shuffle(self.negative_list)
             random.shuffle(self.pos_list)
+            random.shuffle(self.benign_list)
+            random.shuffle(self.malignant_list)
+    
+    def sample_from_candidate_info_tuple(self, candidate_info_tuple, label_bool):
+        # define the dimensions of the CT chunk to be extracted
+        width_irc = (32, 48, 48)
+
+        # if caching is enabled (use_cache is True), retrieve the candidate data from the cache.
+        if self.use_cache:
+            candidate_a, center_irc = get_ct_candidate(
+                candidate_info_tuple.series_uid, candidate_info_tuple.center_xyz, width_irc,
+            )
+
+            candidate_t = torch.from_numpy(candidate_a).to(torch.float32)
+            # add the channel dimension using unsqueeze
+            candidate_t = candidate_t.unsqueeze(0)
+        # If caching is not used, compute the candidate data directly without using the cache.
+        else:
+            ct = get_ct_data(candidate_info_tuple.series_uid)
+            candidate_a, center_irc = ct.get_raw_candidate(candidate_info_tuple.center_xyz, width_irc,
+            )
+            candidate_t = torch.from_numpy(candidate_a).to(torch.float32)
+            candidate_t = candidate_t.unsqueeze(0)
+
+        # # create a one-hot encoded tensor to represent whether the candidate is a nodule or not.
+        # # one-hot encoding is used here because nn.CrossEntropyLoss expects one output value per class.
+        # # this tensor will be used as the target label for training.
+        # pos_t = torch.tensor(
+        #     [not candidate_info_tuple.is_nodule_bool, candidate_info_tuple.is_nodule_bool],
+        #     dtype=torch.long,
+        # )
+
+        label_t = torch.tensor([False, False], dtype=torch.long)
+
+        if not label_bool:
+            label_t[0] = True
+            index_t = 0
+        else:
+            label_t[1] = True
+            index_t = 1
+
+        return (
+            candidate_t,
+            label_t,
+            index_t,
+            candidate_info_tuple.series_uid,
+            torch.tensor(center_irc),
+        )
+
+
 
     def __len__(self):
         if self.ratio_int:
@@ -254,37 +297,32 @@ class LunaDataset(Dataset):
             # get the information of the candidate at index IDX
             candidate_info_tuple = self.candidate_info_list[IDX]
 
-        # define the dimensions of the CT chunk to be extracted
-        width_irc = (32, 48, 48)
+        return self.sample_from_candidate_info_tuple(candidate_info_tuple, candidate_info_tuple.is_nodule_bool)
 
-        # if caching is enabled (use_cache is True), retrieve the candidate data from the cache.
-        if self.use_cache:
-            candidate_a, center_irc = get_ct_candidate(
-                candidate_info_tuple.series_uid, candidate_info_tuple.center_xyz, width_irc,
-            )
 
-            candidate_t = torch.from_numpy(candidate_a).to(torch.float32)
-            # add the channel dimension using unsqueeze
-            candidate_t = candidate_t.unsqueeze(0)
-        # If caching is not used, compute the candidate data directly without using the cache.
+class MalignantLunaDataset(LunaDataset):
+    def __len__(self):
+        if self.ratio_int:
+            return 100000
         else:
-            ct = get_ct_data(candidate_info_tuple.series_uid)
-            candidate_a, center_irc = ct.get_raw_candidate(candidate_info_tuple.center_xyz, width_irc,
-            )
-            candidate_t = torch.from_numpy(candidate_a).to(torch.float32)
-            candidate_t = candidate_t.unsqueeze(0)
+            return len(self.benign_list +self.malignant_list)
 
-        # create a one-hot encoded tensor to represent whether the candidate is a nodule or not.
-        # one-hot encoding is used here because nn.CrossEntropyLoss expects one output value per class.
-        # this tensor will be used as the target label for training.
-        pos_t = torch.tensor(
-            [not candidate_info_tuple.is_nodule_bool, candidate_info_tuple.is_nodule_bool],
-            dtype=torch.long,
-        )
+    def __getitem__(self, IDX):
+        # sampling strategy to balance the different types of data for training. Odd indices are used to select 'malignant' more frequently
+        # multiple of 4s are used to select bening samples, and the remaining indices select negative samples.
+        if self.ratio_int:
+            if IDX % 2 != 0:
+                candidate_info_tuple = self.malignant_list[(IDX // 2) % len(self.malignant_list)]
+            elif IDX % 4 == 0:
+                candidate_info_tuple = self.benign_list[(IDX // 4) % len(self.benign_list)]
+            else:
+                candidate_info_tuple = self.negative_list[(IDX // 4) % len(self.negative_list)]
+        else:
+            if IDX >= len(self.benign_list):
+                candidate_info_tuple = self.malignant_list[IDX - len(self.benign_list)]
+            else:
+                candidate_info_tuple = self.benign_list[IDX]
 
-        return (
-            candidate_t,
-            pos_t,
-            candidate_info_tuple.series_uid,
-            torch.tensor(center_irc),
+        return self.sample_from_candidate_info_tuple(
+            candidate_info_tuple, candidate_info_tuple.is_mal_bool
         )
