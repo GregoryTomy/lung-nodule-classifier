@@ -12,6 +12,7 @@ This project proposes an end-to-end deep learning solution (CNNs) for identifyin
 The project started out as solely a classification task (stage 2). The paper detailing the project methodologies, results, and discussions can be found here: [CSCI_5502_Project.pdf](CSCI_5502_Project.pdf).
 
 [[Watch the presentation]](https://youtu.be/ovUrZZ6Hyj8)
+[](images/thumbnail.jpg)
 
 ## Part 1: Segmentation of CT Scans.
 
@@ -27,7 +28,7 @@ The project started out as solely a classification task (stage 2). The paper det
 | False Negative   | 16.8%      |
 | False Positive   | 3618.1%    |
 
-The elevated false positive rate observed in the validation phase is anticipated due to the significant disparity in the dimensions of the datasets used for training and validation. Specifically, the validation dataset encompasses an area of $2^18$ pixels, which is notably larger than the $2^12$ pixels area utilized for the training dataset. This results in a validation area that is 64 times greater in size compared to the training area. Given this context, our focus was primarily on optimizing the recall metric, with the understanding that any precision-related concerns will be addressed by the downstream classification model. 
+The elevated false positive rate observed in the validation phase is anticipated due to the significant disparity in the dimensions of the datasets used for training and validation. Specifically, the validation dataset encompasses an area of $2^{18}$ pixels, which is notably larger than the $2^{12}$ pixels area utilized for the training dataset. This results in a validation area that is 64 times greater in size compared to the training area. Given this context, our focus was primarily on optimizing the recall metric, with the understanding that any precision-related concerns will be addressed by the downstream classification model. 
 
 ### Examples of segmentation output. 
 
@@ -38,6 +39,7 @@ Positive predictions in Green. False positives in Red.
 ![segmentation_ct_result_2](images/seg_val_2.png)
 
 ## Part 2: Classification of Candidate Nodules.
+[CSCI_5502_Project.pdf](CSCI_5502_Project.pdf).
 
 ### Classification Model Architecture
 ![Classification Model Architecture](images/model_arch.jpeg)
@@ -74,3 +76,5 @@ To define a performance benchmark, a simple predictive model was constructed to 
 
 ![Baseline ROC](images/roc_diameter_baseline.png)
 *Figure: ROC Curve illustrating the performance of the nodule size predictor. The red values at 5.22 mm and 10.55 mm represent the sensitivity and specificity trade-off at these specific diameter thresholds.*
+
+In Part 3, we refined our Stage 2 lung nodule classification model to predict malignancy. We fine-tuned the final linear layer and last convolutional block, while keeping the earlier weights, to better differentiate between benign and malignant nodules.
