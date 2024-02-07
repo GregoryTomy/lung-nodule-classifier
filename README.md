@@ -12,7 +12,8 @@ This project proposes an end-to-end deep learning solution (CNNs) for identifyin
 The project started out as solely a classification task (stage 2). The paper detailing the project methodologies, results, and discussions can be found here: [CSCI_5502_Project.pdf](CSCI_5502_Project.pdf).
 
 [[Watch the presentation]](https://youtu.be/ovUrZZ6Hyj8)
-[](images/thumbnail.jpg)
+
+![thumbnail](images/thumbnail.jpg)
 
 ## Part 1: Segmentation of CT Scans.
 
@@ -42,7 +43,7 @@ Positive predictions in Green. False positives in Red.
 [CSCI_5502_Project.pdf](CSCI_5502_Project.pdf).
 
 ### Classification Model Architecture
-![Classification Model Architecture](images/model_arch.jpeg)
+![Classification Model Architecture](images/model_arch.png)
 
 ### Results
 
@@ -77,4 +78,4 @@ To define a performance benchmark, a simple predictive model was constructed to 
 ![Baseline ROC](images/roc_diameter_baseline.png)
 *Figure: ROC Curve illustrating the performance of the nodule size predictor. The red values at 5.22 mm and 10.55 mm represent the sensitivity and specificity trade-off at these specific diameter thresholds.*
 
-In Part 3, we refined our Stage 2 lung nodule classification model to predict malignancy. We fine-tuned the final linear layer and last convolutional block, while keeping the earlier weights, to better differentiate between benign and malignant nodules.
+In Part 3, we refined our Part 2 lung nodule classification model to predict malignancy. We fine-tuned the final linear layer and last convolutional block, while keeping the earlier weights, to better differentiate between benign and malignant nodules.
