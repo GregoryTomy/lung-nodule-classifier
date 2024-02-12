@@ -16,6 +16,7 @@ The project started out as solely a classification task (stage 2). The paper det
 ![thumbnail](images/thumbnail.jpg)
 
 ![ct_scan_gif](images/ct_scan.gif)
+Model scanning CT slices and predicting nodules. Positive predictions in Green. False positives in Red.
 
 ## Part 1: Segmentation of CT Scans.
 
