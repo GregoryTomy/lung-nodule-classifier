@@ -15,6 +15,8 @@ The project started out as solely a classification task (stage 2). The paper det
 
 ![thumbnail](images/thumbnail.jpg)
 
+![ct_scan_gif](images/ct_scan.gif)
+
 ## Part 1: Segmentation of CT Scans.
 
 ### Segmentation Results
