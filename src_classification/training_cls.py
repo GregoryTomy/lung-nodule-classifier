@@ -82,7 +82,7 @@ class LunaTrainingApp:
         )
 
         parser.add_argument(
-            '-wp', '--init-weights-path', help="Path to inital wrights file to load before training.", default=None, type=str,
+            '-wp', '--init-weights-path', help="Path to initial weights file to load before training.", default=None, type=str,
         )
 
         parser.add_argument('--tb-dir', default='', help="Data prefix to use for Tensorboard run. Defaults to chapter.",
@@ -152,12 +152,12 @@ class LunaTrainingApp:
 
         if self.initial_weights_path and os.path.isfile(self.initial_weights_path):
             log.info(f"Loading initial weights from {self.initial_weights_path}")
-            checkpoint = torch.load(self.initial_weights_path)
+            checkpoint = torch.load(self.initial_weights_path, map_location=self.device)
             if 'model_state_dict' in checkpoint:
                 self.model.load_state_dict(checkpoint["model_state_dict"])
             else:
                 self.model.load_state_dict(checkpoint)
-
+            log.info("Initial weights loaded successfully.")
 
     def initialize_model(self):
         # dynamically get model class specified in command line argument

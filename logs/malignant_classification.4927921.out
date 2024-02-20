@@ -1,0 +1,773 @@
+2024-02-12 17:24:44,676 INFO     __main__:176:initialize_model Finetuning from final_models/cls_2024-01-26_10.26._final-nodule-nonnodule.best.state, blocks b l o c k 4
+2024-02-12 17:24:44,705 INFO     __main__:193:initialize_model Using CUDA; 1 devices.
+2024-02-12 17:24:45,815 INFO     __main__:591:train Starting LunaTrainingApp, Namespace(batch_size=24, num_workers=26, epochs=40, balanced=True, augment_all=True, augment_flip=False, augment_offset=False, augment_scale=False, augment_rotate=False, init_weights_path=None, tb_dir='malignant-finetune-40', model='LunaModel', malignant=True, dataset='MalignantLunaDataset', finetune='final_models/cls_2024-01-26_10.26._final-nodule-nonnodule.best.state', finetune_depth=2, comment='augment_all')
+2024-02-12 17:24:48,654 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.MalignantLunaDataset object at 0x153526977750>: 499313 training samples, 498285 neg, 1028 pos, 1:1 ratio
+2024-02-12 17:24:48,770 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.MalignantLunaDataset object at 0x1534d375d610>: 51583 validation samples, 51429 neg, 154 pos, unbalanced ratio
+2024-02-12 17:24:48,770 INFO     __main__:600:train Epoch 1 of 40, 4167/7 batches of size 24*1
+2024-02-12 17:24:48,899 WARNING  util.util:090:enum_estimate E1 Training ----/4167, starting
+2024-02-12 17:25:06,963 INFO     util.util:102:enum_estimate E1 Training  256/4167, done at 2024-02-12 17:28:34, 0:03:39
+2024-02-12 17:25:58,695 INFO     util.util:102:enum_estimate E1 Training 1024/4167, done at 2024-02-12 17:29:19, 0:04:25
+2024-02-12 17:28:36,179 INFO     util.util:102:enum_estimate E1 Training 4096/4167, done at 2024-02-12 17:28:39, 0:03:45
+2024-02-12 17:28:38,030 WARNING  util.util:111:enum_estimate E1 Training ----/4167, done at 2024-02-12 17:28:38
+2024-02-12 17:28:38,038 INFO     __main__:417:log_metrics E1 LunaTrainingApp
+2024-02-12 17:28:38,101 INFO     __main__:403:calculate_froc Epoch 1 FROC score: 1.0
+2024-02-12 17:28:38,119 INFO     __main__:490:log_metrics E1 trn      0.5269 loss,  75.3% correct, 0.7770 precision, 0.7102 recall, 0.7421 f1 score, 0.7226 f2 score, 0.7627 f0.5 score, 0.2038 fpr, 1.0000 FROC, 0.8254 AUC
+2024-02-12 17:28:38,119 INFO     __main__:503:log_metrics E1 trn_benign 0.5312 loss,  79.6% correct (39809 of 50000)
+2024-02-12 17:28:38,119 INFO     __main__:508:log_metrics E1 trn_malignant 0.5225 loss,  71.0% correct (35510 of 50000)
+2024-02-12 17:28:38,237 WARNING  util.util:090:enum_estimate E1 Validation  ----/7, starting
+2024-02-12 17:28:43,464 WARNING  util.util:111:enum_estimate E1 Validation  ----/7, done at 2024-02-12 17:28:43
+2024-02-12 17:28:43,470 INFO     __main__:417:log_metrics E1 LunaTrainingApp
+2024-02-12 17:28:43,472 INFO     __main__:403:calculate_froc Epoch 1 FROC score: 1.0
+2024-02-12 17:28:43,472 INFO     __main__:490:log_metrics E1 val      0.4172 loss,  84.4% correct, 0.7800 precision, 0.7500 recall, 0.7647 f1 score, 0.7558 f2 score, 0.7738 f0.5 score, 0.1078 fpr, 1.0000 FROC, 0.8611 AUC
+2024-02-12 17:28:43,472 INFO     __main__:503:log_metrics E1 val_benign 0.3704 loss,  89.2% correct (91 of 102)
+2024-02-12 17:28:43,472 INFO     __main__:508:log_metrics E1 val_malignant 0.5090 loss,  75.0% correct (39 of 52)
+2024-02-12 17:28:43,542 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_100000.state
+2024-02-12 17:28:43,546 INFO     __main__:588:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_100000.best.state
+2024-02-12 17:28:43,547 INFO     __main__:600:train Epoch 2 of 40, 4167/7 batches of size 24*1
+2024-02-12 17:28:43,763 WARNING  util.util:090:enum_estimate E2 Training ----/4167, starting
+2024-02-12 17:28:55,138 INFO     util.util:102:enum_estimate E2 Training  256/4167, done at 2024-02-12 17:30:52, 0:02:04
+2024-02-12 17:29:19,198 INFO     util.util:102:enum_estimate E2 Training 1024/4167, done at 2024-02-12 17:30:56, 0:02:08
+2024-02-12 17:30:55,087 INFO     util.util:102:enum_estimate E2 Training 4096/4167, done at 2024-02-12 17:30:57, 0:02:09
+2024-02-12 17:30:57,159 WARNING  util.util:111:enum_estimate E2 Training ----/4167, done at 2024-02-12 17:30:57
+2024-02-12 17:30:57,279 INFO     __main__:417:log_metrics E2 LunaTrainingApp
+2024-02-12 17:30:57,292 INFO     __main__:403:calculate_froc Epoch 2 FROC score: 0.9688514471054077
+2024-02-12 17:30:57,324 INFO     __main__:490:log_metrics E2 trn      0.4792 loss,  75.9% correct, 0.7483 precision, 0.7820 recall, 0.7648 f1 score, 0.7750 f2 score, 0.7548 f0.5 score, 0.2630 fpr, 0.9689 FROC, 0.8528 AUC
+2024-02-12 17:30:57,324 INFO     __main__:503:log_metrics E2 trn_benign 0.4915 loss,  73.7% correct (36848 of 50000)
+2024-02-12 17:30:57,324 INFO     __main__:508:log_metrics E2 trn_malignant 0.4669 loss,  78.2% correct (39098 of 50000)
+2024-02-12 17:30:57,429 WARNING  util.util:090:enum_estimate E2 Validation  ----/7, starting
+2024-02-12 17:31:02,134 WARNING  util.util:111:enum_estimate E2 Validation  ----/7, done at 2024-02-12 17:31:02
+2024-02-12 17:31:02,135 INFO     __main__:417:log_metrics E2 LunaTrainingApp
+2024-02-12 17:31:02,137 INFO     __main__:403:calculate_froc Epoch 2 FROC score: 1.0
+2024-02-12 17:31:02,137 INFO     __main__:490:log_metrics E2 val      0.4219 loss,  85.1% correct, 0.7736 precision, 0.7885 recall, 0.7810 f1 score, 0.7854 f2 score, 0.7765 f0.5 score, 0.1176 fpr, 1.0000 FROC, 0.8714 AUC
+2024-02-12 17:31:02,137 INFO     __main__:503:log_metrics E2 val_benign 0.4177 loss,  88.2% correct (90 of 102)
+2024-02-12 17:31:02,137 INFO     __main__:508:log_metrics E2 val_malignant 0.4303 loss,  78.8% correct (41 of 52)
+2024-02-12 17:31:02,224 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_200000.state
+2024-02-12 17:31:02,227 INFO     __main__:588:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_200000.best.state
+2024-02-12 17:31:02,227 INFO     __main__:600:train Epoch 3 of 40, 4167/7 batches of size 24*1
+2024-02-12 17:31:02,449 WARNING  util.util:090:enum_estimate E3 Training ----/4167, starting
+2024-02-12 17:31:12,692 INFO     util.util:102:enum_estimate E3 Training  256/4167, done at 2024-02-12 17:32:50, 0:01:43
+2024-02-12 17:31:35,595 INFO     util.util:102:enum_estimate E3 Training 1024/4167, done at 2024-02-12 17:33:05, 0:01:58
+2024-02-12 17:33:10,765 INFO     util.util:102:enum_estimate E3 Training 4096/4167, done at 2024-02-12 17:33:12, 0:02:05
+2024-02-12 17:33:13,196 WARNING  util.util:111:enum_estimate E3 Training ----/4167, done at 2024-02-12 17:33:13
+2024-02-12 17:33:13,339 INFO     __main__:417:log_metrics E3 LunaTrainingApp
+2024-02-12 17:33:13,350 INFO     __main__:403:calculate_froc Epoch 3 FROC score: 0.9706286191940308
+2024-02-12 17:33:13,375 INFO     __main__:490:log_metrics E3 trn      0.4666 loss,  76.6% correct, 0.7515 precision, 0.7944 recall, 0.7723 f1 score, 0.7854 f2 score, 0.7597 f0.5 score, 0.2627 fpr, 0.9706 FROC, 0.8616 AUC
+2024-02-12 17:33:13,375 INFO     __main__:503:log_metrics E3 trn_benign 0.4837 loss,  73.7% correct (36864 of 50000)
+2024-02-12 17:33:13,375 INFO     __main__:508:log_metrics E3 trn_malignant 0.4496 loss,  79.4% correct (39720 of 50000)
+2024-02-12 17:33:13,465 WARNING  util.util:090:enum_estimate E3 Validation  ----/7, starting
+2024-02-12 17:33:18,333 WARNING  util.util:111:enum_estimate E3 Validation  ----/7, done at 2024-02-12 17:33:18
+2024-02-12 17:33:18,334 INFO     __main__:417:log_metrics E3 LunaTrainingApp
+2024-02-12 17:33:18,336 INFO     __main__:403:calculate_froc Epoch 3 FROC score: 0.9807692170143127
+2024-02-12 17:33:18,336 INFO     __main__:490:log_metrics E3 val      0.4956 loss,  75.3% correct, 0.5921 precision, 0.8654 recall, 0.7031 f1 score, 0.7923 f2 score, 0.6320 f0.5 score, 0.3039 fpr, 0.9808 FROC, 0.8824 AUC
+2024-02-12 17:33:18,336 INFO     __main__:503:log_metrics E3 val_benign 0.5845 loss,  69.6% correct (71 of 102)
+2024-02-12 17:33:18,336 INFO     __main__:508:log_metrics E3 val_malignant 0.3212 loss,  86.5% correct (45 of 52)
+2024-02-12 17:33:18,419 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_300000.state
+2024-02-12 17:33:18,422 INFO     __main__:588:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_300000.best.state
+2024-02-12 17:33:18,422 INFO     __main__:600:train Epoch 4 of 40, 4167/7 batches of size 24*1
+2024-02-12 17:33:18,633 WARNING  util.util:090:enum_estimate E4 Training ----/4167, starting
+2024-02-12 17:33:31,477 INFO     util.util:102:enum_estimate E4 Training  256/4167, done at 2024-02-12 17:35:43, 0:02:20
+2024-02-12 17:33:55,237 INFO     util.util:102:enum_estimate E4 Training 1024/4167, done at 2024-02-12 17:35:34, 0:02:10
+2024-02-12 17:35:27,776 INFO     util.util:102:enum_estimate E4 Training 4096/4167, done at 2024-02-12 17:35:29, 0:02:06
+2024-02-12 17:35:29,554 WARNING  util.util:111:enum_estimate E4 Training ----/4167, done at 2024-02-12 17:35:29
+2024-02-12 17:35:29,689 INFO     __main__:417:log_metrics E4 LunaTrainingApp
+2024-02-12 17:35:29,700 INFO     __main__:403:calculate_froc Epoch 4 FROC score: 0.9700285792350769
+2024-02-12 17:35:29,730 INFO     __main__:490:log_metrics E4 trn      0.4699 loss,  76.7% correct, 0.7548 precision, 0.7902 recall, 0.7721 f1 score, 0.7829 f2 score, 0.7616 f0.5 score, 0.2567 fpr, 0.9700 FROC, 0.8604 AUC
+2024-02-12 17:35:29,730 INFO     __main__:503:log_metrics E4 trn_benign 0.4861 loss,  74.3% correct (37165 of 50000)
+2024-02-12 17:35:29,730 INFO     __main__:508:log_metrics E4 trn_malignant 0.4537 loss,  79.0% correct (39510 of 50000)
+2024-02-12 17:35:29,824 WARNING  util.util:090:enum_estimate E4 Validation  ----/7, starting
+2024-02-12 17:35:34,701 WARNING  util.util:111:enum_estimate E4 Validation  ----/7, done at 2024-02-12 17:35:34
+2024-02-12 17:35:34,701 INFO     __main__:417:log_metrics E4 LunaTrainingApp
+2024-02-12 17:35:34,703 INFO     __main__:403:calculate_froc Epoch 4 FROC score: 0.9725275039672852
+2024-02-12 17:35:34,703 INFO     __main__:490:log_metrics E4 val      0.4459 loss,  79.2% correct, 0.6562 precision, 0.8077 recall, 0.7241 f1 score, 0.7721 f2 score, 0.6818 f0.5 score, 0.2157 fpr, 0.9725 FROC, 0.8796 AUC
+2024-02-12 17:35:34,703 INFO     __main__:503:log_metrics E4 val_benign 0.4784 loss,  78.4% correct (80 of 102)
+2024-02-12 17:35:34,703 INFO     __main__:508:log_metrics E4 val_malignant 0.3823 loss,  80.8% correct (42 of 52)
+2024-02-12 17:35:34,786 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_400000.state
+2024-02-12 17:35:34,786 INFO     __main__:600:train Epoch 5 of 40, 4167/7 batches of size 24*1
+2024-02-12 17:35:34,926 WARNING  util.util:090:enum_estimate E5 Training ----/4167, starting
+2024-02-12 17:35:46,397 INFO     util.util:102:enum_estimate E5 Training  256/4167, done at 2024-02-12 17:37:41, 0:02:02
+2024-02-12 17:36:14,030 INFO     util.util:102:enum_estimate E5 Training 1024/4167, done at 2024-02-12 17:38:02, 0:02:22
+2024-02-12 17:37:45,081 INFO     util.util:102:enum_estimate E5 Training 4096/4167, done at 2024-02-12 17:37:47, 0:02:07
+2024-02-12 17:37:47,471 WARNING  util.util:111:enum_estimate E5 Training ----/4167, done at 2024-02-12 17:37:47
+2024-02-12 17:37:47,612 INFO     __main__:417:log_metrics E5 LunaTrainingApp
+2024-02-12 17:37:47,625 INFO     __main__:403:calculate_froc Epoch 5 FROC score: 0.9712057113647461
+2024-02-12 17:37:47,640 INFO     __main__:490:log_metrics E5 trn      0.4661 loss,  76.8% correct, 0.7525 precision, 0.7984 recall, 0.7748 f1 score, 0.7888 f2 score, 0.7613 f0.5 score, 0.2625 fpr, 0.9712 FROC, 0.8623 AUC
+2024-02-12 17:37:47,641 INFO     __main__:503:log_metrics E5 trn_benign 0.4830 loss,  73.7% correct (36873 of 50000)
+2024-02-12 17:37:47,641 INFO     __main__:508:log_metrics E5 trn_malignant 0.4492 loss,  79.8% correct (39922 of 50000)
+2024-02-12 17:37:47,732 WARNING  util.util:090:enum_estimate E5 Validation  ----/7, starting
+2024-02-12 17:37:52,975 WARNING  util.util:111:enum_estimate E5 Validation  ----/7, done at 2024-02-12 17:37:52
+2024-02-12 17:37:52,976 INFO     __main__:417:log_metrics E5 LunaTrainingApp
+2024-02-12 17:37:52,978 INFO     __main__:403:calculate_froc Epoch 5 FROC score: 0.9725275039672852
+2024-02-12 17:37:52,979 INFO     __main__:490:log_metrics E5 val      0.4352 loss,  77.9% correct, 0.6364 precision, 0.8077 recall, 0.7119 f1 score, 0.7664 f2 score, 0.6646 f0.5 score, 0.2353 fpr, 0.9725 FROC, 0.8924 AUC
+2024-02-12 17:37:52,979 INFO     __main__:503:log_metrics E5 val_benign 0.4686 loss,  76.5% correct (78 of 102)
+2024-02-12 17:37:52,979 INFO     __main__:508:log_metrics E5 val_malignant 0.3696 loss,  80.8% correct (42 of 52)
+2024-02-12 17:37:53,061 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_500000.state
+2024-02-12 17:37:53,066 INFO     __main__:588:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_500000.best.state
+2024-02-12 17:37:53,066 INFO     __main__:600:train Epoch 6 of 40, 4167/7 batches of size 24*1
+2024-02-12 17:37:53,284 WARNING  util.util:090:enum_estimate E6 Training ----/4167, starting
+2024-02-12 17:38:04,525 INFO     util.util:102:enum_estimate E6 Training  256/4167, done at 2024-02-12 17:39:56, 0:01:58
+2024-02-12 17:38:30,525 INFO     util.util:102:enum_estimate E6 Training 1024/4167, done at 2024-02-12 17:40:13, 0:02:15
+2024-02-12 17:40:06,254 INFO     util.util:102:enum_estimate E6 Training 4096/4167, done at 2024-02-12 17:40:08, 0:02:10
+2024-02-12 17:40:09,188 WARNING  util.util:111:enum_estimate E6 Training ----/4167, done at 2024-02-12 17:40:09
+2024-02-12 17:40:09,333 INFO     __main__:417:log_metrics E6 LunaTrainingApp
+2024-02-12 17:40:09,345 INFO     __main__:403:calculate_froc Epoch 6 FROC score: 0.9709286093711853
+2024-02-12 17:40:09,367 INFO     __main__:490:log_metrics E6 trn      0.4642 loss,  76.8% correct, 0.7543 precision, 0.7965 recall, 0.7748 f1 score, 0.7877 f2 score, 0.7623 f0.5 score, 0.2595 fpr, 0.9709 FROC, 0.8638 AUC
+2024-02-12 17:40:09,367 INFO     __main__:503:log_metrics E6 trn_benign 0.4809 loss,  74.1% correct (37025 of 50000)
+2024-02-12 17:40:09,367 INFO     __main__:508:log_metrics E6 trn_malignant 0.4476 loss,  79.7% correct (39825 of 50000)
+2024-02-12 17:40:09,514 WARNING  util.util:090:enum_estimate E6 Validation  ----/7, starting
+2024-02-12 17:40:14,466 WARNING  util.util:111:enum_estimate E6 Validation  ----/7, done at 2024-02-12 17:40:14
+2024-02-12 17:40:14,467 INFO     __main__:417:log_metrics E6 LunaTrainingApp
+2024-02-12 17:40:14,468 INFO     __main__:403:calculate_froc Epoch 6 FROC score: 0.9752747416496277
+2024-02-12 17:40:14,469 INFO     __main__:490:log_metrics E6 val      0.4802 loss,  76.0% correct, 0.6056 precision, 0.8269 recall, 0.6992 f1 score, 0.7706 f2 score, 0.6399 f0.5 score, 0.2745 fpr, 0.9753 FROC, 0.8882 AUC
+2024-02-12 17:40:14,469 INFO     __main__:503:log_metrics E6 val_benign 0.5613 loss,  72.5% correct (74 of 102)
+2024-02-12 17:40:14,469 INFO     __main__:508:log_metrics E6 val_malignant 0.3213 loss,  82.7% correct (43 of 52)
+2024-02-12 17:40:14,569 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_600000.state
+2024-02-12 17:40:14,569 INFO     __main__:600:train Epoch 7 of 40, 4167/7 batches of size 24*1
+2024-02-12 17:40:14,787 WARNING  util.util:090:enum_estimate E7 Training ----/4167, starting
+2024-02-12 17:40:26,469 INFO     util.util:102:enum_estimate E7 Training  256/4167, done at 2024-02-12 17:42:26, 0:02:06
+2024-02-12 17:40:54,237 INFO     util.util:102:enum_estimate E7 Training 1024/4167, done at 2024-02-12 17:42:43, 0:02:24
+2024-02-12 17:43:48,551 INFO     util.util:102:enum_estimate E7 Training 4096/4167, done at 2024-02-12 17:43:52, 0:03:32
+2024-02-12 17:43:52,588 WARNING  util.util:111:enum_estimate E7 Training ----/4167, done at 2024-02-12 17:43:52
+2024-02-12 17:43:52,751 INFO     __main__:417:log_metrics E7 LunaTrainingApp
+2024-02-12 17:43:52,762 INFO     __main__:403:calculate_froc Epoch 7 FROC score: 0.97079998254776
+2024-02-12 17:43:52,776 INFO     __main__:490:log_metrics E7 trn      0.4671 loss,  76.8% correct, 0.7542 precision, 0.7956 recall, 0.7743 f1 score, 0.7870 f2 score, 0.7621 f0.5 score, 0.2593 fpr, 0.9708 FROC, 0.8621 AUC
+2024-02-12 17:43:52,776 INFO     __main__:503:log_metrics E7 trn_benign 0.4843 loss,  74.1% correct (37033 of 50000)
+2024-02-12 17:43:52,776 INFO     __main__:508:log_metrics E7 trn_malignant 0.4499 loss,  79.6% correct (39780 of 50000)
+2024-02-12 17:43:52,872 WARNING  util.util:090:enum_estimate E7 Validation  ----/7, starting
+2024-02-12 17:43:59,545 WARNING  util.util:111:enum_estimate E7 Validation  ----/7, done at 2024-02-12 17:43:59
+2024-02-12 17:43:59,545 INFO     __main__:417:log_metrics E7 LunaTrainingApp
+2024-02-12 17:43:59,547 INFO     __main__:403:calculate_froc Epoch 7 FROC score: 0.9725275039672852
+2024-02-12 17:43:59,548 INFO     __main__:490:log_metrics E7 val      0.4565 loss,  76.6% correct, 0.6176 precision, 0.8077 recall, 0.7000 f1 score, 0.7609 f2 score, 0.6481 f0.5 score, 0.2549 fpr, 0.9725 FROC, 0.8856 AUC
+2024-02-12 17:43:59,548 INFO     __main__:503:log_metrics E7 val_benign 0.5203 loss,  74.5% correct (76 of 102)
+2024-02-12 17:43:59,548 INFO     __main__:508:log_metrics E7 val_malignant 0.3315 loss,  80.8% correct (42 of 52)
+2024-02-12 17:44:00,034 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_700000.state
+2024-02-12 17:44:00,034 INFO     __main__:600:train Epoch 8 of 40, 4167/7 batches of size 24*1
+2024-02-12 17:44:00,229 WARNING  util.util:090:enum_estimate E8 Training ----/4167, starting
+2024-02-12 17:44:27,182 INFO     util.util:102:enum_estimate E8 Training  256/4167, done at 2024-02-12 17:49:05, 0:04:54
+2024-02-12 17:45:27,737 INFO     util.util:102:enum_estimate E8 Training 1024/4167, done at 2024-02-12 17:49:29, 0:05:19
+2024-02-12 17:47:41,382 INFO     util.util:102:enum_estimate E8 Training 4096/4167, done at 2024-02-12 17:47:45, 0:03:34
+2024-02-12 17:47:45,181 WARNING  util.util:111:enum_estimate E8 Training ----/4167, done at 2024-02-12 17:47:45
+2024-02-12 17:47:45,312 INFO     __main__:417:log_metrics E8 LunaTrainingApp
+2024-02-12 17:47:45,333 INFO     __main__:403:calculate_froc Epoch 8 FROC score: 0.9716371893882751
+2024-02-12 17:47:45,346 INFO     __main__:490:log_metrics E8 trn      0.4573 loss,  77.3% correct, 0.7578 precision, 0.8015 recall, 0.7790 f1 score, 0.7923 f2 score, 0.7661 f0.5 score, 0.2562 fpr, 0.9716 FROC, 0.8680 AUC
+2024-02-12 17:47:45,346 INFO     __main__:503:log_metrics E8 trn_benign 0.4735 loss,  74.4% correct (37191 of 50000)
+2024-02-12 17:47:45,346 INFO     __main__:508:log_metrics E8 trn_malignant 0.4410 loss,  80.1% correct (40073 of 50000)
+2024-02-12 17:47:45,430 WARNING  util.util:090:enum_estimate E8 Validation  ----/7, starting
+2024-02-12 17:47:51,517 WARNING  util.util:111:enum_estimate E8 Validation  ----/7, done at 2024-02-12 17:47:51
+2024-02-12 17:47:51,518 INFO     __main__:417:log_metrics E8 LunaTrainingApp
+2024-02-12 17:47:51,519 INFO     __main__:403:calculate_froc Epoch 8 FROC score: 0.9670329689979553
+2024-02-12 17:47:51,520 INFO     __main__:490:log_metrics E8 val      0.4190 loss,  79.2% correct, 0.6667 precision, 0.7692 recall, 0.7143 f1 score, 0.7463 f2 score, 0.6849 f0.5 score, 0.1961 fpr, 0.9670 FROC, 0.8862 AUC
+2024-02-12 17:47:51,520 INFO     __main__:503:log_metrics E8 val_benign 0.4277 loss,  80.4% correct (82 of 102)
+2024-02-12 17:47:51,520 INFO     __main__:508:log_metrics E8 val_malignant 0.4018 loss,  76.9% correct (40 of 52)
+2024-02-12 17:47:51,687 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_800000.state
+2024-02-12 17:47:51,687 INFO     __main__:600:train Epoch 9 of 40, 4167/7 batches of size 24*1
+2024-02-12 17:47:51,905 WARNING  util.util:090:enum_estimate E9 Training ----/4167, starting
+2024-02-12 17:48:08,157 INFO     util.util:102:enum_estimate E9 Training  256/4167, done at 2024-02-12 17:51:11, 0:03:14
+2024-02-12 17:48:44,981 INFO     util.util:102:enum_estimate E9 Training 1024/4167, done at 2024-02-12 17:51:14, 0:03:17
+2024-02-12 17:51:22,103 INFO     util.util:102:enum_estimate E9 Training 4096/4167, done at 2024-02-12 17:51:25, 0:03:28
+2024-02-12 17:51:25,310 WARNING  util.util:111:enum_estimate E9 Training ----/4167, done at 2024-02-12 17:51:25
+2024-02-12 17:51:25,449 INFO     __main__:417:log_metrics E9 LunaTrainingApp
+2024-02-12 17:51:25,461 INFO     __main__:403:calculate_froc Epoch 9 FROC score: 0.9725885391235352
+2024-02-12 17:51:25,475 INFO     __main__:490:log_metrics E9 trn      0.4575 loss,  77.4% correct, 0.7570 precision, 0.8081 recall, 0.7817 f1 score, 0.7974 f2 score, 0.7667 f0.5 score, 0.2594 fpr, 0.9726 FROC, 0.8684 AUC
+2024-02-12 17:51:25,475 INFO     __main__:503:log_metrics E9 trn_benign 0.4776 loss,  74.1% correct (37030 of 50000)
+2024-02-12 17:51:25,475 INFO     __main__:508:log_metrics E9 trn_malignant 0.4373 loss,  80.8% correct (40406 of 50000)
+2024-02-12 17:51:25,557 WARNING  util.util:090:enum_estimate E9 Validation  ----/7, starting
+2024-02-12 17:51:31,631 WARNING  util.util:111:enum_estimate E9 Validation  ----/7, done at 2024-02-12 17:51:31
+2024-02-12 17:51:31,632 INFO     __main__:417:log_metrics E9 LunaTrainingApp
+2024-02-12 17:51:31,633 INFO     __main__:403:calculate_froc Epoch 9 FROC score: 0.9807692170143127
+2024-02-12 17:51:31,634 INFO     __main__:490:log_metrics E9 val      0.5111 loss,  79.2% correct, 0.6429 precision, 0.8654 recall, 0.7377 f1 score, 0.8094 f2 score, 0.6777 f0.5 score, 0.2451 fpr, 0.9808 FROC, 0.8759 AUC
+2024-02-12 17:51:31,634 INFO     __main__:503:log_metrics E9 val_benign 0.6195 loss,  75.5% correct (77 of 102)
+2024-02-12 17:51:31,634 INFO     __main__:508:log_metrics E9 val_malignant 0.2984 loss,  86.5% correct (45 of 52)
+2024-02-12 17:51:31,750 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_900000.state
+2024-02-12 17:51:31,751 INFO     __main__:600:train Epoch 10 of 40, 4167/7 batches of size 24*1
+2024-02-12 17:51:31,900 WARNING  util.util:090:enum_estimate E10 Training ----/4167, starting
+2024-02-12 17:51:47,635 INFO     util.util:102:enum_estimate E10 Training  256/4167, done at 2024-02-12 17:54:46, 0:03:08
+2024-02-12 17:52:26,892 INFO     util.util:102:enum_estimate E10 Training 1024/4167, done at 2024-02-12 17:55:03, 0:03:26
+2024-02-12 17:55:23,133 INFO     util.util:102:enum_estimate E10 Training 4096/4167, done at 2024-02-12 17:55:27, 0:03:49
+2024-02-12 17:55:27,688 WARNING  util.util:111:enum_estimate E10 Training ----/4167, done at 2024-02-12 17:55:27
+2024-02-12 17:55:27,840 INFO     __main__:417:log_metrics E10 LunaTrainingApp
+2024-02-12 17:55:27,853 INFO     __main__:403:calculate_froc Epoch 10 FROC score: 0.9723114371299744
+2024-02-12 17:55:27,866 INFO     __main__:490:log_metrics E10 trn      0.4575 loss,  77.4% correct, 0.7570 precision, 0.8062 recall, 0.7808 f1 score, 0.7958 f2 score, 0.7664 f0.5 score, 0.2587 fpr, 0.9723 FROC, 0.8687 AUC
+2024-02-12 17:55:27,866 INFO     __main__:503:log_metrics E10 trn_benign 0.4776 loss,  74.1% correct (37063 of 50000)
+2024-02-12 17:55:27,866 INFO     __main__:508:log_metrics E10 trn_malignant 0.4375 loss,  80.6% correct (40309 of 50000)
+2024-02-12 17:55:27,941 WARNING  util.util:090:enum_estimate E10 Validation  ----/7, starting
+2024-02-12 17:55:34,446 WARNING  util.util:111:enum_estimate E10 Validation  ----/7, done at 2024-02-12 17:55:34
+2024-02-12 17:55:34,447 INFO     __main__:417:log_metrics E10 LunaTrainingApp
+2024-02-12 17:55:34,449 INFO     __main__:403:calculate_froc Epoch 10 FROC score: 0.9752747416496277
+2024-02-12 17:55:34,449 INFO     __main__:490:log_metrics E10 val      0.4854 loss,  74.0% correct, 0.5811 precision, 0.8269 recall, 0.6825 f1 score, 0.7624 f2 score, 0.6178 f0.5 score, 0.3039 fpr, 0.9753 FROC, 0.8840 AUC
+2024-02-12 17:55:34,449 INFO     __main__:503:log_metrics E10 val_benign 0.5746 loss,  69.6% correct (71 of 102)
+2024-02-12 17:55:34,449 INFO     __main__:508:log_metrics E10 val_malignant 0.3104 loss,  82.7% correct (43 of 52)
+2024-02-12 17:55:34,563 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_1000000.state
+2024-02-12 17:55:34,563 INFO     __main__:600:train Epoch 11 of 40, 4167/7 batches of size 24*1
+2024-02-12 17:55:34,778 WARNING  util.util:090:enum_estimate E11 Training ----/4167, starting
+2024-02-12 17:55:55,054 INFO     util.util:102:enum_estimate E11 Training  256/4167, done at 2024-02-12 18:00:02, 0:04:22
+2024-02-12 17:56:47,031 INFO     util.util:102:enum_estimate E11 Training 1024/4167, done at 2024-02-12 18:00:16, 0:04:36
+2024-02-12 18:00:17,102 INFO     util.util:102:enum_estimate E11 Training 4096/4167, done at 2024-02-12 18:00:21, 0:04:41
+2024-02-12 18:00:20,379 WARNING  util.util:111:enum_estimate E11 Training ----/4167, done at 2024-02-12 18:00:20
+2024-02-12 18:00:20,510 INFO     __main__:417:log_metrics E11 LunaTrainingApp
+2024-02-12 18:00:20,522 INFO     __main__:403:calculate_froc Epoch 11 FROC score: 0.9732228517532349
+2024-02-12 18:00:20,533 INFO     __main__:490:log_metrics E11 trn      0.4515 loss,  77.7% correct, 0.7579 precision, 0.8126 recall, 0.7843 f1 score, 0.8010 f2 score, 0.7683 f0.5 score, 0.2595 fpr, 0.9732 FROC, 0.8722 AUC
+2024-02-12 18:00:20,533 INFO     __main__:503:log_metrics E11 trn_benign 0.4706 loss,  74.0% correct (37024 of 50000)
+2024-02-12 18:00:20,533 INFO     __main__:508:log_metrics E11 trn_malignant 0.4324 loss,  81.3% correct (40628 of 50000)
+2024-02-12 18:00:20,615 WARNING  util.util:090:enum_estimate E11 Validation  ----/7, starting
+2024-02-12 18:00:27,657 WARNING  util.util:111:enum_estimate E11 Validation  ----/7, done at 2024-02-12 18:00:27
+2024-02-12 18:00:27,658 INFO     __main__:417:log_metrics E11 LunaTrainingApp
+2024-02-12 18:00:27,659 INFO     __main__:403:calculate_froc Epoch 11 FROC score: 0.9670329689979553
+2024-02-12 18:00:27,660 INFO     __main__:490:log_metrics E11 val      0.4188 loss,  79.2% correct, 0.6667 precision, 0.7692 recall, 0.7143 f1 score, 0.7463 f2 score, 0.6849 f0.5 score, 0.1961 fpr, 0.9670 FROC, 0.8831 AUC
+2024-02-12 18:00:27,660 INFO     __main__:503:log_metrics E11 val_benign 0.4135 loss,  80.4% correct (82 of 102)
+2024-02-12 18:00:27,660 INFO     __main__:508:log_metrics E11 val_malignant 0.4291 loss,  76.9% correct (40 of 52)
+2024-02-12 18:00:27,742 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_1100000.state
+2024-02-12 18:00:27,743 INFO     __main__:600:train Epoch 12 of 40, 4167/7 batches of size 24*1
+2024-02-12 18:00:27,960 WARNING  util.util:090:enum_estimate E12 Training ----/4167, starting
+2024-02-12 18:00:49,181 INFO     util.util:102:enum_estimate E12 Training  256/4167, done at 2024-02-12 18:05:17, 0:04:44
+2024-02-12 18:01:40,724 INFO     util.util:102:enum_estimate E12 Training 1024/4167, done at 2024-02-12 18:05:12, 0:04:39
+2024-02-12 18:05:03,002 INFO     util.util:102:enum_estimate E12 Training 4096/4167, done at 2024-02-12 18:05:07, 0:04:34
+2024-02-12 18:05:06,670 WARNING  util.util:111:enum_estimate E12 Training ----/4167, done at 2024-02-12 18:05:06
+2024-02-12 18:05:06,848 INFO     __main__:417:log_metrics E12 LunaTrainingApp
+2024-02-12 18:05:06,861 INFO     __main__:403:calculate_froc Epoch 12 FROC score: 0.9719914197921753
+2024-02-12 18:05:06,892 INFO     __main__:490:log_metrics E12 trn      0.4646 loss,  77.3% correct, 0.7567 precision, 0.8039 recall, 0.7796 f1 score, 0.7940 f2 score, 0.7657 f0.5 score, 0.2585 fpr, 0.9720 FROC, 0.8637 AUC
+2024-02-12 18:05:06,892 INFO     __main__:503:log_metrics E12 trn_benign 0.4734 loss,  74.2% correct (37076 of 50000)
+2024-02-12 18:05:06,892 INFO     __main__:508:log_metrics E12 trn_malignant 0.4557 loss,  80.4% correct (40197 of 50000)
+2024-02-12 18:05:07,052 WARNING  util.util:090:enum_estimate E12 Validation  ----/7, starting
+2024-02-12 18:05:13,761 WARNING  util.util:111:enum_estimate E12 Validation  ----/7, done at 2024-02-12 18:05:13
+2024-02-12 18:05:13,762 INFO     __main__:417:log_metrics E12 LunaTrainingApp
+2024-02-12 18:05:13,764 INFO     __main__:403:calculate_froc Epoch 12 FROC score: 0.9697802662849426
+2024-02-12 18:05:13,765 INFO     __main__:490:log_metrics E12 val      0.4472 loss,  78.6% correct, 0.6508 precision, 0.7885 recall, 0.7130 f1 score, 0.7565 f2 score, 0.6743 f0.5 score, 0.2157 fpr, 0.9698 FROC, 0.8827 AUC
+2024-02-12 18:05:13,765 INFO     __main__:503:log_metrics E12 val_benign 0.4723 loss,  78.4% correct (80 of 102)
+2024-02-12 18:05:13,765 INFO     __main__:508:log_metrics E12 val_malignant 0.3981 loss,  78.8% correct (41 of 52)
+2024-02-12 18:05:13,844 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_1200000.state
+2024-02-12 18:05:13,844 INFO     __main__:600:train Epoch 13 of 40, 4167/7 batches of size 24*1
+2024-02-12 18:05:14,061 WARNING  util.util:090:enum_estimate E13 Training ----/4167, starting
+2024-02-12 18:05:34,257 INFO     util.util:102:enum_estimate E13 Training  256/4167, done at 2024-02-12 18:09:45, 0:04:26
+2024-02-12 18:06:24,212 INFO     util.util:102:enum_estimate E13 Training 1024/4167, done at 2024-02-12 18:09:48, 0:04:28
+2024-02-12 18:09:48,944 INFO     util.util:102:enum_estimate E13 Training 4096/4167, done at 2024-02-12 18:09:53, 0:04:34
+2024-02-12 18:09:52,409 WARNING  util.util:111:enum_estimate E13 Training ----/4167, done at 2024-02-12 18:09:52
+2024-02-12 18:09:52,575 INFO     __main__:417:log_metrics E13 LunaTrainingApp
+2024-02-12 18:09:52,588 INFO     __main__:403:calculate_froc Epoch 13 FROC score: 0.9739342927932739
+2024-02-12 18:09:52,622 INFO     __main__:490:log_metrics E13 trn      0.4557 loss,  77.7% correct, 0.7563 precision, 0.8175 recall, 0.7857 f1 score, 0.8045 f2 score, 0.7678 f0.5 score, 0.2635 fpr, 0.9739 FROC, 0.8677 AUC
+2024-02-12 18:09:52,622 INFO     __main__:503:log_metrics E13 trn_benign 0.4582 loss,  73.7% correct (36827 of 50000)
+2024-02-12 18:09:52,622 INFO     __main__:508:log_metrics E13 trn_malignant 0.4533 loss,  81.8% correct (40877 of 50000)
+2024-02-12 18:09:52,764 WARNING  util.util:090:enum_estimate E13 Validation  ----/7, starting
+2024-02-12 18:09:59,998 WARNING  util.util:111:enum_estimate E13 Validation  ----/7, done at 2024-02-12 18:09:59
+2024-02-12 18:09:59,999 INFO     __main__:417:log_metrics E13 LunaTrainingApp
+2024-02-12 18:10:00,000 INFO     __main__:403:calculate_froc Epoch 13 FROC score: 0.9780219793319702
+2024-02-12 18:10:00,001 INFO     __main__:490:log_metrics E13 val      0.4228 loss,  79.9% correct, 0.6567 precision, 0.8462 recall, 0.7395 f1 score, 0.8000 f2 score, 0.6875 f0.5 score, 0.2255 fpr, 0.9780 FROC, 0.8933 AUC
+2024-02-12 18:10:00,001 INFO     __main__:503:log_metrics E13 val_benign 0.4292 loss,  77.5% correct (79 of 102)
+2024-02-12 18:10:00,001 INFO     __main__:508:log_metrics E13 val_malignant 0.4103 loss,  84.6% correct (44 of 52)
+2024-02-12 18:10:00,186 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_1300000.state
+2024-02-12 18:10:00,190 INFO     __main__:588:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_1300000.best.state
+2024-02-12 18:10:00,190 INFO     __main__:600:train Epoch 14 of 40, 4167/7 batches of size 24*1
+2024-02-12 18:10:00,335 WARNING  util.util:090:enum_estimate E14 Training ----/4167, starting
+2024-02-12 18:10:25,719 INFO     util.util:102:enum_estimate E14 Training  256/4167, done at 2024-02-12 18:15:12, 0:05:03
+2024-02-12 18:11:20,249 INFO     util.util:102:enum_estimate E14 Training 1024/4167, done at 2024-02-12 18:15:04, 0:04:56
+2024-02-12 18:15:00,859 INFO     util.util:102:enum_estimate E14 Training 4096/4167, done at 2024-02-12 18:15:05, 0:04:57
+2024-02-12 18:15:05,440 WARNING  util.util:111:enum_estimate E14 Training ----/4167, done at 2024-02-12 18:15:05
+2024-02-12 18:15:05,571 INFO     __main__:417:log_metrics E14 LunaTrainingApp
+2024-02-12 18:15:05,586 INFO     __main__:403:calculate_froc Epoch 14 FROC score: 0.9750885367393494
+2024-02-12 18:15:05,606 INFO     __main__:490:log_metrics E14 trn      0.4534 loss,  77.8% correct, 0.7534 precision, 0.8256 recall, 0.7879 f1 score, 0.8101 f2 score, 0.7668 f0.5 score, 0.2702 fpr, 0.9751 FROC, 0.8687 AUC
+2024-02-12 18:15:05,606 INFO     __main__:503:log_metrics E14 trn_benign 0.4642 loss,  73.0% correct (36489 of 50000)
+2024-02-12 18:15:05,606 INFO     __main__:508:log_metrics E14 trn_malignant 0.4426 loss,  82.6% correct (41281 of 50000)
+2024-02-12 18:15:05,692 WARNING  util.util:090:enum_estimate E14 Validation  ----/7, starting
+2024-02-12 18:15:12,980 WARNING  util.util:111:enum_estimate E14 Validation  ----/7, done at 2024-02-12 18:15:12
+2024-02-12 18:15:12,981 INFO     __main__:417:log_metrics E14 LunaTrainingApp
+2024-02-12 18:15:12,982 INFO     __main__:403:calculate_froc Epoch 14 FROC score: 1.0
+2024-02-12 18:15:12,982 INFO     __main__:490:log_metrics E14 val      0.4129 loss,  82.5% correct, 0.7273 precision, 0.7692 recall, 0.7477 f1 score, 0.7605 f2 score, 0.7353 f0.5 score, 0.1471 fpr, 1.0000 FROC, 0.8858 AUC
+2024-02-12 18:15:12,983 INFO     __main__:503:log_metrics E14 val_benign 0.4093 loss,  85.3% correct (87 of 102)
+2024-02-12 18:15:12,983 INFO     __main__:508:log_metrics E14 val_malignant 0.4201 loss,  76.9% correct (40 of 52)
+2024-02-12 18:15:13,067 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_1400000.state
+2024-02-12 18:15:13,067 INFO     __main__:600:train Epoch 15 of 40, 4167/7 batches of size 24*1
+2024-02-12 18:15:13,207 WARNING  util.util:090:enum_estimate E15 Training ----/4167, starting
+2024-02-12 18:15:35,087 INFO     util.util:102:enum_estimate E15 Training  256/4167, done at 2024-02-12 18:20:04, 0:04:45
+2024-02-12 18:16:32,568 INFO     util.util:102:enum_estimate E15 Training 1024/4167, done at 2024-02-12 18:20:23, 0:05:04
+2024-02-12 18:20:02,627 INFO     util.util:102:enum_estimate E15 Training 4096/4167, done at 2024-02-12 18:20:07, 0:04:48
+2024-02-12 18:20:07,743 WARNING  util.util:111:enum_estimate E15 Training ----/4167, done at 2024-02-12 18:20:07
+2024-02-12 18:20:07,885 INFO     __main__:417:log_metrics E15 LunaTrainingApp
+2024-02-12 18:20:07,901 INFO     __main__:403:calculate_froc Epoch 15 FROC score: 0.9742400050163269
+2024-02-12 18:20:07,919 INFO     __main__:490:log_metrics E15 trn      0.4499 loss,  78.4% correct, 0.7644 precision, 0.8197 recall, 0.7911 f1 score, 0.8080 f2 score, 0.7749 f0.5 score, 0.2526 fpr, 0.9742 FROC, 0.8732 AUC
+2024-02-12 18:20:07,919 INFO     __main__:503:log_metrics E15 trn_benign 0.4614 loss,  74.7% correct (37368 of 50000)
+2024-02-12 18:20:07,919 INFO     __main__:508:log_metrics E15 trn_malignant 0.4383 loss,  82.0% correct (40984 of 50000)
+2024-02-12 18:20:08,083 WARNING  util.util:090:enum_estimate E15 Validation  ----/7, starting
+2024-02-12 18:20:14,817 WARNING  util.util:111:enum_estimate E15 Validation  ----/7, done at 2024-02-12 18:20:14
+2024-02-12 18:20:14,818 INFO     __main__:417:log_metrics E15 LunaTrainingApp
+2024-02-12 18:20:14,820 INFO     __main__:403:calculate_froc Epoch 15 FROC score: 0.9807692170143127
+2024-02-12 18:20:14,820 INFO     __main__:490:log_metrics E15 val      0.4643 loss,  79.9% correct, 0.6522 precision, 0.8654 recall, 0.7438 f1 score, 0.8123 f2 score, 0.6860 f0.5 score, 0.2353 fpr, 0.9808 FROC, 0.8876 AUC
+2024-02-12 18:20:14,820 INFO     __main__:503:log_metrics E15 val_benign 0.5157 loss,  76.5% correct (78 of 102)
+2024-02-12 18:20:14,820 INFO     __main__:508:log_metrics E15 val_malignant 0.3634 loss,  86.5% correct (45 of 52)
+2024-02-12 18:20:14,905 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_1500000.state
+2024-02-12 18:20:14,905 INFO     __main__:600:train Epoch 16 of 40, 4167/7 batches of size 24*1
+2024-02-12 18:20:15,120 WARNING  util.util:090:enum_estimate E16 Training ----/4167, starting
+2024-02-12 18:20:37,611 INFO     util.util:102:enum_estimate E16 Training  256/4167, done at 2024-02-12 18:25:26, 0:05:05
+2024-02-12 18:21:30,105 INFO     util.util:102:enum_estimate E16 Training 1024/4167, done at 2024-02-12 18:25:08, 0:04:48
+2024-02-12 18:25:06,334 INFO     util.util:102:enum_estimate E16 Training 4096/4167, done at 2024-02-12 18:25:11, 0:04:50
+2024-02-12 18:25:11,483 WARNING  util.util:111:enum_estimate E16 Training ----/4167, done at 2024-02-12 18:25:11
+2024-02-12 18:25:11,643 INFO     __main__:417:log_metrics E16 LunaTrainingApp
+2024-02-12 18:25:11,668 INFO     __main__:403:calculate_froc Epoch 16 FROC score: 1.0
+2024-02-12 18:25:11,692 INFO     __main__:490:log_metrics E16 trn      0.4531 loss,  78.5% correct, 0.7681 precision, 0.8172 recall, 0.7919 f1 score, 0.8069 f2 score, 0.7775 f0.5 score, 0.2467 fpr, 1.0000 FROC, 0.8715 AUC
+2024-02-12 18:25:11,692 INFO     __main__:503:log_metrics E16 trn_benign 0.4608 loss,  75.3% correct (37667 of 50000)
+2024-02-12 18:25:11,692 INFO     __main__:508:log_metrics E16 trn_malignant 0.4454 loss,  81.7% correct (40859 of 50000)
+2024-02-12 18:25:11,797 WARNING  util.util:090:enum_estimate E16 Validation  ----/7, starting
+2024-02-12 18:25:19,333 WARNING  util.util:111:enum_estimate E16 Validation  ----/7, done at 2024-02-12 18:25:19
+2024-02-12 18:25:19,334 INFO     __main__:417:log_metrics E16 LunaTrainingApp
+2024-02-12 18:25:19,336 INFO     __main__:403:calculate_froc Epoch 16 FROC score: 1.0
+2024-02-12 18:25:19,336 INFO     __main__:490:log_metrics E16 val      0.4200 loss,  83.1% correct, 0.7321 precision, 0.7885 recall, 0.7593 f1 score, 0.7765 f2 score, 0.7428 f0.5 score, 0.1471 fpr, 1.0000 FROC, 0.8795 AUC
+2024-02-12 18:25:19,336 INFO     __main__:503:log_metrics E16 val_benign 0.3739 loss,  85.3% correct (87 of 102)
+2024-02-12 18:25:19,336 INFO     __main__:508:log_metrics E16 val_malignant 0.5105 loss,  78.8% correct (41 of 52)
+2024-02-12 18:25:19,465 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_1600000.state
+2024-02-12 18:25:19,466 INFO     __main__:600:train Epoch 17 of 40, 4167/7 batches of size 24*1
+2024-02-12 18:25:19,605 WARNING  util.util:090:enum_estimate E17 Training ----/4167, starting
+2024-02-12 18:25:42,446 INFO     util.util:102:enum_estimate E17 Training  256/4167, done at 2024-02-12 18:30:35, 0:05:10
+2024-02-12 18:26:35,841 INFO     util.util:102:enum_estimate E17 Training 1024/4167, done at 2024-02-12 18:30:18, 0:04:53
+2024-02-12 18:29:55,651 INFO     util.util:102:enum_estimate E17 Training 4096/4167, done at 2024-02-12 18:30:00, 0:04:35
+2024-02-12 18:29:59,392 WARNING  util.util:111:enum_estimate E17 Training ----/4167, done at 2024-02-12 18:29:59
+2024-02-12 18:29:59,669 INFO     __main__:417:log_metrics E17 LunaTrainingApp
+2024-02-12 18:29:59,685 INFO     __main__:403:calculate_froc Epoch 17 FROC score: 1.0
+2024-02-12 18:29:59,697 INFO     __main__:490:log_metrics E17 trn      0.4404 loss,  79.9% correct, 0.7920 precision, 0.8106 recall, 0.8012 f1 score, 0.8068 f2 score, 0.7956 f0.5 score, 0.2129 fpr, 1.0000 FROC, 0.8792 AUC
+2024-02-12 18:29:59,697 INFO     __main__:503:log_metrics E17 trn_benign 0.4467 loss,  78.7% correct (39356 of 50000)
+2024-02-12 18:29:59,697 INFO     __main__:508:log_metrics E17 trn_malignant 0.4341 loss,  81.1% correct (40529 of 50000)
+2024-02-12 18:29:59,828 WARNING  util.util:090:enum_estimate E17 Validation  ----/7, starting
+2024-02-12 18:30:06,682 WARNING  util.util:111:enum_estimate E17 Validation  ----/7, done at 2024-02-12 18:30:06
+2024-02-12 18:30:06,683 INFO     __main__:417:log_metrics E17 LunaTrainingApp
+2024-02-12 18:30:06,685 INFO     __main__:403:calculate_froc Epoch 17 FROC score: 0.9807692170143127
+2024-02-12 18:30:06,686 INFO     __main__:490:log_metrics E17 val      0.4744 loss,  79.2% correct, 0.6429 precision, 0.8654 recall, 0.7377 f1 score, 0.8094 f2 score, 0.6777 f0.5 score, 0.2451 fpr, 0.9808 FROC, 0.8846 AUC
+2024-02-12 18:30:06,686 INFO     __main__:503:log_metrics E17 val_benign 0.5273 loss,  75.5% correct (77 of 102)
+2024-02-12 18:30:06,686 INFO     __main__:508:log_metrics E17 val_malignant 0.3707 loss,  86.5% correct (45 of 52)
+2024-02-12 18:30:06,785 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_1700000.state
+2024-02-12 18:30:06,785 INFO     __main__:600:train Epoch 18 of 40, 4167/7 batches of size 24*1
+2024-02-12 18:30:07,007 WARNING  util.util:090:enum_estimate E18 Training ----/4167, starting
+2024-02-12 18:30:28,070 INFO     util.util:102:enum_estimate E18 Training  256/4167, done at 2024-02-12 18:34:50, 0:04:38
+2024-02-12 18:31:23,687 INFO     util.util:102:enum_estimate E18 Training 1024/4167, done at 2024-02-12 18:35:07, 0:04:54
+2024-02-12 18:34:51,628 INFO     util.util:102:enum_estimate E18 Training 4096/4167, done at 2024-02-12 18:34:56, 0:04:43
+2024-02-12 18:34:55,300 WARNING  util.util:111:enum_estimate E18 Training ----/4167, done at 2024-02-12 18:34:55
+2024-02-12 18:34:55,504 INFO     __main__:417:log_metrics E18 LunaTrainingApp
+2024-02-12 18:34:55,521 INFO     __main__:403:calculate_froc Epoch 18 FROC score: 1.0
+2024-02-12 18:34:55,533 INFO     __main__:490:log_metrics E18 trn      0.4379 loss,  80.0% correct, 0.7943 precision, 0.8095 recall, 0.8018 f1 score, 0.8064 f2 score, 0.7973 f0.5 score, 0.2096 fpr, 1.0000 FROC, 0.8808 AUC
+2024-02-12 18:34:55,533 INFO     __main__:503:log_metrics E18 trn_benign 0.4477 loss,  79.0% correct (39518 of 50000)
+2024-02-12 18:34:55,533 INFO     __main__:508:log_metrics E18 trn_malignant 0.4280 loss,  80.9% correct (40473 of 50000)
+2024-02-12 18:34:55,651 WARNING  util.util:090:enum_estimate E18 Validation  ----/7, starting
+2024-02-12 18:35:02,338 WARNING  util.util:111:enum_estimate E18 Validation  ----/7, done at 2024-02-12 18:35:02
+2024-02-12 18:35:02,339 INFO     __main__:417:log_metrics E18 LunaTrainingApp
+2024-02-12 18:35:02,341 INFO     __main__:403:calculate_froc Epoch 18 FROC score: 0.9725275039672852
+2024-02-12 18:35:02,341 INFO     __main__:490:log_metrics E18 val      0.4288 loss,  79.2% correct, 0.6562 precision, 0.8077 recall, 0.7241 f1 score, 0.7721 f2 score, 0.6818 f0.5 score, 0.2157 fpr, 0.9725 FROC, 0.8872 AUC
+2024-02-12 18:35:02,341 INFO     __main__:503:log_metrics E18 val_benign 0.4490 loss,  78.4% correct (80 of 102)
+2024-02-12 18:35:02,341 INFO     __main__:508:log_metrics E18 val_malignant 0.3892 loss,  80.8% correct (42 of 52)
+2024-02-12 18:35:02,427 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_1800000.state
+2024-02-12 18:35:02,427 INFO     __main__:600:train Epoch 19 of 40, 4167/7 batches of size 24*1
+2024-02-12 18:35:02,649 WARNING  util.util:090:enum_estimate E19 Training ----/4167, starting
+2024-02-12 18:35:24,499 INFO     util.util:102:enum_estimate E19 Training  256/4167, done at 2024-02-12 18:39:51, 0:04:43
+2024-02-12 18:36:22,186 INFO     util.util:102:enum_estimate E19 Training 1024/4167, done at 2024-02-12 18:40:13, 0:05:04
+2024-02-12 18:41:17,902 INFO     util.util:102:enum_estimate E19 Training 4096/4167, done at 2024-02-12 18:41:24, 0:06:15
+2024-02-12 18:41:22,225 WARNING  util.util:111:enum_estimate E19 Training ----/4167, done at 2024-02-12 18:41:22
+2024-02-12 18:41:22,424 INFO     __main__:417:log_metrics E19 LunaTrainingApp
+2024-02-12 18:41:22,439 INFO     __main__:403:calculate_froc Epoch 19 FROC score: 1.0
+2024-02-12 18:41:22,453 INFO     __main__:490:log_metrics E19 trn      0.4410 loss,  79.7% correct, 0.7903 precision, 0.8097 recall, 0.7999 f1 score, 0.8057 f2 score, 0.7941 f0.5 score, 0.2148 fpr, 1.0000 FROC, 0.8798 AUC
+2024-02-12 18:41:22,453 INFO     __main__:503:log_metrics E19 trn_benign 0.4534 loss,  78.5% correct (39258 of 50000)
+2024-02-12 18:41:22,453 INFO     __main__:508:log_metrics E19 trn_malignant 0.4285 loss,  81.0% correct (40484 of 50000)
+2024-02-12 18:41:22,582 WARNING  util.util:090:enum_estimate E19 Validation  ----/7, starting
+2024-02-12 18:41:29,739 WARNING  util.util:111:enum_estimate E19 Validation  ----/7, done at 2024-02-12 18:41:29
+2024-02-12 18:41:29,740 INFO     __main__:417:log_metrics E19 LunaTrainingApp
+2024-02-12 18:41:29,741 INFO     __main__:403:calculate_froc Epoch 19 FROC score: 0.9725275039672852
+2024-02-12 18:41:29,742 INFO     __main__:490:log_metrics E19 val      0.4368 loss,  78.6% correct, 0.6462 precision, 0.8077 recall, 0.7179 f1 score, 0.7692 f2 score, 0.6731 f0.5 score, 0.2255 fpr, 0.9725 FROC, 0.8758 AUC
+2024-02-12 18:41:29,742 INFO     __main__:503:log_metrics E19 val_benign 0.4216 loss,  77.5% correct (79 of 102)
+2024-02-12 18:41:29,742 INFO     __main__:508:log_metrics E19 val_malignant 0.4667 loss,  80.8% correct (42 of 52)
+2024-02-12 18:41:29,825 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_1900000.state
+2024-02-12 18:41:29,825 INFO     __main__:600:train Epoch 20 of 40, 4167/7 batches of size 24*1
+2024-02-12 18:41:30,044 WARNING  util.util:090:enum_estimate E20 Training ----/4167, starting
+2024-02-12 18:41:49,676 INFO     util.util:102:enum_estimate E20 Training  256/4167, done at 2024-02-12 18:45:43, 0:04:07
+2024-02-12 18:42:45,197 INFO     util.util:102:enum_estimate E20 Training 1024/4167, done at 2024-02-12 18:46:23, 0:04:47
+2024-02-12 18:46:24,473 INFO     util.util:102:enum_estimate E20 Training 4096/4167, done at 2024-02-12 18:46:29, 0:04:53
+2024-02-12 18:46:28,262 WARNING  util.util:111:enum_estimate E20 Training ----/4167, done at 2024-02-12 18:46:28
+2024-02-12 18:46:28,466 INFO     __main__:417:log_metrics E20 LunaTrainingApp
+2024-02-12 18:46:28,485 INFO     __main__:403:calculate_froc Epoch 20 FROC score: 1.0
+2024-02-12 18:46:28,499 INFO     __main__:490:log_metrics E20 trn      0.4344 loss,  80.1% correct, 0.7951 precision, 0.8098 recall, 0.8024 f1 score, 0.8068 f2 score, 0.7980 f0.5 score, 0.2087 fpr, 1.0000 FROC, 0.8829 AUC
+2024-02-12 18:46:28,499 INFO     __main__:503:log_metrics E20 trn_benign 0.4429 loss,  79.1% correct (39564 of 50000)
+2024-02-12 18:46:28,499 INFO     __main__:508:log_metrics E20 trn_malignant 0.4259 loss,  81.0% correct (40492 of 50000)
+2024-02-12 18:46:28,587 WARNING  util.util:090:enum_estimate E20 Validation  ----/7, starting
+2024-02-12 18:46:35,290 WARNING  util.util:111:enum_estimate E20 Validation  ----/7, done at 2024-02-12 18:46:35
+2024-02-12 18:46:35,291 INFO     __main__:417:log_metrics E20 LunaTrainingApp
+2024-02-12 18:46:35,293 INFO     __main__:403:calculate_froc Epoch 20 FROC score: 0.9697802662849426
+2024-02-12 18:46:35,293 INFO     __main__:490:log_metrics E20 val      0.4482 loss,  79.9% correct, 0.6721 precision, 0.7885 recall, 0.7257 f1 score, 0.7621 f2 score, 0.6926 f0.5 score, 0.1961 fpr, 0.9698 FROC, 0.8745 AUC
+2024-02-12 18:46:35,293 INFO     __main__:503:log_metrics E20 val_benign 0.4428 loss,  80.4% correct (82 of 102)
+2024-02-12 18:46:35,293 INFO     __main__:508:log_metrics E20 val_malignant 0.4588 loss,  78.8% correct (41 of 52)
+2024-02-12 18:46:35,385 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_2000000.state
+2024-02-12 18:46:35,385 INFO     __main__:600:train Epoch 21 of 40, 4167/7 batches of size 24*1
+2024-02-12 18:46:35,527 WARNING  util.util:090:enum_estimate E21 Training ----/4167, starting
+2024-02-12 18:46:56,158 INFO     util.util:102:enum_estimate E21 Training  256/4167, done at 2024-02-12 18:51:15, 0:04:34
+2024-02-12 18:47:43,810 INFO     util.util:102:enum_estimate E21 Training 1024/4167, done at 2024-02-12 18:51:01, 0:04:21
+2024-02-12 18:51:03,999 INFO     util.util:102:enum_estimate E21 Training 4096/4167, done at 2024-02-12 18:51:08, 0:04:27
+2024-02-12 18:51:08,543 WARNING  util.util:111:enum_estimate E21 Training ----/4167, done at 2024-02-12 18:51:08
+2024-02-12 18:51:08,732 INFO     __main__:417:log_metrics E21 LunaTrainingApp
+2024-02-12 18:51:08,754 INFO     __main__:403:calculate_froc Epoch 21 FROC score: 1.0
+2024-02-12 18:51:08,811 INFO     __main__:490:log_metrics E21 trn      0.4350 loss,  80.1% correct, 0.7975 precision, 0.8074 recall, 0.8024 f1 score, 0.8054 f2 score, 0.7995 f0.5 score, 0.2050 fpr, 1.0000 FROC, 0.8824 AUC
+2024-02-12 18:51:08,811 INFO     __main__:503:log_metrics E21 trn_benign 0.4437 loss,  79.5% correct (39749 of 50000)
+2024-02-12 18:51:08,811 INFO     __main__:508:log_metrics E21 trn_malignant 0.4262 loss,  80.7% correct (40370 of 50000)
+2024-02-12 18:51:08,908 WARNING  util.util:090:enum_estimate E21 Validation  ----/7, starting
+2024-02-12 18:51:15,899 WARNING  util.util:111:enum_estimate E21 Validation  ----/7, done at 2024-02-12 18:51:15
+2024-02-12 18:51:15,899 INFO     __main__:417:log_metrics E21 LunaTrainingApp
+2024-02-12 18:51:15,901 INFO     __main__:403:calculate_froc Epoch 21 FROC score: 1.0
+2024-02-12 18:51:15,902 INFO     __main__:490:log_metrics E21 val      0.4011 loss,  81.2% correct, 0.6949 precision, 0.7885 recall, 0.7387 f1 score, 0.7678 f2 score, 0.7118 f0.5 score, 0.1765 fpr, 1.0000 FROC, 0.8972 AUC
+2024-02-12 18:51:15,902 INFO     __main__:503:log_metrics E21 val_benign 0.3950 loss,  82.4% correct (84 of 102)
+2024-02-12 18:51:15,902 INFO     __main__:508:log_metrics E21 val_malignant 0.4133 loss,  78.8% correct (41 of 52)
+2024-02-12 18:51:16,022 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_2100000.state
+2024-02-12 18:51:16,026 INFO     __main__:588:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_2100000.best.state
+2024-02-12 18:51:16,026 INFO     __main__:600:train Epoch 22 of 40, 4167/7 batches of size 24*1
+2024-02-12 18:51:16,234 WARNING  util.util:090:enum_estimate E22 Training ----/4167, starting
+2024-02-12 18:51:36,688 INFO     util.util:102:enum_estimate E22 Training  256/4167, done at 2024-02-12 18:55:52, 0:04:31
+2024-02-12 18:52:27,902 INFO     util.util:102:enum_estimate E22 Training 1024/4167, done at 2024-02-12 18:55:56, 0:04:35
+2024-02-12 18:55:48,062 INFO     util.util:102:enum_estimate E22 Training 4096/4167, done at 2024-02-12 18:55:52, 0:04:31
+2024-02-12 18:55:54,182 WARNING  util.util:111:enum_estimate E22 Training ----/4167, done at 2024-02-12 18:55:54
+2024-02-12 18:55:54,364 INFO     __main__:417:log_metrics E22 LunaTrainingApp
+2024-02-12 18:55:54,380 INFO     __main__:403:calculate_froc Epoch 22 FROC score: 1.0
+2024-02-12 18:55:54,391 INFO     __main__:490:log_metrics E22 trn      0.4308 loss,  80.4% correct, 0.7983 precision, 0.8142 recall, 0.8062 f1 score, 0.8110 f2 score, 0.8015 f0.5 score, 0.2057 fpr, 1.0000 FROC, 0.8846 AUC
+2024-02-12 18:55:54,391 INFO     __main__:503:log_metrics E22 trn_benign 0.4421 loss,  79.4% correct (39716 of 50000)
+2024-02-12 18:55:54,391 INFO     __main__:508:log_metrics E22 trn_malignant 0.4196 loss,  81.4% correct (40712 of 50000)
+2024-02-12 18:55:54,503 WARNING  util.util:090:enum_estimate E22 Validation  ----/7, starting
+2024-02-12 18:56:01,131 WARNING  util.util:111:enum_estimate E22 Validation  ----/7, done at 2024-02-12 18:56:01
+2024-02-12 18:56:01,132 INFO     __main__:417:log_metrics E22 LunaTrainingApp
+2024-02-12 18:56:01,134 INFO     __main__:403:calculate_froc Epoch 22 FROC score: 1.0
+2024-02-12 18:56:01,134 INFO     __main__:490:log_metrics E22 val      0.3830 loss,  83.1% correct, 0.7407 precision, 0.7692 recall, 0.7547 f1 score, 0.7634 f2 score, 0.7463 f0.5 score, 0.1373 fpr, 1.0000 FROC, 0.8832 AUC
+2024-02-12 18:56:01,134 INFO     __main__:503:log_metrics E22 val_benign 0.3192 loss,  86.3% correct (88 of 102)
+2024-02-12 18:56:01,134 INFO     __main__:508:log_metrics E22 val_malignant 0.5083 loss,  76.9% correct (40 of 52)
+2024-02-12 18:56:01,236 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_2200000.state
+2024-02-12 18:56:01,236 INFO     __main__:600:train Epoch 23 of 40, 4167/7 batches of size 24*1
+2024-02-12 18:56:01,380 WARNING  util.util:090:enum_estimate E23 Training ----/4167, starting
+2024-02-12 18:56:21,414 INFO     util.util:102:enum_estimate E23 Training  256/4167, done at 2024-02-12 19:00:23, 0:04:16
+2024-02-12 18:57:15,452 INFO     util.util:102:enum_estimate E23 Training 1024/4167, done at 2024-02-12 19:00:50, 0:04:43
+2024-02-12 19:00:41,068 INFO     util.util:102:enum_estimate E23 Training 4096/4167, done at 2024-02-12 19:00:45, 0:04:38
+2024-02-12 19:00:46,470 WARNING  util.util:111:enum_estimate E23 Training ----/4167, done at 2024-02-12 19:00:46
+2024-02-12 19:00:46,638 INFO     __main__:417:log_metrics E23 LunaTrainingApp
+2024-02-12 19:00:46,656 INFO     __main__:403:calculate_froc Epoch 23 FROC score: 1.0
+2024-02-12 19:00:46,679 INFO     __main__:490:log_metrics E23 trn      0.4310 loss,  80.2% correct, 0.7979 precision, 0.8099 recall, 0.8039 f1 score, 0.8075 f2 score, 0.8003 f0.5 score, 0.2051 fpr, 1.0000 FROC, 0.8850 AUC
+2024-02-12 19:00:46,679 INFO     __main__:503:log_metrics E23 trn_benign 0.4400 loss,  79.5% correct (39745 of 50000)
+2024-02-12 19:00:46,679 INFO     __main__:508:log_metrics E23 trn_malignant 0.4220 loss,  81.0% correct (40497 of 50000)
+2024-02-12 19:00:46,801 WARNING  util.util:090:enum_estimate E23 Validation  ----/7, starting
+2024-02-12 19:00:53,781 WARNING  util.util:111:enum_estimate E23 Validation  ----/7, done at 2024-02-12 19:00:53
+2024-02-12 19:00:53,782 INFO     __main__:417:log_metrics E23 LunaTrainingApp
+2024-02-12 19:00:53,784 INFO     __main__:403:calculate_froc Epoch 23 FROC score: 0.9780219793319702
+2024-02-12 19:00:53,784 INFO     __main__:490:log_metrics E23 val      0.4000 loss,  81.8% correct, 0.6875 precision, 0.8462 recall, 0.7586 f1 score, 0.8088 f2 score, 0.7143 f0.5 score, 0.1961 fpr, 0.9780 FROC, 0.9044 AUC
+2024-02-12 19:00:53,784 INFO     __main__:503:log_metrics E23 val_benign 0.4205 loss,  80.4% correct (82 of 102)
+2024-02-12 19:00:53,784 INFO     __main__:508:log_metrics E23 val_malignant 0.3600 loss,  84.6% correct (44 of 52)
+2024-02-12 19:00:53,878 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_2300000.state
+2024-02-12 19:00:53,881 INFO     __main__:588:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_2300000.best.state
+2024-02-12 19:00:53,881 INFO     __main__:600:train Epoch 24 of 40, 4167/7 batches of size 24*1
+2024-02-12 19:00:54,023 WARNING  util.util:090:enum_estimate E24 Training ----/4167, starting
+2024-02-12 19:01:15,608 INFO     util.util:102:enum_estimate E24 Training  256/4167, done at 2024-02-12 19:05:50, 0:04:51
+2024-02-12 19:02:05,151 INFO     util.util:102:enum_estimate E24 Training 1024/4167, done at 2024-02-12 19:05:32, 0:04:32
+2024-02-12 19:05:21,456 INFO     util.util:102:enum_estimate E24 Training 4096/4167, done at 2024-02-12 19:05:25, 0:04:26
+2024-02-12 19:05:25,213 WARNING  util.util:111:enum_estimate E24 Training ----/4167, done at 2024-02-12 19:05:25
+2024-02-12 19:05:25,404 INFO     __main__:417:log_metrics E24 LunaTrainingApp
+2024-02-12 19:05:25,422 INFO     __main__:403:calculate_froc Epoch 24 FROC score: 1.0
+2024-02-12 19:05:25,433 INFO     __main__:490:log_metrics E24 trn      0.4308 loss,  80.3% correct, 0.7956 precision, 0.8165 recall, 0.8059 f1 score, 0.8123 f2 score, 0.7997 f0.5 score, 0.2097 fpr, 1.0000 FROC, 0.8851 AUC
+2024-02-12 19:05:25,433 INFO     __main__:503:log_metrics E24 trn_benign 0.4424 loss,  79.0% correct (39513 of 50000)
+2024-02-12 19:05:25,433 INFO     __main__:508:log_metrics E24 trn_malignant 0.4193 loss,  81.7% correct (40827 of 50000)
+2024-02-12 19:05:25,549 WARNING  util.util:090:enum_estimate E24 Validation  ----/7, starting
+2024-02-12 19:05:32,538 WARNING  util.util:111:enum_estimate E24 Validation  ----/7, done at 2024-02-12 19:05:32
+2024-02-12 19:05:32,539 INFO     __main__:417:log_metrics E24 LunaTrainingApp
+2024-02-12 19:05:32,540 INFO     __main__:403:calculate_froc Epoch 24 FROC score: 1.0
+2024-02-12 19:05:32,540 INFO     __main__:490:log_metrics E24 val      0.3891 loss,  83.8% correct, 0.7288 precision, 0.8269 recall, 0.7748 f1 score, 0.8052 f2 score, 0.7465 f0.5 score, 0.1569 fpr, 1.0000 FROC, 0.9014 AUC
+2024-02-12 19:05:32,540 INFO     __main__:503:log_metrics E24 val_benign 0.3791 loss,  84.3% correct (86 of 102)
+2024-02-12 19:05:32,541 INFO     __main__:508:log_metrics E24 val_malignant 0.4088 loss,  82.7% correct (43 of 52)
+2024-02-12 19:05:32,668 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_2400000.state
+2024-02-12 19:05:32,668 INFO     __main__:600:train Epoch 25 of 40, 4167/7 batches of size 24*1
+2024-02-12 19:05:32,812 WARNING  util.util:090:enum_estimate E25 Training ----/4167, starting
+2024-02-12 19:05:52,334 INFO     util.util:102:enum_estimate E25 Training  256/4167, done at 2024-02-12 19:09:53, 0:04:15
+2024-02-12 19:06:41,295 INFO     util.util:102:enum_estimate E25 Training 1024/4167, done at 2024-02-12 19:10:00, 0:04:22
+2024-02-12 19:09:51,994 INFO     util.util:102:enum_estimate E25 Training 4096/4167, done at 2024-02-12 19:09:56, 0:04:18
+2024-02-12 19:09:55,278 WARNING  util.util:111:enum_estimate E25 Training ----/4167, done at 2024-02-12 19:09:55
+2024-02-12 19:09:55,417 INFO     __main__:417:log_metrics E25 LunaTrainingApp
+2024-02-12 19:09:55,439 INFO     __main__:403:calculate_froc Epoch 25 FROC score: 1.0
+2024-02-12 19:09:55,455 INFO     __main__:490:log_metrics E25 trn      0.4273 loss,  80.5% correct, 0.7986 precision, 0.8150 recall, 0.8067 f1 score, 0.8117 f2 score, 0.8018 f0.5 score, 0.2055 fpr, 1.0000 FROC, 0.8868 AUC
+2024-02-12 19:09:55,455 INFO     __main__:503:log_metrics E25 trn_benign 0.4350 loss,  79.4% correct (39723 of 50000)
+2024-02-12 19:09:55,455 INFO     __main__:508:log_metrics E25 trn_malignant 0.4196 loss,  81.5% correct (40750 of 50000)
+2024-02-12 19:09:55,545 WARNING  util.util:090:enum_estimate E25 Validation  ----/7, starting
+2024-02-12 19:10:01,692 WARNING  util.util:111:enum_estimate E25 Validation  ----/7, done at 2024-02-12 19:10:01
+2024-02-12 19:10:01,693 INFO     __main__:417:log_metrics E25 LunaTrainingApp
+2024-02-12 19:10:01,695 INFO     __main__:403:calculate_froc Epoch 25 FROC score: 0.9725275039672852
+2024-02-12 19:10:01,696 INFO     __main__:490:log_metrics E25 val      0.4211 loss,  78.6% correct, 0.6462 precision, 0.8077 recall, 0.7179 f1 score, 0.7692 f2 score, 0.6731 f0.5 score, 0.2255 fpr, 0.9725 FROC, 0.8955 AUC
+2024-02-12 19:10:01,696 INFO     __main__:503:log_metrics E25 val_benign 0.4307 loss,  77.5% correct (79 of 102)
+2024-02-12 19:10:01,696 INFO     __main__:508:log_metrics E25 val_malignant 0.4021 loss,  80.8% correct (42 of 52)
+2024-02-12 19:10:01,788 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_2500000.state
+2024-02-12 19:10:01,789 INFO     __main__:600:train Epoch 26 of 40, 4167/7 batches of size 24*1
+2024-02-12 19:10:02,003 WARNING  util.util:090:enum_estimate E26 Training ----/4167, starting
+2024-02-12 19:10:23,009 INFO     util.util:102:enum_estimate E26 Training  256/4167, done at 2024-02-12 19:14:33, 0:04:25
+2024-02-12 19:11:09,919 INFO     util.util:102:enum_estimate E26 Training 1024/4167, done at 2024-02-12 19:14:24, 0:04:15
+2024-02-12 19:14:18,527 INFO     util.util:102:enum_estimate E26 Training 4096/4167, done at 2024-02-12 19:14:22, 0:04:14
+2024-02-12 19:14:21,798 WARNING  util.util:111:enum_estimate E26 Training ----/4167, done at 2024-02-12 19:14:21
+2024-02-12 19:14:21,956 INFO     __main__:417:log_metrics E26 LunaTrainingApp
+2024-02-12 19:14:21,975 INFO     __main__:403:calculate_froc Epoch 26 FROC score: 1.0
+2024-02-12 19:14:21,987 INFO     __main__:490:log_metrics E26 trn      0.4327 loss,  80.4% correct, 0.7988 precision, 0.8121 recall, 0.8054 f1 score, 0.8094 f2 score, 0.8014 f0.5 score, 0.2046 fpr, 1.0000 FROC, 0.8841 AUC
+2024-02-12 19:14:21,987 INFO     __main__:503:log_metrics E26 trn_benign 0.4392 loss,  79.5% correct (39771 of 50000)
+2024-02-12 19:14:21,987 INFO     __main__:508:log_metrics E26 trn_malignant 0.4261 loss,  81.2% correct (40607 of 50000)
+2024-02-12 19:14:22,065 WARNING  util.util:090:enum_estimate E26 Validation  ----/7, starting
+2024-02-12 19:14:28,813 WARNING  util.util:111:enum_estimate E26 Validation  ----/7, done at 2024-02-12 19:14:28
+2024-02-12 19:14:28,814 INFO     __main__:417:log_metrics E26 LunaTrainingApp
+2024-02-12 19:14:28,815 INFO     __main__:403:calculate_froc Epoch 26 FROC score: 0.9780219793319702
+2024-02-12 19:14:28,816 INFO     __main__:490:log_metrics E26 val      0.4670 loss,  77.9% correct, 0.6286 precision, 0.8462 recall, 0.7213 f1 score, 0.7914 f2 score, 0.6627 f0.5 score, 0.2549 fpr, 0.9780 FROC, 0.8894 AUC
+2024-02-12 19:14:28,816 INFO     __main__:503:log_metrics E26 val_benign 0.5097 loss,  74.5% correct (76 of 102)
+2024-02-12 19:14:28,816 INFO     __main__:508:log_metrics E26 val_malignant 0.3833 loss,  84.6% correct (44 of 52)
+2024-02-12 19:14:28,905 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_2600000.state
+2024-02-12 19:14:28,905 INFO     __main__:600:train Epoch 27 of 40, 4167/7 batches of size 24*1
+2024-02-12 19:14:29,121 WARNING  util.util:090:enum_estimate E27 Training ----/4167, starting
+2024-02-12 19:14:51,948 INFO     util.util:102:enum_estimate E27 Training  256/4167, done at 2024-02-12 19:19:34, 0:04:59
+2024-02-12 19:15:47,767 INFO     util.util:102:enum_estimate E27 Training 1024/4167, done at 2024-02-12 19:19:35, 0:05:00
+2024-02-12 19:19:27,441 INFO     util.util:102:enum_estimate E27 Training 4096/4167, done at 2024-02-12 19:19:32, 0:04:57
+2024-02-12 19:19:32,627 WARNING  util.util:111:enum_estimate E27 Training ----/4167, done at 2024-02-12 19:19:32
+2024-02-12 19:19:32,820 INFO     __main__:417:log_metrics E27 LunaTrainingApp
+2024-02-12 19:19:32,862 INFO     __main__:403:calculate_froc Epoch 27 FROC score: 1.0
+2024-02-12 19:19:32,888 INFO     __main__:490:log_metrics E27 trn      0.4324 loss,  80.4% correct, 0.7988 precision, 0.8134 recall, 0.8061 f1 score, 0.8105 f2 score, 0.8017 f0.5 score, 0.2048 fpr, 1.0000 FROC, 0.8843 AUC
+2024-02-12 19:19:32,888 INFO     __main__:503:log_metrics E27 trn_benign 0.4370 loss,  79.5% correct (39759 of 50000)
+2024-02-12 19:19:32,888 INFO     __main__:508:log_metrics E27 trn_malignant 0.4279 loss,  81.3% correct (40671 of 50000)
+2024-02-12 19:19:32,980 WARNING  util.util:090:enum_estimate E27 Validation  ----/7, starting
+2024-02-12 19:19:39,910 WARNING  util.util:111:enum_estimate E27 Validation  ----/7, done at 2024-02-12 19:19:39
+2024-02-12 19:19:39,910 INFO     __main__:417:log_metrics E27 LunaTrainingApp
+2024-02-12 19:19:39,912 INFO     __main__:403:calculate_froc Epoch 27 FROC score: 0.9780219793319702
+2024-02-12 19:19:39,912 INFO     __main__:490:log_metrics E27 val      0.4110 loss,  81.2% correct, 0.6769 precision, 0.8462 recall, 0.7521 f1 score, 0.8059 f2 score, 0.7051 f0.5 score, 0.2059 fpr, 0.9780 FROC, 0.9021 AUC
+2024-02-12 19:19:39,912 INFO     __main__:503:log_metrics E27 val_benign 0.4200 loss,  79.4% correct (81 of 102)
+2024-02-12 19:19:39,912 INFO     __main__:508:log_metrics E27 val_malignant 0.3934 loss,  84.6% correct (44 of 52)
+2024-02-12 19:19:40,004 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_2700000.state
+2024-02-12 19:19:40,004 INFO     __main__:600:train Epoch 28 of 40, 4167/7 batches of size 24*1
+2024-02-12 19:19:40,151 WARNING  util.util:090:enum_estimate E28 Training ----/4167, starting
+2024-02-12 19:20:01,764 INFO     util.util:102:enum_estimate E28 Training  256/4167, done at 2024-02-12 19:24:32, 0:04:46
+2024-02-12 19:20:53,433 INFO     util.util:102:enum_estimate E28 Training 1024/4167, done at 2024-02-12 19:24:26, 0:04:40
+2024-02-12 19:24:23,870 INFO     util.util:102:enum_estimate E28 Training 4096/4167, done at 2024-02-12 19:24:28, 0:04:42
+2024-02-12 19:24:29,574 WARNING  util.util:111:enum_estimate E28 Training ----/4167, done at 2024-02-12 19:24:29
+2024-02-12 19:24:29,791 INFO     __main__:417:log_metrics E28 LunaTrainingApp
+2024-02-12 19:24:29,814 INFO     __main__:403:calculate_froc Epoch 28 FROC score: 1.0
+2024-02-12 19:24:29,825 INFO     __main__:490:log_metrics E28 trn      0.4255 loss,  80.5% correct, 0.7982 precision, 0.8158 recall, 0.8069 f1 score, 0.8122 f2 score, 0.8017 f0.5 score, 0.2062 fpr, 1.0000 FROC, 0.8873 AUC
+2024-02-12 19:24:29,825 INFO     __main__:503:log_metrics E28 trn_benign 0.4326 loss,  79.4% correct (39690 of 50000)
+2024-02-12 19:24:29,825 INFO     __main__:508:log_metrics E28 trn_malignant 0.4185 loss,  81.6% correct (40788 of 50000)
+2024-02-12 19:24:29,901 WARNING  util.util:090:enum_estimate E28 Validation  ----/7, starting
+2024-02-12 19:24:36,398 WARNING  util.util:111:enum_estimate E28 Validation  ----/7, done at 2024-02-12 19:24:36
+2024-02-12 19:24:36,398 INFO     __main__:417:log_metrics E28 LunaTrainingApp
+2024-02-12 19:24:36,400 INFO     __main__:403:calculate_froc Epoch 28 FROC score: 0.9752747416496277
+2024-02-12 19:24:36,400 INFO     __main__:490:log_metrics E28 val      0.4172 loss,  78.6% correct, 0.6418 precision, 0.8269 recall, 0.7227 f1 score, 0.7818 f2 score, 0.6719 f0.5 score, 0.2353 fpr, 0.9753 FROC, 0.8965 AUC
+2024-02-12 19:24:36,400 INFO     __main__:503:log_metrics E28 val_benign 0.4325 loss,  76.5% correct (78 of 102)
+2024-02-12 19:24:36,400 INFO     __main__:508:log_metrics E28 val_malignant 0.3870 loss,  82.7% correct (43 of 52)
+2024-02-12 19:24:36,492 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_2800000.state
+2024-02-12 19:24:36,492 INFO     __main__:600:train Epoch 29 of 40, 4167/7 batches of size 24*1
+2024-02-12 19:24:36,632 WARNING  util.util:090:enum_estimate E29 Training ----/4167, starting
+2024-02-12 19:24:58,365 INFO     util.util:102:enum_estimate E29 Training  256/4167, done at 2024-02-12 19:29:15, 0:04:32
+2024-02-12 19:25:56,154 INFO     util.util:102:enum_estimate E29 Training 1024/4167, done at 2024-02-12 19:29:45, 0:05:02
+2024-02-12 19:29:31,224 INFO     util.util:102:enum_estimate E29 Training 4096/4167, done at 2024-02-12 19:29:36, 0:04:53
+2024-02-12 19:29:35,240 WARNING  util.util:111:enum_estimate E29 Training ----/4167, done at 2024-02-12 19:29:35
+2024-02-12 19:29:35,381 INFO     __main__:417:log_metrics E29 LunaTrainingApp
+2024-02-12 19:29:35,400 INFO     __main__:403:calculate_froc Epoch 29 FROC score: 1.0
+2024-02-12 19:29:35,411 INFO     __main__:490:log_metrics E29 trn      0.4283 loss,  80.6% correct, 0.8012 precision, 0.8134 recall, 0.8073 f1 score, 0.8109 f2 score, 0.8036 f0.5 score, 0.2018 fpr, 1.0000 FROC, 0.8871 AUC
+2024-02-12 19:29:35,411 INFO     __main__:503:log_metrics E29 trn_benign 0.4363 loss,  79.8% correct (39910 of 50000)
+2024-02-12 19:29:35,411 INFO     __main__:508:log_metrics E29 trn_malignant 0.4204 loss,  81.3% correct (40669 of 50000)
+2024-02-12 19:29:35,528 WARNING  util.util:090:enum_estimate E29 Validation  ----/7, starting
+2024-02-12 19:29:41,908 WARNING  util.util:111:enum_estimate E29 Validation  ----/7, done at 2024-02-12 19:29:41
+2024-02-12 19:29:41,909 INFO     __main__:417:log_metrics E29 LunaTrainingApp
+2024-02-12 19:29:41,911 INFO     __main__:403:calculate_froc Epoch 29 FROC score: 0.9780219793319702
+2024-02-12 19:29:41,912 INFO     __main__:490:log_metrics E29 val      0.4073 loss,  80.5% correct, 0.6667 precision, 0.8462 recall, 0.7458 f1 score, 0.8029 f2 score, 0.6962 f0.5 score, 0.2157 fpr, 0.9780 FROC, 0.8986 AUC
+2024-02-12 19:29:41,912 INFO     __main__:503:log_metrics E29 val_benign 0.4118 loss,  78.4% correct (80 of 102)
+2024-02-12 19:29:41,912 INFO     __main__:508:log_metrics E29 val_malignant 0.3985 loss,  84.6% correct (44 of 52)
+2024-02-12 19:29:42,014 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_2900000.state
+2024-02-12 19:29:42,014 INFO     __main__:600:train Epoch 30 of 40, 4167/7 batches of size 24*1
+2024-02-12 19:29:42,160 WARNING  util.util:090:enum_estimate E30 Training ----/4167, starting
+2024-02-12 19:30:02,940 INFO     util.util:102:enum_estimate E30 Training  256/4167, done at 2024-02-12 19:34:09, 0:04:21
+2024-02-12 19:30:56,874 INFO     util.util:102:enum_estimate E30 Training 1024/4167, done at 2024-02-12 19:34:32, 0:04:43
+2024-02-12 19:34:19,062 INFO     util.util:102:enum_estimate E30 Training 4096/4167, done at 2024-02-12 19:34:23, 0:04:35
+2024-02-12 19:34:22,732 WARNING  util.util:111:enum_estimate E30 Training ----/4167, done at 2024-02-12 19:34:22
+2024-02-12 19:34:22,905 INFO     __main__:417:log_metrics E30 LunaTrainingApp
+2024-02-12 19:34:22,924 INFO     __main__:403:calculate_froc Epoch 30 FROC score: 1.0
+2024-02-12 19:34:22,942 INFO     __main__:490:log_metrics E30 trn      0.4274 loss,  80.7% correct, 0.8019 precision, 0.8142 recall, 0.8080 f1 score, 0.8117 f2 score, 0.8043 f0.5 score, 0.2011 fpr, 1.0000 FROC, 0.8869 AUC
+2024-02-12 19:34:22,942 INFO     __main__:503:log_metrics E30 trn_benign 0.4360 loss,  79.9% correct (39944 of 50000)
+2024-02-12 19:34:22,942 INFO     __main__:508:log_metrics E30 trn_malignant 0.4188 loss,  81.4% correct (40711 of 50000)
+2024-02-12 19:34:23,021 WARNING  util.util:090:enum_estimate E30 Validation  ----/7, starting
+2024-02-12 19:34:30,093 WARNING  util.util:111:enum_estimate E30 Validation  ----/7, done at 2024-02-12 19:34:30
+2024-02-12 19:34:30,094 INFO     __main__:417:log_metrics E30 LunaTrainingApp
+2024-02-12 19:34:30,096 INFO     __main__:403:calculate_froc Epoch 30 FROC score: 0.9725275039672852
+2024-02-12 19:34:30,096 INFO     __main__:490:log_metrics E30 val      0.4508 loss,  79.2% correct, 0.6562 precision, 0.8077 recall, 0.7241 f1 score, 0.7721 f2 score, 0.6818 f0.5 score, 0.2157 fpr, 0.9725 FROC, 0.8855 AUC
+2024-02-12 19:34:30,096 INFO     __main__:503:log_metrics E30 val_benign 0.4621 loss,  78.4% correct (80 of 102)
+2024-02-12 19:34:30,096 INFO     __main__:508:log_metrics E30 val_malignant 0.4286 loss,  80.8% correct (42 of 52)
+2024-02-12 19:34:30,195 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_3000000.state
+2024-02-12 19:34:30,195 INFO     __main__:600:train Epoch 31 of 40, 4167/7 batches of size 24*1
+2024-02-12 19:34:30,416 WARNING  util.util:090:enum_estimate E31 Training ----/4167, starting
+2024-02-12 19:34:51,710 INFO     util.util:102:enum_estimate E31 Training  256/4167, done at 2024-02-12 19:39:20, 0:04:44
+2024-02-12 19:35:43,969 INFO     util.util:102:enum_estimate E31 Training 1024/4167, done at 2024-02-12 19:39:18, 0:04:42
+2024-02-12 19:39:27,083 INFO     util.util:102:enum_estimate E31 Training 4096/4167, done at 2024-02-12 19:39:32, 0:04:56
+2024-02-12 19:39:32,273 WARNING  util.util:111:enum_estimate E31 Training ----/4167, done at 2024-02-12 19:39:32
+2024-02-12 19:39:32,447 INFO     __main__:417:log_metrics E31 LunaTrainingApp
+2024-02-12 19:39:32,469 INFO     __main__:403:calculate_froc Epoch 31 FROC score: 1.0
+2024-02-12 19:39:32,492 INFO     __main__:490:log_metrics E31 trn      0.4304 loss,  80.4% correct, 0.7973 precision, 0.8160 recall, 0.8065 f1 score, 0.8122 f2 score, 0.8010 f0.5 score, 0.2074 fpr, 1.0000 FROC, 0.8853 AUC
+2024-02-12 19:39:32,492 INFO     __main__:503:log_metrics E31 trn_benign 0.4414 loss,  79.3% correct (39630 of 50000)
+2024-02-12 19:39:32,492 INFO     __main__:508:log_metrics E31 trn_malignant 0.4193 loss,  81.6% correct (40798 of 50000)
+2024-02-12 19:39:32,577 WARNING  util.util:090:enum_estimate E31 Validation  ----/7, starting
+2024-02-12 19:39:39,795 WARNING  util.util:111:enum_estimate E31 Validation  ----/7, done at 2024-02-12 19:39:39
+2024-02-12 19:39:39,795 INFO     __main__:417:log_metrics E31 LunaTrainingApp
+2024-02-12 19:39:39,797 INFO     __main__:403:calculate_froc Epoch 31 FROC score: 0.9752747416496277
+2024-02-12 19:39:39,797 INFO     __main__:490:log_metrics E31 val      0.4157 loss,  79.2% correct, 0.6515 precision, 0.8269 recall, 0.7288 f1 score, 0.7847 f2 score, 0.6804 f0.5 score, 0.2255 fpr, 0.9753 FROC, 0.8934 AUC
+2024-02-12 19:39:39,797 INFO     __main__:503:log_metrics E31 val_benign 0.4136 loss,  77.5% correct (79 of 102)
+2024-02-12 19:39:39,797 INFO     __main__:508:log_metrics E31 val_malignant 0.4199 loss,  82.7% correct (43 of 52)
+2024-02-12 19:39:39,877 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_3100000.state
+2024-02-12 19:39:39,877 INFO     __main__:600:train Epoch 32 of 40, 4167/7 batches of size 24*1
+2024-02-12 19:39:40,090 WARNING  util.util:090:enum_estimate E32 Training ----/4167, starting
+2024-02-12 19:40:03,394 INFO     util.util:102:enum_estimate E32 Training  256/4167, done at 2024-02-12 19:45:07, 0:05:21
+2024-02-12 19:40:54,602 INFO     util.util:102:enum_estimate E32 Training 1024/4167, done at 2024-02-12 19:44:32, 0:04:46
+2024-02-12 19:44:28,058 INFO     util.util:102:enum_estimate E32 Training 4096/4167, done at 2024-02-12 19:44:32, 0:04:47
+2024-02-12 19:44:34,843 WARNING  util.util:111:enum_estimate E32 Training ----/4167, done at 2024-02-12 19:44:34
+2024-02-12 19:44:34,996 INFO     __main__:417:log_metrics E32 LunaTrainingApp
+2024-02-12 19:44:35,034 INFO     __main__:403:calculate_froc Epoch 32 FROC score: 1.0
+2024-02-12 19:44:35,048 INFO     __main__:490:log_metrics E32 trn      0.4301 loss,  80.5% correct, 0.7993 precision, 0.8146 recall, 0.8069 f1 score, 0.8115 f2 score, 0.8023 f0.5 score, 0.2046 fpr, 1.0000 FROC, 0.8857 AUC
+2024-02-12 19:44:35,048 INFO     __main__:503:log_metrics E32 trn_benign 0.4398 loss,  79.5% correct (39771 of 50000)
+2024-02-12 19:44:35,048 INFO     __main__:508:log_metrics E32 trn_malignant 0.4205 loss,  81.5% correct (40732 of 50000)
+2024-02-12 19:44:35,168 WARNING  util.util:090:enum_estimate E32 Validation  ----/7, starting
+2024-02-12 19:44:42,260 WARNING  util.util:111:enum_estimate E32 Validation  ----/7, done at 2024-02-12 19:44:42
+2024-02-12 19:44:42,261 INFO     __main__:417:log_metrics E32 LunaTrainingApp
+2024-02-12 19:44:42,262 INFO     __main__:403:calculate_froc Epoch 32 FROC score: 0.9725275039672852
+2024-02-12 19:44:42,264 INFO     __main__:490:log_metrics E32 val      0.4108 loss,  80.5% correct, 0.6774 precision, 0.8077 recall, 0.7368 f1 score, 0.7778 f2 score, 0.7000 f0.5 score, 0.1961 fpr, 0.9725 FROC, 0.8877 AUC
+2024-02-12 19:44:42,264 INFO     __main__:503:log_metrics E32 val_benign 0.4021 loss,  80.4% correct (82 of 102)
+2024-02-12 19:44:42,264 INFO     __main__:508:log_metrics E32 val_malignant 0.4279 loss,  80.8% correct (42 of 52)
+2024-02-12 19:44:42,337 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_3200000.state
+2024-02-12 19:44:42,337 INFO     __main__:600:train Epoch 33 of 40, 4167/7 batches of size 24*1
+2024-02-12 19:44:42,545 WARNING  util.util:090:enum_estimate E33 Training ----/4167, starting
+2024-02-12 19:45:04,198 INFO     util.util:102:enum_estimate E33 Training  256/4167, done at 2024-02-12 19:49:33, 0:04:45
+2024-02-12 19:45:57,272 INFO     util.util:102:enum_estimate E33 Training 1024/4167, done at 2024-02-12 19:49:34, 0:04:46
+2024-02-12 19:49:35,519 INFO     util.util:102:enum_estimate E33 Training 4096/4167, done at 2024-02-12 19:49:40, 0:04:52
+2024-02-12 19:49:38,704 WARNING  util.util:111:enum_estimate E33 Training ----/4167, done at 2024-02-12 19:49:38
+2024-02-12 19:49:38,912 INFO     __main__:417:log_metrics E33 LunaTrainingApp
+2024-02-12 19:49:38,932 INFO     __main__:403:calculate_froc Epoch 33 FROC score: 1.0
+2024-02-12 19:49:38,943 INFO     __main__:490:log_metrics E33 trn      0.4228 loss,  81.0% correct, 0.8042 precision, 0.8185 recall, 0.8113 f1 score, 0.8156 f2 score, 0.8070 f0.5 score, 0.1993 fpr, 1.0000 FROC, 0.8894 AUC
+2024-02-12 19:49:38,943 INFO     __main__:503:log_metrics E33 trn_benign 0.4293 loss,  80.1% correct (40033 of 50000)
+2024-02-12 19:49:38,943 INFO     __main__:508:log_metrics E33 trn_malignant 0.4164 loss,  81.9% correct (40926 of 50000)
+2024-02-12 19:49:39,040 WARNING  util.util:090:enum_estimate E33 Validation  ----/7, starting
+2024-02-12 19:49:47,981 WARNING  util.util:111:enum_estimate E33 Validation  ----/7, done at 2024-02-12 19:49:47
+2024-02-12 19:49:47,982 INFO     __main__:417:log_metrics E33 LunaTrainingApp
+2024-02-12 19:49:47,983 INFO     __main__:403:calculate_froc Epoch 33 FROC score: 0.9697802662849426
+2024-02-12 19:49:47,984 INFO     __main__:490:log_metrics E33 val      0.4076 loss,  79.9% correct, 0.6721 precision, 0.7885 recall, 0.7257 f1 score, 0.7621 f2 score, 0.6926 f0.5 score, 0.1961 fpr, 0.9698 FROC, 0.8861 AUC
+2024-02-12 19:49:47,984 INFO     __main__:503:log_metrics E33 val_benign 0.3856 loss,  80.4% correct (82 of 102)
+2024-02-12 19:49:47,984 INFO     __main__:508:log_metrics E33 val_malignant 0.4509 loss,  78.8% correct (41 of 52)
+2024-02-12 19:49:48,066 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_3300000.state
+2024-02-12 19:49:48,066 INFO     __main__:600:train Epoch 34 of 40, 4167/7 batches of size 24*1
+2024-02-12 19:49:48,277 WARNING  util.util:090:enum_estimate E34 Training ----/4167, starting
+2024-02-12 19:50:08,760 INFO     util.util:102:enum_estimate E34 Training  256/4167, done at 2024-02-12 19:54:16, 0:04:22
+2024-02-12 19:50:58,570 INFO     util.util:102:enum_estimate E34 Training 1024/4167, done at 2024-02-12 19:54:21, 0:04:27
+2024-02-12 19:54:29,813 INFO     util.util:102:enum_estimate E34 Training 4096/4167, done at 2024-02-12 19:54:34, 0:04:40
+2024-02-12 19:54:34,158 WARNING  util.util:111:enum_estimate E34 Training ----/4167, done at 2024-02-12 19:54:34
+2024-02-12 19:54:34,363 INFO     __main__:417:log_metrics E34 LunaTrainingApp
+2024-02-12 19:54:34,384 INFO     __main__:403:calculate_froc Epoch 34 FROC score: 1.0
+2024-02-12 19:54:34,398 INFO     __main__:490:log_metrics E34 trn      0.4232 loss,  80.6% correct, 0.8016 precision, 0.8146 recall, 0.8080 f1 score, 0.8120 f2 score, 0.8041 f0.5 score, 0.2017 fpr, 1.0000 FROC, 0.8889 AUC
+2024-02-12 19:54:34,398 INFO     __main__:503:log_metrics E34 trn_benign 0.4317 loss,  79.8% correct (39917 of 50000)
+2024-02-12 19:54:34,398 INFO     __main__:508:log_metrics E34 trn_malignant 0.4147 loss,  81.5% correct (40730 of 50000)
+2024-02-12 19:54:34,485 WARNING  util.util:090:enum_estimate E34 Validation  ----/7, starting
+2024-02-12 19:54:41,083 WARNING  util.util:111:enum_estimate E34 Validation  ----/7, done at 2024-02-12 19:54:41
+2024-02-12 19:54:41,084 INFO     __main__:417:log_metrics E34 LunaTrainingApp
+2024-02-12 19:54:41,085 INFO     __main__:403:calculate_froc Epoch 34 FROC score: 0.9752747416496277
+2024-02-12 19:54:41,086 INFO     __main__:490:log_metrics E34 val      0.4317 loss,  79.2% correct, 0.6515 precision, 0.8269 recall, 0.7288 f1 score, 0.7847 f2 score, 0.6804 f0.5 score, 0.2255 fpr, 0.9753 FROC, 0.8946 AUC
+2024-02-12 19:54:41,086 INFO     __main__:503:log_metrics E34 val_benign 0.4638 loss,  77.5% correct (79 of 102)
+2024-02-12 19:54:41,086 INFO     __main__:508:log_metrics E34 val_malignant 0.3688 loss,  82.7% correct (43 of 52)
+2024-02-12 19:54:41,227 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_3400000.state
+2024-02-12 19:54:41,227 INFO     __main__:600:train Epoch 35 of 40, 4167/7 batches of size 24*1
+2024-02-12 19:54:41,370 WARNING  util.util:090:enum_estimate E35 Training ----/4167, starting
+2024-02-12 19:55:01,839 INFO     util.util:102:enum_estimate E35 Training  256/4167, done at 2024-02-12 19:58:59, 0:04:11
+2024-02-12 19:55:52,518 INFO     util.util:102:enum_estimate E35 Training 1024/4167, done at 2024-02-12 19:59:16, 0:04:28
+2024-02-12 19:59:18,125 INFO     util.util:102:enum_estimate E35 Training 4096/4167, done at 2024-02-12 19:59:22, 0:04:34
+2024-02-12 19:59:23,924 WARNING  util.util:111:enum_estimate E35 Training ----/4167, done at 2024-02-12 19:59:23
+2024-02-12 19:59:24,229 INFO     __main__:417:log_metrics E35 LunaTrainingApp
+2024-02-12 19:59:24,252 INFO     __main__:403:calculate_froc Epoch 35 FROC score: 1.0
+2024-02-12 19:59:24,273 INFO     __main__:490:log_metrics E35 trn      0.4287 loss,  80.6% correct, 0.7999 precision, 0.8167 recall, 0.8082 f1 score, 0.8132 f2 score, 0.8032 f0.5 score, 0.2043 fpr, 1.0000 FROC, 0.8870 AUC
+2024-02-12 19:59:24,273 INFO     __main__:503:log_metrics E35 trn_benign 0.4407 loss,  79.6% correct (39783 of 50000)
+2024-02-12 19:59:24,273 INFO     __main__:508:log_metrics E35 trn_malignant 0.4168 loss,  81.7% correct (40833 of 50000)
+2024-02-12 19:59:24,388 WARNING  util.util:090:enum_estimate E35 Validation  ----/7, starting
+2024-02-12 19:59:31,540 WARNING  util.util:111:enum_estimate E35 Validation  ----/7, done at 2024-02-12 19:59:31
+2024-02-12 19:59:31,541 INFO     __main__:417:log_metrics E35 LunaTrainingApp
+2024-02-12 19:59:31,542 INFO     __main__:403:calculate_froc Epoch 35 FROC score: 1.0
+2024-02-12 19:59:31,542 INFO     __main__:490:log_metrics E35 val      0.3963 loss,  85.1% correct, 0.7544 precision, 0.8269 recall, 0.7890 f1 score, 0.8113 f2 score, 0.7679 f0.5 score, 0.1373 fpr, 1.0000 FROC, 0.8964 AUC
+2024-02-12 19:59:31,542 INFO     __main__:503:log_metrics E35 val_benign 0.3626 loss,  86.3% correct (88 of 102)
+2024-02-12 19:59:31,543 INFO     __main__:508:log_metrics E35 val_malignant 0.4625 loss,  82.7% correct (43 of 52)
+2024-02-12 19:59:31,625 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_3500000.state
+2024-02-12 19:59:31,625 INFO     __main__:600:train Epoch 36 of 40, 4167/7 batches of size 24*1
+2024-02-12 19:59:31,836 WARNING  util.util:090:enum_estimate E36 Training ----/4167, starting
+2024-02-12 19:59:55,630 INFO     util.util:102:enum_estimate E36 Training  256/4167, done at 2024-02-12 20:04:55, 0:05:17
+2024-02-12 20:00:50,698 INFO     util.util:102:enum_estimate E36 Training 1024/4167, done at 2024-02-12 20:04:39, 0:05:01
+2024-02-12 20:04:19,233 INFO     util.util:102:enum_estimate E36 Training 4096/4167, done at 2024-02-12 20:04:24, 0:04:46
+2024-02-12 20:04:23,539 WARNING  util.util:111:enum_estimate E36 Training ----/4167, done at 2024-02-12 20:04:23
+2024-02-12 20:04:23,713 INFO     __main__:417:log_metrics E36 LunaTrainingApp
+2024-02-12 20:04:23,807 INFO     __main__:403:calculate_froc Epoch 36 FROC score: 1.0
+2024-02-12 20:04:23,822 INFO     __main__:490:log_metrics E36 trn      0.4195 loss,  81.1% correct, 0.8049 precision, 0.8201 recall, 0.8124 f1 score, 0.8170 f2 score, 0.8079 f0.5 score, 0.1988 fpr, 1.0000 FROC, 0.8914 AUC
+2024-02-12 20:04:23,822 INFO     __main__:503:log_metrics E36 trn_benign 0.4271 loss,  80.1% correct (40060 of 50000)
+2024-02-12 20:04:23,822 INFO     __main__:508:log_metrics E36 trn_malignant 0.4118 loss,  82.0% correct (41007 of 50000)
+2024-02-12 20:04:23,906 WARNING  util.util:090:enum_estimate E36 Validation  ----/7, starting
+2024-02-12 20:04:31,640 WARNING  util.util:111:enum_estimate E36 Validation  ----/7, done at 2024-02-12 20:04:31
+2024-02-12 20:04:31,641 INFO     __main__:417:log_metrics E36 LunaTrainingApp
+2024-02-12 20:04:31,642 INFO     __main__:403:calculate_froc Epoch 36 FROC score: 1.0
+2024-02-12 20:04:31,644 INFO     __main__:490:log_metrics E36 val      0.3541 loss,  86.4% correct, 0.7818 precision, 0.8269 recall, 0.8037 f1 score, 0.8175 f2 score, 0.7904 f0.5 score, 0.1176 fpr, 1.0000 FROC, 0.9035 AUC
+2024-02-12 20:04:31,644 INFO     __main__:503:log_metrics E36 val_benign 0.2991 loss,  88.2% correct (90 of 102)
+2024-02-12 20:04:31,644 INFO     __main__:508:log_metrics E36 val_malignant 0.4620 loss,  82.7% correct (43 of 52)
+2024-02-12 20:04:31,743 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_3600000.state
+2024-02-12 20:04:31,744 INFO     __main__:600:train Epoch 37 of 40, 4167/7 batches of size 24*1
+2024-02-12 20:04:31,959 WARNING  util.util:090:enum_estimate E37 Training ----/4167, starting
+2024-02-12 20:04:52,190 INFO     util.util:102:enum_estimate E37 Training  256/4167, done at 2024-02-12 20:09:03, 0:04:26
+2024-02-12 20:05:42,664 INFO     util.util:102:enum_estimate E37 Training 1024/4167, done at 2024-02-12 20:09:08, 0:04:30
+2024-02-12 20:09:08,749 INFO     util.util:102:enum_estimate E37 Training 4096/4167, done at 2024-02-12 20:09:13, 0:04:36
+2024-02-12 20:09:12,211 WARNING  util.util:111:enum_estimate E37 Training ----/4167, done at 2024-02-12 20:09:12
+2024-02-12 20:09:12,386 INFO     __main__:417:log_metrics E37 LunaTrainingApp
+2024-02-12 20:09:12,438 INFO     __main__:403:calculate_froc Epoch 37 FROC score: 1.0
+2024-02-12 20:09:12,461 INFO     __main__:490:log_metrics E37 trn      0.4272 loss,  80.7% correct, 0.8027 precision, 0.8133 recall, 0.8080 f1 score, 0.8112 f2 score, 0.8048 f0.5 score, 0.1999 fpr, 1.0000 FROC, 0.8870 AUC
+2024-02-12 20:09:12,461 INFO     __main__:503:log_metrics E37 trn_benign 0.4334 loss,  80.0% correct (40006 of 50000)
+2024-02-12 20:09:12,461 INFO     __main__:508:log_metrics E37 trn_malignant 0.4210 loss,  81.3% correct (40665 of 50000)
+2024-02-12 20:09:12,542 WARNING  util.util:090:enum_estimate E37 Validation  ----/7, starting
+2024-02-12 20:09:18,933 WARNING  util.util:111:enum_estimate E37 Validation  ----/7, done at 2024-02-12 20:09:18
+2024-02-12 20:09:18,934 INFO     __main__:417:log_metrics E37 LunaTrainingApp
+2024-02-12 20:09:18,935 INFO     __main__:403:calculate_froc Epoch 37 FROC score: 0.9752747416496277
+2024-02-12 20:09:18,936 INFO     __main__:490:log_metrics E37 val      0.4079 loss,  77.9% correct, 0.6324 precision, 0.8269 recall, 0.7167 f1 score, 0.7790 f2 score, 0.6636 f0.5 score, 0.2451 fpr, 0.9753 FROC, 0.9014 AUC
+2024-02-12 20:09:18,936 INFO     __main__:503:log_metrics E37 val_benign 0.4171 loss,  75.5% correct (77 of 102)
+2024-02-12 20:09:18,936 INFO     __main__:508:log_metrics E37 val_malignant 0.3898 loss,  82.7% correct (43 of 52)
+2024-02-12 20:09:19,032 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_3700000.state
+2024-02-12 20:09:19,032 INFO     __main__:600:train Epoch 38 of 40, 4167/7 batches of size 24*1
+2024-02-12 20:09:19,178 WARNING  util.util:090:enum_estimate E38 Training ----/4167, starting
+2024-02-12 20:09:39,484 INFO     util.util:102:enum_estimate E38 Training  256/4167, done at 2024-02-12 20:13:53, 0:04:28
+2024-02-12 20:10:32,274 INFO     util.util:102:enum_estimate E38 Training 1024/4167, done at 2024-02-12 20:14:05, 0:04:40
+2024-02-12 20:13:52,205 INFO     util.util:102:enum_estimate E38 Training 4096/4167, done at 2024-02-12 20:13:56, 0:04:32
+2024-02-12 20:13:56,813 WARNING  util.util:111:enum_estimate E38 Training ----/4167, done at 2024-02-12 20:13:56
+2024-02-12 20:13:56,992 INFO     __main__:417:log_metrics E38 LunaTrainingApp
+2024-02-12 20:13:57,042 INFO     __main__:403:calculate_froc Epoch 38 FROC score: 1.0
+2024-02-12 20:13:57,055 INFO     __main__:490:log_metrics E38 trn      0.4263 loss,  80.5% correct, 0.7999 precision, 0.8140 recall, 0.8069 f1 score, 0.8111 f2 score, 0.8027 f0.5 score, 0.2036 fpr, 1.0000 FROC, 0.8870 AUC
+2024-02-12 20:13:57,055 INFO     __main__:503:log_metrics E38 trn_benign 0.4348 loss,  79.6% correct (39822 of 50000)
+2024-02-12 20:13:57,055 INFO     __main__:508:log_metrics E38 trn_malignant 0.4179 loss,  81.4% correct (40698 of 50000)
+2024-02-12 20:13:57,224 WARNING  util.util:090:enum_estimate E38 Validation  ----/7, starting
+2024-02-12 20:14:04,309 WARNING  util.util:111:enum_estimate E38 Validation  ----/7, done at 2024-02-12 20:14:04
+2024-02-12 20:14:04,310 INFO     __main__:417:log_metrics E38 LunaTrainingApp
+2024-02-12 20:14:04,311 INFO     __main__:403:calculate_froc Epoch 38 FROC score: 0.9725275039672852
+2024-02-12 20:14:04,312 INFO     __main__:490:log_metrics E38 val      0.4178 loss,  79.2% correct, 0.6562 precision, 0.8077 recall, 0.7241 f1 score, 0.7721 f2 score, 0.6818 f0.5 score, 0.2157 fpr, 0.9725 FROC, 0.8888 AUC
+2024-02-12 20:14:04,312 INFO     __main__:503:log_metrics E38 val_benign 0.3867 loss,  78.4% correct (80 of 102)
+2024-02-12 20:14:04,312 INFO     __main__:508:log_metrics E38 val_malignant 0.4787 loss,  80.8% correct (42 of 52)
+2024-02-12 20:14:04,417 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_3800000.state
+2024-02-12 20:14:04,418 INFO     __main__:600:train Epoch 39 of 40, 4167/7 batches of size 24*1
+2024-02-12 20:14:04,561 WARNING  util.util:090:enum_estimate E39 Training ----/4167, starting
+2024-02-12 20:14:23,869 INFO     util.util:102:enum_estimate E39 Training  256/4167, done at 2024-02-12 20:18:09, 0:03:58
+2024-02-12 20:15:11,935 INFO     util.util:102:enum_estimate E39 Training 1024/4167, done at 2024-02-12 20:18:24, 0:04:14
+2024-02-12 20:18:39,544 INFO     util.util:102:enum_estimate E39 Training 4096/4167, done at 2024-02-12 20:18:44, 0:04:33
+2024-02-12 20:18:44,674 WARNING  util.util:111:enum_estimate E39 Training ----/4167, done at 2024-02-12 20:18:44
+2024-02-12 20:18:44,835 INFO     __main__:417:log_metrics E39 LunaTrainingApp
+2024-02-12 20:18:44,879 INFO     __main__:403:calculate_froc Epoch 39 FROC score: 1.0
+2024-02-12 20:18:44,901 INFO     __main__:490:log_metrics E39 trn      0.4245 loss,  80.8% correct, 0.8039 precision, 0.8138 recall, 0.8088 f1 score, 0.8118 f2 score, 0.8058 f0.5 score, 0.1986 fpr, 1.0000 FROC, 0.8886 AUC
+2024-02-12 20:18:44,901 INFO     __main__:503:log_metrics E39 trn_benign 0.4269 loss,  80.1% correct (40071 of 50000)
+2024-02-12 20:18:44,901 INFO     __main__:508:log_metrics E39 trn_malignant 0.4220 loss,  81.4% correct (40692 of 50000)
+2024-02-12 20:18:45,026 WARNING  util.util:090:enum_estimate E39 Validation  ----/7, starting
+2024-02-12 20:18:51,774 WARNING  util.util:111:enum_estimate E39 Validation  ----/7, done at 2024-02-12 20:18:51
+2024-02-12 20:18:51,774 INFO     __main__:417:log_metrics E39 LunaTrainingApp
+2024-02-12 20:18:51,776 INFO     __main__:403:calculate_froc Epoch 39 FROC score: 0.9725275039672852
+2024-02-12 20:18:51,777 INFO     __main__:490:log_metrics E39 val      0.4276 loss,  78.6% correct, 0.6462 precision, 0.8077 recall, 0.7179 f1 score, 0.7692 f2 score, 0.6731 f0.5 score, 0.2255 fpr, 0.9725 FROC, 0.8930 AUC
+2024-02-12 20:18:51,777 INFO     __main__:503:log_metrics E39 val_benign 0.4189 loss,  77.5% correct (79 of 102)
+2024-02-12 20:18:51,777 INFO     __main__:508:log_metrics E39 val_malignant 0.4446 loss,  80.8% correct (42 of 52)
+2024-02-12 20:18:51,867 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_3900000.state
+2024-02-12 20:18:51,867 INFO     __main__:600:train Epoch 40 of 40, 4167/7 batches of size 24*1
+2024-02-12 20:18:52,007 WARNING  util.util:090:enum_estimate E40 Training ----/4167, starting
+2024-02-12 20:19:12,986 INFO     util.util:102:enum_estimate E40 Training  256/4167, done at 2024-02-12 20:23:37, 0:04:40
+2024-02-12 20:20:05,084 INFO     util.util:102:enum_estimate E40 Training 1024/4167, done at 2024-02-12 20:23:38, 0:04:40
+2024-02-12 20:23:26,720 INFO     util.util:102:enum_estimate E40 Training 4096/4167, done at 2024-02-12 20:23:31, 0:04:33
+2024-02-12 20:23:31,820 WARNING  util.util:111:enum_estimate E40 Training ----/4167, done at 2024-02-12 20:23:31
+2024-02-12 20:23:31,971 INFO     __main__:417:log_metrics E40 LunaTrainingApp
+2024-02-12 20:23:31,995 INFO     __main__:403:calculate_froc Epoch 40 FROC score: 1.0
+2024-02-12 20:23:32,017 INFO     __main__:490:log_metrics E40 trn      0.4221 loss,  80.9% correct, 0.8037 precision, 0.8173 recall, 0.8105 f1 score, 0.8146 f2 score, 0.8064 f0.5 score, 0.1996 fpr, 1.0000 FROC, 0.8899 AUC
+2024-02-12 20:23:32,017 INFO     __main__:503:log_metrics E40 trn_benign 0.4297 loss,  80.0% correct (40019 of 50000)
+2024-02-12 20:23:32,017 INFO     __main__:508:log_metrics E40 trn_malignant 0.4145 loss,  81.7% correct (40866 of 50000)
+2024-02-12 20:23:32,111 WARNING  util.util:090:enum_estimate E40 Validation  ----/7, starting
+2024-02-12 20:23:39,274 WARNING  util.util:111:enum_estimate E40 Validation  ----/7, done at 2024-02-12 20:23:39
+2024-02-12 20:23:39,275 INFO     __main__:417:log_metrics E40 LunaTrainingApp
+2024-02-12 20:23:39,276 INFO     __main__:403:calculate_froc Epoch 40 FROC score: 1.0
+2024-02-12 20:23:39,277 INFO     __main__:490:log_metrics E40 val      0.3615 loss,  83.8% correct, 0.7368 precision, 0.8077 recall, 0.7706 f1 score, 0.7925 f2 score, 0.7500 f0.5 score, 0.1471 fpr, 1.0000 FROC, 0.9070 AUC
+2024-02-12 20:23:39,277 INFO     __main__:503:log_metrics E40 val_benign 0.3080 loss,  85.3% correct (87 of 102)
+2024-02-12 20:23:39,277 INFO     __main__:508:log_metrics E40 val_malignant 0.4666 loss,  80.8% correct (42 of 52)
+2024-02-12 20:23:39,358 INFO     __main__:579:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_4000000.state
+2024-02-12 20:23:39,362 INFO     __main__:588:save_model Saving model params to classification_models/malignant-finetune-40/mal_2024-02-12_17.24_augment_all_4000000.best.state

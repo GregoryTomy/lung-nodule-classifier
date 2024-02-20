@@ -1,0 +1,195 @@
+2024-01-22 11:44:02,997 INFO     __main__:153:initialize_model Using CUDA; 1 devices.
+2024-01-22 11:44:04,393 INFO     __main__:496:train Starting SegmentationTrainingApp, Namespace(batch_size=16, num_workers=36, epochs=20, balanced=False, augment_all=True, augment_flip=False, augment_offset=False, augment_scale=False, augment_rotate=False, augment_noise=False, init_weights_path=None, tb_dir='', comment='final_seg')
+2024-01-22 11:44:11,851 INFO     src_segmentation.preprocess:310:__init__ <src_segmentation.preprocess.TrainingLunda2dSegmentationDataset object at 0x14e86338a110>: 799{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 8343 slices, 1028 nodules
+2024-01-22 11:44:11,970 INFO     src_segmentation.preprocess:310:__init__ <src_segmentation.preprocess.Luna2dSegmentationDataset object at 0x14e863656c10>: 89{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 1122 slices, 154 nodules
+2024-01-22 11:44:11,970 INFO     __main__:505:train Epoch 1 of 20, 18750/71 batches of size 16*1
+2024-01-22 11:44:12,113 WARNING  util.util:083:enum_estimate E1 Training. ----/18750, starting
+2024-01-22 11:45:15,339 INFO     util.util:095:enum_estimate E1 Training. 2048/18750, done at 2024-01-22 11:47:57, 0:03:02
+2024-01-22 11:47:03,013 INFO     util.util:095:enum_estimate E1 Training. 16384/18750, done at 2024-01-22 11:47:21, 0:02:25
+2024-01-22 11:47:20,227 WARNING  util.util:104:enum_estimate E1 Training. ----/18750, done at 2024-01-22 11:47:20
+2024-01-22 11:47:20,234 INFO     __main__:397:log_metrics E1 SegmentationTrainingApp
+2024-01-22 11:47:20,273 INFO     __main__:430:log_metrics E1 trn      0.4416 loss, 0.3062 precision, 0.9353 recall, 0.4614 f1 score, 
+2024-01-22 11:47:20,273 INFO     __main__:437:log_metrics E1 trn_all  0.4416 loss,  93.5% true positive,   6.5% false_negative,     211.9% false positive
+2024-01-22 11:47:20,275 WARNING  util.util:083:enum_estimate E1 Validation. ----/71, starting
+2024-01-22 11:47:36,834 WARNING  util.util:104:enum_estimate E1 Validation. ----/71, done at 2024-01-22 11:47:36
+2024-01-22 11:47:36,835 INFO     __main__:397:log_metrics E1 SegmentationTrainingApp
+2024-01-22 11:47:36,835 INFO     __main__:430:log_metrics E1 val      0.9377 loss, 0.0225 precision, 0.8319 recall, 0.0438 f1 score, 
+2024-01-22 11:47:36,835 INFO     __main__:437:log_metrics E1 val_all  0.9377 loss,  83.2% true positive,  16.8% false_negative,    3618.1% false positive
+2024-01-22 11:47:36,982 INFO     __main__:483:save_model Saving model params to segmentation_models/seg_2024-01-22_11.44_final_seg_300000.state
+2024-01-22 11:47:36,985 INFO     __main__:492:save_model Saving model params to segmentation_models/seg_2024-01-22_11.44_final_seg_300000.best.state
+2024-01-22 11:48:11,573 INFO     __main__:505:train Epoch 2 of 20, 18750/71 batches of size 16*1
+2024-01-22 11:48:11,721 WARNING  util.util:083:enum_estimate E2 Training. ----/18750, starting
+2024-01-22 11:48:31,934 INFO     util.util:095:enum_estimate E2 Training. 2048/18750, done at 2024-01-22 11:50:40, 0:02:24
+2024-01-22 11:50:22,605 INFO     util.util:095:enum_estimate E2 Training. 16384/18750, done at 2024-01-22 11:50:40, 0:02:24
+2024-01-22 11:50:41,909 WARNING  util.util:104:enum_estimate E2 Training. ----/18750, done at 2024-01-22 11:50:41
+2024-01-22 11:50:41,914 INFO     __main__:397:log_metrics E2 SegmentationTrainingApp
+2024-01-22 11:50:41,920 INFO     __main__:430:log_metrics E2 trn      0.2958 loss, 0.5072 precision, 0.9343 recall, 0.6575 f1 score, 
+2024-01-22 11:50:41,920 INFO     __main__:437:log_metrics E2 trn_all  0.2958 loss,  93.4% true positive,   6.6% false_negative,      90.8% false positive
+2024-01-22 11:50:41,921 INFO     __main__:505:train Epoch 3 of 20, 18750/71 batches of size 16*1
+2024-01-22 11:50:42,146 WARNING  util.util:083:enum_estimate E3 Training. ----/18750, starting
+2024-01-22 11:51:01,091 INFO     util.util:095:enum_estimate E3 Training. 2048/18750, done at 2024-01-22 11:53:04, 0:02:17
+2024-01-22 11:52:48,234 INFO     util.util:095:enum_estimate E3 Training. 16384/18750, done at 2024-01-22 11:53:05, 0:02:19
+2024-01-22 11:53:06,309 WARNING  util.util:104:enum_estimate E3 Training. ----/18750, done at 2024-01-22 11:53:06
+2024-01-22 11:53:06,312 INFO     __main__:397:log_metrics E3 SegmentationTrainingApp
+2024-01-22 11:53:06,313 INFO     __main__:430:log_metrics E3 trn      0.2714 loss, 0.5349 precision, 0.9404 recall, 0.6819 f1 score, 
+2024-01-22 11:53:06,313 INFO     __main__:437:log_metrics E3 trn_all  0.2714 loss,  94.0% true positive,   6.0% false_negative,      81.8% false positive
+2024-01-22 11:53:06,315 INFO     __main__:505:train Epoch 4 of 20, 18750/71 batches of size 16*1
+2024-01-22 11:53:06,456 WARNING  util.util:083:enum_estimate E4 Training. ----/18750, starting
+2024-01-22 11:53:26,201 INFO     util.util:095:enum_estimate E4 Training. 2048/18750, done at 2024-01-22 11:55:37, 0:02:27
+2024-01-22 11:55:15,341 INFO     util.util:095:enum_estimate E4 Training. 16384/18750, done at 2024-01-22 11:55:33, 0:02:23
+2024-01-22 11:55:34,675 WARNING  util.util:104:enum_estimate E4 Training. ----/18750, done at 2024-01-22 11:55:34
+2024-01-22 11:55:34,680 INFO     __main__:397:log_metrics E4 SegmentationTrainingApp
+2024-01-22 11:55:34,685 INFO     __main__:430:log_metrics E4 trn      0.2580 loss, 0.5592 precision, 0.9431 recall, 0.7021 f1 score, 
+2024-01-22 11:55:34,685 INFO     __main__:437:log_metrics E4 trn_all  0.2580 loss,  94.3% true positive,   5.7% false_negative,      74.3% false positive
+2024-01-22 11:55:34,686 INFO     __main__:505:train Epoch 5 of 20, 18750/71 batches of size 16*1
+2024-01-22 11:55:34,919 WARNING  util.util:083:enum_estimate E5 Training. ----/18750, starting
+2024-01-22 11:55:53,905 INFO     util.util:095:enum_estimate E5 Training. 2048/18750, done at 2024-01-22 11:57:56, 0:02:17
+2024-01-22 11:57:40,385 INFO     util.util:095:enum_estimate E5 Training. 16384/18750, done at 2024-01-22 11:57:57, 0:02:18
+2024-01-22 11:57:58,482 WARNING  util.util:104:enum_estimate E5 Training. ----/18750, done at 2024-01-22 11:57:58
+2024-01-22 11:57:58,485 INFO     __main__:397:log_metrics E5 SegmentationTrainingApp
+2024-01-22 11:57:58,487 INFO     __main__:430:log_metrics E5 trn      0.2479 loss, 0.5760 precision, 0.9485 recall, 0.7168 f1 score, 
+2024-01-22 11:57:58,487 INFO     __main__:437:log_metrics E5 trn_all  0.2479 loss,  94.9% true positive,   5.1% false_negative,      69.8% false positive
+2024-01-22 11:57:58,488 WARNING  util.util:083:enum_estimate E5 Validation. ----/71, starting
+2024-01-22 11:58:08,717 WARNING  util.util:104:enum_estimate E5 Validation. ----/71, done at 2024-01-22 11:58:08
+2024-01-22 11:58:08,717 INFO     __main__:397:log_metrics E5 SegmentationTrainingApp
+2024-01-22 11:58:08,718 INFO     __main__:430:log_metrics E5 val      0.9208 loss, 0.0287 precision, 0.7992 recall, 0.0554 f1 score, 
+2024-01-22 11:58:08,718 INFO     __main__:437:log_metrics E5 val_all  0.9208 loss,  79.9% true positive,  20.1% false_negative,    2706.4% false positive
+2024-01-22 11:58:08,731 INFO     __main__:483:save_model Saving model params to segmentation_models/seg_2024-01-22_11.44_final_seg_1500000.state
+2024-01-22 11:58:39,040 INFO     __main__:505:train Epoch 6 of 20, 18750/71 batches of size 16*1
+2024-01-22 11:58:39,190 WARNING  util.util:083:enum_estimate E6 Training. ----/18750, starting
+2024-01-22 11:58:59,350 INFO     util.util:095:enum_estimate E6 Training. 2048/18750, done at 2024-01-22 12:01:10, 0:02:27
+2024-01-22 12:00:44,946 INFO     util.util:095:enum_estimate E6 Training. 16384/18750, done at 2024-01-22 12:01:02, 0:02:19
+2024-01-22 12:01:03,015 WARNING  util.util:104:enum_estimate E6 Training. ----/18750, done at 2024-01-22 12:01:03
+2024-01-22 12:01:03,018 INFO     __main__:397:log_metrics E6 SegmentationTrainingApp
+2024-01-22 12:01:03,020 INFO     __main__:430:log_metrics E6 trn      0.2422 loss, 0.5864 precision, 0.9488 recall, 0.7248 f1 score, 
+2024-01-22 12:01:03,020 INFO     __main__:437:log_metrics E6 trn_all  0.2422 loss,  94.9% true positive,   5.1% false_negative,      66.9% false positive
+2024-01-22 12:01:03,021 INFO     __main__:505:train Epoch 7 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:01:03,219 WARNING  util.util:083:enum_estimate E7 Training. ----/18750, starting
+2024-01-22 12:01:21,257 INFO     util.util:095:enum_estimate E7 Training. 2048/18750, done at 2024-01-22 12:03:19, 0:02:12
+2024-01-22 12:03:06,881 INFO     util.util:095:enum_estimate E7 Training. 16384/18750, done at 2024-01-22 12:03:24, 0:02:17
+2024-01-22 12:03:24,733 WARNING  util.util:104:enum_estimate E7 Training. ----/18750, done at 2024-01-22 12:03:24
+2024-01-22 12:03:24,736 INFO     __main__:397:log_metrics E7 SegmentationTrainingApp
+2024-01-22 12:03:24,738 INFO     __main__:430:log_metrics E7 trn      0.2364 loss, 0.5942 precision, 0.9502 recall, 0.7312 f1 score, 
+2024-01-22 12:03:24,738 INFO     __main__:437:log_metrics E7 trn_all  0.2364 loss,  95.0% true positive,   5.0% false_negative,      64.9% false positive
+2024-01-22 12:03:24,738 INFO     __main__:505:train Epoch 8 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:03:24,880 WARNING  util.util:083:enum_estimate E8 Training. ----/18750, starting
+2024-01-22 12:03:43,953 INFO     util.util:095:enum_estimate E8 Training. 2048/18750, done at 2024-01-22 12:05:48, 0:02:19
+2024-01-22 12:05:24,255 INFO     util.util:095:enum_estimate E8 Training. 16384/18750, done at 2024-01-22 12:05:40, 0:02:12
+2024-01-22 12:05:43,008 WARNING  util.util:104:enum_estimate E8 Training. ----/18750, done at 2024-01-22 12:05:43
+2024-01-22 12:05:43,011 INFO     __main__:397:log_metrics E8 SegmentationTrainingApp
+2024-01-22 12:05:43,013 INFO     __main__:430:log_metrics E8 trn      0.2325 loss, 0.6016 precision, 0.9534 recall, 0.7377 f1 score, 
+2024-01-22 12:05:43,014 INFO     __main__:437:log_metrics E8 trn_all  0.2325 loss,  95.3% true positive,   4.7% false_negative,      63.1% false positive
+2024-01-22 12:05:43,015 INFO     __main__:505:train Epoch 9 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:05:43,219 WARNING  util.util:083:enum_estimate E9 Training. ----/18750, starting
+2024-01-22 12:06:02,112 INFO     util.util:095:enum_estimate E9 Training. 2048/18750, done at 2024-01-22 12:08:05, 0:02:18
+2024-01-22 12:07:47,657 INFO     util.util:095:enum_estimate E9 Training. 16384/18750, done at 2024-01-22 12:08:05, 0:02:17
+2024-01-22 12:08:05,775 WARNING  util.util:104:enum_estimate E9 Training. ----/18750, done at 2024-01-22 12:08:05
+2024-01-22 12:08:05,779 INFO     __main__:397:log_metrics E9 SegmentationTrainingApp
+2024-01-22 12:08:05,781 INFO     __main__:430:log_metrics E9 trn      0.2291 loss, 0.6079 precision, 0.9567 recall, 0.7434 f1 score, 
+2024-01-22 12:08:05,781 INFO     __main__:437:log_metrics E9 trn_all  0.2291 loss,  95.7% true positive,   4.3% false_negative,      61.7% false positive
+2024-01-22 12:08:05,782 INFO     __main__:505:train Epoch 10 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:08:05,928 WARNING  util.util:083:enum_estimate E10 Training. ----/18750, starting
+2024-01-22 12:08:25,904 INFO     util.util:095:enum_estimate E10 Training. 2048/18750, done at 2024-01-22 12:10:38, 0:02:28
+2024-01-22 12:10:08,877 INFO     util.util:095:enum_estimate E10 Training. 16384/18750, done at 2024-01-22 12:10:26, 0:02:16
+2024-01-22 12:10:24,994 WARNING  util.util:104:enum_estimate E10 Training. ----/18750, done at 2024-01-22 12:10:24
+2024-01-22 12:10:24,996 INFO     __main__:397:log_metrics E10 SegmentationTrainingApp
+2024-01-22 12:10:24,999 INFO     __main__:430:log_metrics E10 trn      0.2283 loss, 0.6096 precision, 0.9552 recall, 0.7442 f1 score, 
+2024-01-22 12:10:24,999 INFO     __main__:437:log_metrics E10 trn_all  0.2283 loss,  95.5% true positive,   4.5% false_negative,      61.2% false positive
+2024-01-22 12:10:25,001 WARNING  util.util:083:enum_estimate E10 Validation. ----/71, starting
+2024-01-22 12:10:33,370 WARNING  util.util:104:enum_estimate E10 Validation. ----/71, done at 2024-01-22 12:10:33
+2024-01-22 12:10:33,371 INFO     __main__:397:log_metrics E10 SegmentationTrainingApp
+2024-01-22 12:10:33,371 INFO     __main__:430:log_metrics E10 val      0.8964 loss, 0.0342 precision, 0.7984 recall, 0.0655 f1 score, 
+2024-01-22 12:10:33,371 INFO     __main__:437:log_metrics E10 val_all  0.8964 loss,  79.8% true positive,  20.2% false_negative,    2256.2% false positive
+2024-01-22 12:10:33,386 INFO     __main__:483:save_model Saving model params to segmentation_models/seg_2024-01-22_11.44_final_seg_3000000.state
+2024-01-22 12:10:57,447 INFO     __main__:505:train Epoch 11 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:10:57,607 WARNING  util.util:083:enum_estimate E11 Training. ----/18750, starting
+2024-01-22 12:11:17,014 INFO     util.util:095:enum_estimate E11 Training. 2048/18750, done at 2024-01-22 12:13:23, 0:02:21
+2024-01-22 12:13:05,082 INFO     util.util:095:enum_estimate E11 Training. 16384/18750, done at 2024-01-22 12:13:22, 0:02:21
+2024-01-22 12:13:23,382 WARNING  util.util:104:enum_estimate E11 Training. ----/18750, done at 2024-01-22 12:13:23
+2024-01-22 12:13:23,385 INFO     __main__:397:log_metrics E11 SegmentationTrainingApp
+2024-01-22 12:13:23,386 INFO     __main__:430:log_metrics E11 trn      0.2249 loss, 0.6157 precision, 0.9575 recall, 0.7495 f1 score, 
+2024-01-22 12:13:23,386 INFO     __main__:437:log_metrics E11 trn_all  0.2249 loss,  95.7% true positive,   4.3% false_negative,      59.8% false positive
+2024-01-22 12:13:23,387 INFO     __main__:505:train Epoch 12 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:13:23,532 WARNING  util.util:083:enum_estimate E12 Training. ----/18750, starting
+2024-01-22 12:13:43,355 INFO     util.util:095:enum_estimate E12 Training. 2048/18750, done at 2024-01-22 12:15:55, 0:02:28
+2024-01-22 12:15:26,405 INFO     util.util:095:enum_estimate E12 Training. 16384/18750, done at 2024-01-22 12:15:43, 0:02:16
+2024-01-22 12:15:42,445 WARNING  util.util:104:enum_estimate E12 Training. ----/18750, done at 2024-01-22 12:15:42
+2024-01-22 12:15:42,448 INFO     __main__:397:log_metrics E12 SegmentationTrainingApp
+2024-01-22 12:15:42,450 INFO     __main__:430:log_metrics E12 trn      0.2247 loss, 0.6156 precision, 0.9577 recall, 0.7494 f1 score, 
+2024-01-22 12:15:42,450 INFO     __main__:437:log_metrics E12 trn_all  0.2247 loss,  95.8% true positive,   4.2% false_negative,      59.8% false positive
+2024-01-22 12:15:42,451 INFO     __main__:505:train Epoch 13 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:15:42,597 WARNING  util.util:083:enum_estimate E13 Training. ----/18750, starting
+2024-01-22 12:16:01,970 INFO     util.util:095:enum_estimate E13 Training. 2048/18750, done at 2024-01-22 12:18:07, 0:02:21
+2024-01-22 12:17:50,889 INFO     util.util:095:enum_estimate E13 Training. 16384/18750, done at 2024-01-22 12:18:08, 0:02:22
+2024-01-22 12:18:08,947 WARNING  util.util:104:enum_estimate E13 Training. ----/18750, done at 2024-01-22 12:18:08
+2024-01-22 12:18:08,949 INFO     __main__:397:log_metrics E13 SegmentationTrainingApp
+2024-01-22 12:18:08,950 INFO     __main__:430:log_metrics E13 trn      0.2205 loss, 0.6203 precision, 0.9599 recall, 0.7536 f1 score, 
+2024-01-22 12:18:08,950 INFO     __main__:437:log_metrics E13 trn_all  0.2205 loss,  96.0% true positive,   4.0% false_negative,      58.8% false positive
+2024-01-22 12:18:08,951 INFO     __main__:505:train Epoch 14 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:18:09,153 WARNING  util.util:083:enum_estimate E14 Training. ----/18750, starting
+2024-01-22 12:18:27,542 INFO     util.util:095:enum_estimate E14 Training. 2048/18750, done at 2024-01-22 12:20:26, 0:02:13
+2024-01-22 12:20:11,344 INFO     util.util:095:enum_estimate E14 Training. 16384/18750, done at 2024-01-22 12:20:28, 0:02:15
+2024-01-22 12:20:29,126 WARNING  util.util:104:enum_estimate E14 Training. ----/18750, done at 2024-01-22 12:20:29
+2024-01-22 12:20:29,128 INFO     __main__:397:log_metrics E14 SegmentationTrainingApp
+2024-01-22 12:20:29,130 INFO     __main__:430:log_metrics E14 trn      0.2211 loss, 0.6193 precision, 0.9602 recall, 0.7530 f1 score, 
+2024-01-22 12:20:29,130 INFO     __main__:437:log_metrics E14 trn_all  0.2211 loss,  96.0% true positive,   4.0% false_negative,      59.0% false positive
+2024-01-22 12:20:29,131 INFO     __main__:505:train Epoch 15 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:20:29,334 WARNING  util.util:083:enum_estimate E15 Training. ----/18750, starting
+2024-01-22 12:20:48,247 INFO     util.util:095:enum_estimate E15 Training. 2048/18750, done at 2024-01-22 12:22:53, 0:02:20
+2024-01-22 12:22:30,885 INFO     util.util:095:enum_estimate E15 Training. 16384/18750, done at 2024-01-22 12:22:47, 0:02:14
+2024-01-22 12:22:49,054 WARNING  util.util:104:enum_estimate E15 Training. ----/18750, done at 2024-01-22 12:22:49
+2024-01-22 12:22:49,059 INFO     __main__:397:log_metrics E15 SegmentationTrainingApp
+2024-01-22 12:22:49,066 INFO     __main__:430:log_metrics E15 trn      0.2172 loss, 0.6250 precision, 0.9603 recall, 0.7572 f1 score, 
+2024-01-22 12:22:49,066 INFO     __main__:437:log_metrics E15 trn_all  0.2172 loss,  96.0% true positive,   4.0% false_negative,      57.6% false positive
+2024-01-22 12:22:49,068 WARNING  util.util:083:enum_estimate E15 Validation. ----/71, starting
+2024-01-22 12:22:58,885 WARNING  util.util:104:enum_estimate E15 Validation. ----/71, done at 2024-01-22 12:22:58
+2024-01-22 12:22:58,886 INFO     __main__:397:log_metrics E15 SegmentationTrainingApp
+2024-01-22 12:22:58,886 INFO     __main__:430:log_metrics E15 val      0.8685 loss, 0.0419 precision, 0.7515 recall, 0.0794 f1 score, 
+2024-01-22 12:22:58,886 INFO     __main__:437:log_metrics E15 val_all  0.8685 loss,  75.2% true positive,  24.8% false_negative,    1718.6% false positive
+2024-01-22 12:22:58,904 INFO     __main__:483:save_model Saving model params to segmentation_models/seg_2024-01-22_11.44_final_seg_4500000.state
+2024-01-22 12:23:21,011 INFO     __main__:505:train Epoch 16 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:23:21,164 WARNING  util.util:083:enum_estimate E16 Training. ----/18750, starting
+2024-01-22 12:23:39,894 INFO     util.util:095:enum_estimate E16 Training. 2048/18750, done at 2024-01-22 12:25:45, 0:02:21
+2024-01-22 12:25:22,077 INFO     util.util:095:enum_estimate E16 Training. 16384/18750, done at 2024-01-22 12:25:39, 0:02:14
+2024-01-22 12:25:40,064 WARNING  util.util:104:enum_estimate E16 Training. ----/18750, done at 2024-01-22 12:25:40
+2024-01-22 12:25:40,069 INFO     __main__:397:log_metrics E16 SegmentationTrainingApp
+2024-01-22 12:25:40,072 INFO     __main__:430:log_metrics E16 trn      0.2170 loss, 0.6283 precision, 0.9618 recall, 0.7601 f1 score, 
+2024-01-22 12:25:40,072 INFO     __main__:437:log_metrics E16 trn_all  0.2170 loss,  96.2% true positive,   3.8% false_negative,      56.9% false positive
+2024-01-22 12:25:40,074 INFO     __main__:505:train Epoch 17 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:25:40,262 WARNING  util.util:083:enum_estimate E17 Training. ----/18750, starting
+2024-01-22 12:25:57,758 INFO     util.util:095:enum_estimate E17 Training. 2048/18750, done at 2024-01-22 12:27:55, 0:02:11
+2024-01-22 12:27:46,724 INFO     util.util:095:enum_estimate E17 Training. 16384/18750, done at 2024-01-22 12:28:04, 0:02:20
+2024-01-22 12:28:04,490 WARNING  util.util:104:enum_estimate E17 Training. ----/18750, done at 2024-01-22 12:28:04
+2024-01-22 12:28:04,493 INFO     __main__:397:log_metrics E17 SegmentationTrainingApp
+2024-01-22 12:28:04,494 INFO     __main__:430:log_metrics E17 trn      0.2151 loss, 0.6299 precision, 0.9620 recall, 0.7613 f1 score, 
+2024-01-22 12:28:04,494 INFO     __main__:437:log_metrics E17 trn_all  0.2151 loss,  96.2% true positive,   3.8% false_negative,      56.5% false positive
+2024-01-22 12:28:04,495 INFO     __main__:505:train Epoch 18 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:28:04,643 WARNING  util.util:083:enum_estimate E18 Training. ----/18750, starting
+2024-01-22 12:28:24,322 INFO     util.util:095:enum_estimate E18 Training. 2048/18750, done at 2024-01-22 12:30:33, 0:02:24
+2024-01-22 12:30:10,566 INFO     util.util:095:enum_estimate E18 Training. 16384/18750, done at 2024-01-22 12:30:28, 0:02:19
+2024-01-22 12:30:28,705 WARNING  util.util:104:enum_estimate E18 Training. ----/18750, done at 2024-01-22 12:30:28
+2024-01-22 12:30:28,711 INFO     __main__:397:log_metrics E18 SegmentationTrainingApp
+2024-01-22 12:30:28,713 INFO     __main__:430:log_metrics E18 trn      0.2131 loss, 0.6313 precision, 0.9628 recall, 0.7626 f1 score, 
+2024-01-22 12:30:28,713 INFO     __main__:437:log_metrics E18 trn_all  0.2131 loss,  96.3% true positive,   3.7% false_negative,      56.2% false positive
+2024-01-22 12:30:28,714 INFO     __main__:505:train Epoch 19 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:30:28,954 WARNING  util.util:083:enum_estimate E19 Training. ----/18750, starting
+2024-01-22 12:30:48,286 INFO     util.util:095:enum_estimate E19 Training. 2048/18750, done at 2024-01-22 12:32:54, 0:02:20
+2024-01-22 12:32:34,944 INFO     util.util:095:enum_estimate E19 Training. 16384/18750, done at 2024-01-22 12:32:52, 0:02:19
+2024-01-22 12:32:52,666 WARNING  util.util:104:enum_estimate E19 Training. ----/18750, done at 2024-01-22 12:32:52
+2024-01-22 12:32:52,668 INFO     __main__:397:log_metrics E19 SegmentationTrainingApp
+2024-01-22 12:32:52,670 INFO     __main__:430:log_metrics E19 trn      0.2121 loss, 0.6357 precision, 0.9642 recall, 0.7663 f1 score, 
+2024-01-22 12:32:52,670 INFO     __main__:437:log_metrics E19 trn_all  0.2121 loss,  96.4% true positive,   3.6% false_negative,      55.2% false positive
+2024-01-22 12:32:52,671 INFO     __main__:505:train Epoch 20 of 20, 18750/71 batches of size 16*1
+2024-01-22 12:32:52,853 WARNING  util.util:083:enum_estimate E20 Training. ----/18750, starting
+2024-01-22 12:33:11,842 INFO     util.util:095:enum_estimate E20 Training. 2048/18750, done at 2024-01-22 12:35:14, 0:02:17
+2024-01-22 12:34:59,005 INFO     util.util:095:enum_estimate E20 Training. 16384/18750, done at 2024-01-22 12:35:16, 0:02:19
+2024-01-22 12:35:17,143 WARNING  util.util:104:enum_estimate E20 Training. ----/18750, done at 2024-01-22 12:35:17
+2024-01-22 12:35:17,145 INFO     __main__:397:log_metrics E20 SegmentationTrainingApp
+2024-01-22 12:35:17,147 INFO     __main__:430:log_metrics E20 trn      0.2106 loss, 0.6357 precision, 0.9636 recall, 0.7660 f1 score, 
+2024-01-22 12:35:17,147 INFO     __main__:437:log_metrics E20 trn_all  0.2106 loss,  96.4% true positive,   3.6% false_negative,      55.2% false positive
+2024-01-22 12:35:17,149 WARNING  util.util:083:enum_estimate E20 Validation. ----/71, starting
+2024-01-22 12:35:25,626 WARNING  util.util:104:enum_estimate E20 Validation. ----/71, done at 2024-01-22 12:35:25
+2024-01-22 12:35:25,626 INFO     __main__:397:log_metrics E20 SegmentationTrainingApp
+2024-01-22 12:35:25,627 INFO     __main__:430:log_metrics E20 val      0.8160 loss, 0.0618 precision, 0.7282 recall, 0.1139 f1 score, 
+2024-01-22 12:35:25,627 INFO     __main__:437:log_metrics E20 val_all  0.8160 loss,  72.8% true positive,  27.2% false_negative,    1105.7% false positive
+2024-01-22 12:35:25,645 INFO     __main__:483:save_model Saving model params to segmentation_models/seg_2024-01-22_11.44_final_seg_6000000.state

@@ -1,0 +1,14 @@
+2024-02-12 16:19:37,596 INFO     __main__:176:initialize_model Finetuning from model_checkpoints/final.pth, blocks b l o c k 4
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/gpfs/alpine1/scratch/nito4059/ctproj2/src_classification/training_cls.py", line 674, in <module>
+    LunaTrainingApp().train()
+    ^^^^^^^^^^^^^^^^^
+  File "/gpfs/alpine1/scratch/nito4059/ctproj2/src_classification/training_cls.py", line 149, in __init__
+    self.model, self.aug_model = self.initialize_model()
+                                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/alpine1/scratch/nito4059/ctproj2/src_classification/training_cls.py", line 181, in initialize_model
+    key: value for key, value in state_dict["model_state"].items()
+                                 ~~~~~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'model_state'

@@ -114,7 +114,7 @@ class NoduleAnalysisApp:
             "--segmentation-model-path",
             help="Path to saved segmentation model",
             nargs='?',
-            defualt="final_models/seg_2024-01-22_11.44_final_seg_300000.best.state",
+            default="final_models/seg_2024-01-22_11.44_final_seg_300000.best.state",
         )
 
         parser.add_argument(
@@ -122,14 +122,14 @@ class NoduleAnalysisApp:
             "--classification-model-path",
             help="Path to saved classification model",
             nargs='?',
-            defualt="final_models/cls_2024-01-26_10.26._final-nodule-nonnodule.best.state",
+            default="final_models/cls_2024-01-26_10.26._final-nodule-nonnodule.best.state",
         )
         
         parser.add_argument(
             "--malignancy-model-path",
             help="Path to the saved malignancy classification model",
             nargs='?',
-            default="final_models/cls_2024-01-26_10.26._final-nodule-nonnodule.best.state",
+            default=None,
         )
 
         parser.add_argument(
@@ -182,9 +182,9 @@ class NoduleAnalysisApp:
             segmentation_model.to(self.device)
             classification_model.to(self.device)
 
-        if self.cli_args.malignancy_path:
+        if self.cli_args.malignancy_model_path:
             malignancy_model = LunaModel()
-            malignancy_dict = torch.load(self.cli_args.malignancy_path)
+            malignancy_dict = torch.load(self.cli_args.malignancy_model_path)
             malignancy_model.load_state_dict(malignancy_dict["model_state"])
             malignancy_model.eval()
             
@@ -289,7 +289,7 @@ class NoduleAnalysisApp:
 
         for batch_IDX, batch_tuple in enumerate(classification_dataloader):
             # print(len(batch_tuple))
-            input_t, _, series_list, center_list = batch_tuple
+            input_t, _, _, series_list, center_list = batch_tuple
             input_g = input_t.to(self.device)
 
             with torch.no_grad():

@@ -16,7 +16,19 @@ The project started out as solely a classification task (stage 2). The paper det
 ![thumbnail](images/thumbnail.jpg)
 
 ![ct_scan_gif](images/ct_scan.gif)
+
 *Model scanning CT slices and predicting nodules. Positive predictions in Green. False positives in Red.*
+
+## Final Results
+The rows are the truth and the columns are how the model handled it.
+
+|              | Complete Miss | Filtered Out | Pred. Benign | Pred. Malignant |
+|--------------|---------------|--------------|--------------|----------------|
+| Non-Nodules  |               | 227968       | 1392         | 346            |
+| Benign       | 16            | 2            | 70           | 14             |
+| Malignant    | 5             | 8            | 9            | 30             |
+
+We detect about 80% of nodules and correctly identify 58% of the malignant ones. 
 
 ## Part 1: Segmentation of CT Scans.
 
@@ -24,7 +36,6 @@ The project started out as solely a classification task (stage 2). The paper det
 
 | Metric           | Value      |
 |------------------|------------|
-| Loss             | 0.9377     |
 | Precision        | 0.0225     |
 | Recall           | 0.8319     |
 | F1 Score         | 0.0438     |
@@ -33,6 +44,13 @@ The project started out as solely a classification task (stage 2). The paper det
 | False Positive   | 3618.1%    |
 
 The elevated false positive rate observed in the validation phase is anticipated due to the significant disparity in the dimensions of the datasets used for training and validation. Specifically, the validation dataset encompasses an area of $2^{18}$ pixels, which is notably larger than the $2^{12}$ pixels area utilized for the training dataset. This results in a validation area that is 64 times greater in size compared to the training area. Given this context, our focus was primarily on optimizing the recall metric, with the understanding that any precision-related concerns will be addressed by the downstream classification model. 
+
+                 |    Complete Miss |     Filtered Out |     Pred. Nodule
+     Non-Nodules |                  |           227968 |             1738
+          Benign |               16 |                2 |               84
+       Malignant |                5 |                8 |               39
+
+The segmentation model detected 81% of the nodules.
 
 ### Examples of segmentation output. 
 
@@ -71,14 +89,15 @@ Positive predictions in Green. False positives in Red.
 
 #### FROC Curve
 ![FROC Curve](images/froc.jpg)
+
 *The FROC curve illustrates the trade-off between sensitivity and the average number of false positives per scan, showcasing the performance of our model.*
 
 ## Part 3: Classification of Nodules.
 
-### Baseline ROC
-To define a performance benchmark, a simple predictive model was constructed to infer the likelihood of malignancy from the size of nodules, premised on the assumption that larger nodules have a higher probability of being malignant. The Receiver Operating Characteristic (ROC) curve was used to find the most effective diameter threshold for this malignancy prediction. The baseline model achieved an Area Under the ROC Curve (AUC) of 0.901.
-
-![Baseline ROC](images/roc_diameter_baseline.png)
-*Figure: ROC Curve illustrating the performance of the nodule size predictor. The red values at 5.22 mm and 10.55 mm represent the sensitivity and specificity trade-off at these specific diameter thresholds.*
-
-In Part 3, we refined our Part 2 lung nodule classification model to predict malignancy. We fine-tuned the final linear layer and last convolutional block, while keeping the earlier weights, to better differentiate between benign and malignant nodules.
+| Metric       | Value    |
+|--------------|----------|
+| Precision    | 0.7368   |
+| Recall       | 0.8077   |
+| F1 Score     | 0.7706   |
+| FPR          | 0.1471   |
+| AUC          | 0.9070   |

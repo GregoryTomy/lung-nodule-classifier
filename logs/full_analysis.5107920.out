@@ -1,0 +1,645 @@
+2024-02-19 10:56:55,112 DEBUG    __main__:154:init_models final_models/seg_2024-01-22_11.44_final_seg_300000.best.state
+2024-02-19 10:56:56,912 DEBUG    __main__:170:init_models final_models/cls_2024-01-26_10.26._final-nodule-nonnodule.best.state
+2024-02-19 10:56:57,004 INFO     __main__:367:main Starting NoduleAnalysisApp, Namespace(batch_size=32, num_workers=34, tb_dir='', run_validation=True, include_train=False, segmentation_model_path='final_models/seg_2024-01-22_11.44_final_seg_300000.best.state', classification_model_path='final_models/cls_2024-01-26_10.26._final-nodule-nonnodule.best.state', malignancy_model_path='final_models/mal_2024-02-12_17.24_augment_all_4000000.best.state', series_uid=None)
+2024-02-19 10:56:59,321 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa0ae0850>: 51583 validation samples, 51429 neg, 154 pos, unbalanced ratio
+2024-02-19 10:56:59,467 WARNING  util.util:090:enum_estimate Series ----/89, starting
+2024-02-19 10:57:02,633 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a8ed59690>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 194 slices, 2 nodules
+/gpfs/alpine1/scratch/nito4059/ctproj2/src_analysis/grouping.py:231: DeprecationWarning: Please use `binary_erosion` from the `scipy.ndimage` namespace, the `scipy.ndimage.morphology` namespace is deprecated.
+  mask_a = morphology.binary_erosion(mask_a, iterations=1)    ##
+/gpfs/alpine1/scratch/nito4059/ctproj2/src_analysis/grouping.py:241: DeprecationWarning: Please use `label` from the `scipy.ndimage` namespace, the `scipy.ndimage.measurements` namespace is deprecated.
+  candidate_label_a, candidate_count = measurements.label(clean_a)
+/gpfs/alpine1/scratch/nito4059/ctproj2/src_analysis/grouping.py:242: DeprecationWarning: Please use `center_of_mass` from the `scipy.ndimage` namespace, the `scipy.ndimage.measurements` namespace is deprecated.
+  center_irc_list = measurements.center_of_mass(
+2024-02-19 10:58:06,111 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2b1d490>: 2646 training samples, 2646 neg, 0 pos, unbalanced ratio
+2024-02-19 10:58:10,113 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa3d2a290>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 143 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.100225287222365663678666836860
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2626 |               17 |                2
+          Benign |                1 |                0 |                0 |                0
+       Malignant |                0 |                0 |                1 |                0
+2024-02-19 10:58:15,825 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2952450>: 857 training samples, 857 neg, 0 pos, unbalanced ratio
+2024-02-19 10:58:19,779 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549f2f8ce10>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 328 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.102681962408431413578140925249
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |              841 |               12 |                2
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 10:58:28,680 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa25eaad0>: 2509 training samples, 2509 neg, 0 pos, unbalanced ratio
+2024-02-19 10:58:32,508 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa1e8cb10>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 538 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.106719103982792863757268101375
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2475 |               28 |                4
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 10:58:45,095 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549c54f8610>: 4328 training samples, 4328 neg, 0 pos, unbalanced ratio
+2024-02-19 10:58:49,182 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa3ba6690>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 509 slices, 3 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.111172165674661221381920536987
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             4306 |               20 |                1
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 10:59:01,332 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154a8ed81a90>: 5221 training samples, 5221 neg, 0 pos, unbalanced ratio
+2024-02-19 10:59:05,531 INFO     util.util:102:enum_estimate Series    4/89, done at 2024-02-19 11:34:23, 0:37:23
+2024-02-19 10:59:06,056 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa257cf50>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 519 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.114218724025049818743426522343
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             5195 |               19 |                4
+          Benign |                0 |                0 |                2 |                1
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 10:59:17,578 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154a8f213710>: 3807 training samples, 3807 neg, 0 pos, unbalanced ratio
+2024-02-19 10:59:21,388 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa3ba6690>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 144 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.119209873306155771318545953948
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3777 |               25 |                3
+          Benign |                0 |                0 |                2 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 10:59:26,753 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2845610>: 1474 training samples, 1474 neg, 0 pos, unbalanced ratio
+2024-02-19 10:59:30,577 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa247a7d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 130 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.121993590721161347818774929286
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1463 |                7 |                3
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                1 |                0 |                0 |                1
+2024-02-19 10:59:36,102 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2559650>: 1070 training samples, 1070 neg, 0 pos, unbalanced ratio
+2024-02-19 10:59:39,879 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa1e673d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 131 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.125067060506283419853742462394
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1067 |                2 |                1
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 10:59:45,189 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa247a7d0>: 1260 training samples, 1260 neg, 0 pos, unbalanced ratio
+2024-02-19 10:59:48,643 INFO     util.util:102:enum_estimate Series    8/89, done at 2024-02-19 11:24:52, 0:27:52
+2024-02-19 10:59:49,002 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549f2fa0250>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 136 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.128881800399702510818644205032
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1246 |               10 |                3
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                1 |                1 |                0 |                0
+2024-02-19 10:59:54,731 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa3d66010>: 1481 training samples, 1481 neg, 0 pos, unbalanced ratio
+2024-02-19 10:59:58,349 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a68345a50>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 181 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.131939324905446238286154504249
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1458 |               11 |                9
+          Benign |                0 |                0 |                0 |                1
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:00:04,473 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa26e8e10>: 1866 training samples, 1866 neg, 0 pos, unbalanced ratio
+2024-02-19 11:00:08,356 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a0618e290>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 330 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.137375498893536422914241295628
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1854 |               10 |                0
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:00:17,367 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa257cf50>: 5920 training samples, 5920 neg, 0 pos, unbalanced ratio
+2024-02-19 11:00:21,996 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549cdd23ed0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 215 slices, 3 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.139577698050713461261415990027
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             5897 |               19 |                4
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:00:28,461 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa1882a10>: 1350 training samples, 1350 neg, 0 pos, unbalanced ratio
+2024-02-19 11:00:32,214 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fb7a8b50>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 240 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.141430002307216644912805017227
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1338 |                9 |                0
+          Benign |                0 |                0 |                2 |                0
+       Malignant |                0 |                0 |                1 |                0
+2024-02-19 11:00:39,555 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fb7c5d10>: 6696 training samples, 6696 neg, 0 pos, unbalanced ratio
+2024-02-19 11:00:44,504 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fff3fed0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 239 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.144883090372691745980459537053
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             6636 |               24 |               18
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                1 |                0 |                0
+2024-02-19 11:00:51,997 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fb7a9490>: 2816 training samples, 2816 neg, 0 pos, unbalanced ratio
+2024-02-19 11:00:56,180 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a68345c10>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 300 slices, 4 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.147325126373007278009743173696
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2804 |                9 |                1
+          Benign |                0 |                0 |                2 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:01:04,179 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549c54f9e90>: 2844 training samples, 2844 neg, 0 pos, unbalanced ratio
+2024-02-19 11:01:08,333 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549c5504d90>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 244 slices, 6 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.151764021165118974848436095034
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2828 |               10 |                2
+          Benign |                0 |                0 |                3 |                1
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:01:15,868 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2575690>: 3469 training samples, 3469 neg, 0 pos, unbalanced ratio
+2024-02-19 11:01:19,320 INFO     util.util:102:enum_estimate Series   16/89, done at 2024-02-19 11:19:39, 0:22:40
+2024-02-19 11:01:19,726 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa2da4390>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 133 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.154837327827713479309898027966
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3421 |               33 |               11
+          Benign |                2 |                0 |                4 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:01:25,480 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa12b42d0>: 1461 training samples, 1461 neg, 0 pos, unbalanced ratio
+2024-02-19 11:01:29,852 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fb7b0990>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 764 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.160586340600816116143631200450
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1447 |                8 |                3
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:01:45,625 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549c54fa6d0>: 4440 training samples, 4440 neg, 0 pos, unbalanced ratio
+2024-02-19 11:01:49,468 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549f2f6e2d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 327 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.162845309248822193437735868939
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             4403 |               31 |                4
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:01:58,811 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa27ff810>: 3259 training samples, 3259 neg, 0 pos, unbalanced ratio
+2024-02-19 11:02:03,177 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fb7bf750>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 270 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.167661207884826429102690781600
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3226 |               21 |                0
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                2
+2024-02-19 11:02:11,196 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fff3da10>: 4162 training samples, 4162 neg, 0 pos, unbalanced ratio
+2024-02-19 11:02:15,621 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa2490350>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 141 slices, 6 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.170825539570536865106681134236
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             4136 |               20 |                6
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:02:21,323 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa1e4e990>: 746 training samples, 746 neg, 0 pos, unbalanced ratio
+2024-02-19 11:02:25,257 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa48c74d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 127 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.173106154739244262091404659845
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |              728 |                7 |                4
+          Benign |                1 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                4
+2024-02-19 11:02:30,510 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa34c22d0>: 1531 training samples, 1531 neg, 0 pos, unbalanced ratio
+2024-02-19 11:02:34,099 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a6833cf90>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 133 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.176362912420491262783064585333
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1516 |               14 |                1
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:02:39,373 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa351e250>: 1187 training samples, 1187 neg, 0 pos, unbalanced ratio
+2024-02-19 11:02:43,291 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a8f21d1d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 240 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.178680586845223339579041794709
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1183 |                4 |                0
+          Benign |                1 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:02:50,656 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa284fa90>: 2928 training samples, 2928 neg, 0 pos, unbalanced ratio
+2024-02-19 11:02:54,790 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a682e7f10>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 125 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.183184435049555024219115904825
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2897 |               26 |                3
+          Benign |                0 |                0 |                2 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:03:00,265 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154a8ed707d0>: 972 training samples, 972 neg, 0 pos, unbalanced ratio
+2024-02-19 11:03:04,097 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fff3ead0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 320 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.187451715205085403623595258748
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |              950 |                9 |                2
+          Benign |                0 |                0 |                0 |                1
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:03:12,921 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fb7b0c10>: 2233 training samples, 2233 neg, 0 pos, unbalanced ratio
+2024-02-19 11:03:17,092 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a68345050>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 208 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.188619674701053082195613114069
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2226 |                4 |                1
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                1 |                0 |                1
+2024-02-19 11:03:23,829 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549c54fbf90>: 3139 training samples, 3139 neg, 0 pos, unbalanced ratio
+2024-02-19 11:03:27,812 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fec82450>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 238 slices, 9 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.193408384740507320589857096592
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3123 |                9 |                7
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:03:34,562 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2dbbcd0>: 1925 training samples, 1925 neg, 0 pos, unbalanced ratio
+2024-02-19 11:03:38,488 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549f2f98150>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 225 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.195557219224169985110295082004
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1891 |               15 |                7
+          Benign |                0 |                0 |                3 |                0
+       Malignant |                0 |                0 |                4 |                2
+2024-02-19 11:03:45,435 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa25d0a50>: 1932 training samples, 1932 neg, 0 pos, unbalanced ratio
+2024-02-19 11:03:49,082 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549f2f84790>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 264 slices, 9 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.199261544234308780356714831537
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1911 |               15 |                5
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:03:56,687 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fb7aabd0>: 4432 training samples, 4432 neg, 0 pos, unbalanced ratio
+2024-02-19 11:04:01,129 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa271c710>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 558 slices, 5 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.202187810895588720702176009630
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             4381 |               42 |                2
+          Benign |                2 |                1 |                6 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:04:13,686 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549c5507190>: 3903 training samples, 3903 neg, 0 pos, unbalanced ratio
+2024-02-19 11:04:18,362 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa23fa550>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 359 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.204303454658845815034433453512
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3837 |               49 |                7
+          Benign |                0 |                0 |                4 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:04:27,093 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa247a7d0>: 2195 training samples, 2195 neg, 0 pos, unbalanced ratio
+2024-02-19 11:04:30,481 INFO     util.util:102:enum_estimate Series   32/89, done at 2024-02-19 11:17:15, 0:20:16
+2024-02-19 11:04:30,750 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa12669d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 162 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.207341668080525761926965850679
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2157 |               31 |                6
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:04:36,853 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154a8f1ebed0>: 7364 training samples, 7364 neg, 0 pos, unbalanced ratio
+2024-02-19 11:04:42,309 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fec57f50>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 268 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.212608679077007918190529579976
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             7340 |               17 |                3
+          Benign |                1 |                0 |                0 |                1
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:04:50,629 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa25d0a50>: 2869 training samples, 2869 neg, 0 pos, unbalanced ratio
+2024-02-19 11:04:54,686 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549f2fa2d90>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 187 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.216252660192313507027754194207
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2863 |                3 |                2
+          Benign |                1 |                0 |                0 |                1
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:05:01,087 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154a682e7390>: 1753 training samples, 1753 neg, 0 pos, unbalanced ratio
+2024-02-19 11:05:04,868 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fb7a8990>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 481 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.219254430927834326484477690403
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1740 |               10 |                0
+          Benign |                0 |                0 |                2 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:05:16,160 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa3e54550>: 3140 training samples, 3140 neg, 0 pos, unbalanced ratio
+2024-02-19 11:05:20,096 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549cdd93110>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 241 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.222052723822248889877676736332
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3117 |               19 |                0
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:05:27,825 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549f69ed450>: 3174 training samples, 3174 neg, 0 pos, unbalanced ratio
+2024-02-19 11:05:32,404 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549c550e950>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 186 slices, 5 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.226456162308124493341905600418
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3162 |                9 |                0
+          Benign |                0 |                0 |                0 |                1
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:05:39,029 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549f2fa1050>: 1848 training samples, 1848 neg, 0 pos, unbalanced ratio
+2024-02-19 11:05:43,057 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549cdd22b50>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 255 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.229096941293122177107846044795
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1818 |               18 |               10
+          Benign |                2 |                0 |                2 |                0
+       Malignant |                1 |                0 |                0 |                0
+2024-02-19 11:05:50,386 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2dbbcd0>: 3732 training samples, 3732 neg, 0 pos, unbalanced ratio
+2024-02-19 11:05:55,012 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a0618d7d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 246 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.231645134739451754302647733304
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3708 |               22 |                2
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:06:02,130 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa1e7b010>: 3139 training samples, 3139 neg, 0 pos, unbalanced ratio
+2024-02-19 11:06:06,436 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa12b42d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 131 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.235364978775280910367690540811
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3094 |               37 |                7
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                1 |                0 |                0
+2024-02-19 11:06:11,910 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa3ba6690>: 1541 training samples, 1541 neg, 0 pos, unbalanced ratio
+2024-02-19 11:06:15,514 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa27ff810>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 272 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.240630002689062442926543993263
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1532 |                9 |                0
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:06:23,413 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154a682e5410>: 3083 training samples, 3083 neg, 0 pos, unbalanced ratio
+2024-02-19 11:06:27,313 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549c5504990>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 300 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.244447966386688625240438849169
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3064 |               15 |                3
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                1 |                0
+2024-02-19 11:06:35,905 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2347390>: 1849 training samples, 1849 neg, 0 pos, unbalanced ratio
+2024-02-19 11:06:39,853 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fb7c56d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 193 slices, 4 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.246758220302211646532176593724
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1834 |                9 |                4
+          Benign |                0 |                0 |                2 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:06:46,314 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa3c9bf50>: 2255 training samples, 2255 neg, 0 pos, unbalanced ratio
+2024-02-19 11:06:50,160 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa276d390>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 124 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.249450003033735700817635168066
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2233 |               15 |                3
+          Benign |                0 |                0 |                3 |                1
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:06:55,684 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa9234c50>: 1594 training samples, 1594 neg, 0 pos, unbalanced ratio
+2024-02-19 11:06:59,687 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa276c810>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 149 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.252709517998555732486024866345
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1576 |               11 |                7
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:07:05,590 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2490350>: 1468 training samples, 1468 neg, 0 pos, unbalanced ratio
+2024-02-19 11:07:09,540 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa0ae0890>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 245 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.255409701134762680010928250229
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1456 |                6 |                6
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:07:16,966 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2490350>: 1959 training samples, 1959 neg, 0 pos, unbalanced ratio
+2024-02-19 11:07:21,125 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa276c810>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 347 slices, 5 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.259227883564429312164962953756
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1938 |               14 |                7
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                1 |                0 |                0 |                0
+2024-02-19 11:07:30,089 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fb7c7250>: 3231 training samples, 3231 neg, 0 pos, unbalanced ratio
+2024-02-19 11:07:33,976 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a8ed68bd0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 127 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.265453131727473342790950829556
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3189 |               27 |                9
+          Benign |                0 |                0 |                4 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:07:39,433 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa284dfd0>: 983 training samples, 983 neg, 0 pos, unbalanced ratio
+2024-02-19 11:07:43,066 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a682e6110>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 503 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.268589491017129166376960414534
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |              975 |                6 |                2
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:07:54,742 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154a0886f690>: 4408 training samples, 4408 neg, 0 pos, unbalanced ratio
+2024-02-19 11:07:59,424 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa30e1410>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 300 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.271220641987745483198036913951
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             4380 |               22 |                4
+          Benign |                0 |                0 |                0 |                1
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:08:07,682 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2b22090>: 3627 training samples, 3627 neg, 0 pos, unbalanced ratio
+2024-02-19 11:08:11,685 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa270d450>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 143 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.274052674198758621258447180130
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3614 |                9 |                3
+          Benign |                1 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:08:17,395 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2839ed0>: 1029 training samples, 1029 neg, 0 pos, unbalanced ratio
+2024-02-19 11:08:21,320 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fb7bc610>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 125 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.277452631455527999380186898011
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1021 |                7 |                0
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:08:26,811 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa286ab90>: 1121 training samples, 1121 neg, 0 pos, unbalanced ratio
+2024-02-19 11:08:30,944 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fb7aa710>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 468 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.281967919138248195763602360723
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1114 |                2 |                5
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:08:41,853 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154a06117210>: 3590 training samples, 3590 neg, 0 pos, unbalanced ratio
+2024-02-19 11:08:45,942 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa12b4610>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 191 slices, 4 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.286627485198831346082954437212
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3534 |               45 |               11
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:08:52,348 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa25eaad0>: 1460 training samples, 1460 neg, 0 pos, unbalanced ratio
+2024-02-19 11:08:56,548 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa3c9a510>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 258 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.292057261351416339496913597985
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1445 |                9 |                1
+          Benign |                0 |                0 |                3 |                0
+       Malignant |                0 |                1 |                0 |                0
+2024-02-19 11:09:03,894 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2339690>: 2459 training samples, 2459 neg, 0 pos, unbalanced ratio
+2024-02-19 11:09:08,140 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa2943b10>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 232 slices, 5 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.295462530340364058116953738925
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2440 |               13 |                2
+          Benign |                1 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:09:15,036 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fec80650>: 3003 training samples, 3003 neg, 0 pos, unbalanced ratio
+2024-02-19 11:09:19,289 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa2e0d0d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 369 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.299806338046301317870803017534
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2978 |               17 |                3
+          Benign |                0 |                0 |                4 |                1
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:09:28,391 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154a0618d6d0>: 3396 training samples, 3396 neg, 0 pos, unbalanced ratio
+2024-02-19 11:09:32,778 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa351e250>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 140 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.302134342469412607966016057827
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3386 |                9 |                1
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:09:38,578 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fff3f290>: 1252 training samples, 1252 neg, 0 pos, unbalanced ratio
+2024-02-19 11:09:42,577 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa12669d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 115 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.306112617218006614029386065035
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1226 |               21 |                5
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:09:47,987 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fec56ad0>: 1327 training samples, 1327 neg, 0 pos, unbalanced ratio
+2024-02-19 11:09:52,189 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549c550d110>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 280 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.308183340111270052562662456038
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1323 |                4 |                0
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:09:59,961 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa257cf50>: 2061 training samples, 2061 neg, 0 pos, unbalanced ratio
+2024-02-19 11:10:04,010 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a06116490>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 181 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.311476128731958142981941696518
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2057 |                4 |                0
+          Benign |                1 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:10:10,235 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549f69ed450>: 1320 training samples, 1320 neg, 0 pos, unbalanced ratio
+2024-02-19 11:10:14,596 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549cdd9a510>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 519 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.314789075871001236641548593165
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1310 |                5 |                4
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:10:26,187 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2da4390>: 4013 training samples, 4013 neg, 0 pos, unbalanced ratio
+2024-02-19 11:10:30,220 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa2dbbcd0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 246 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.317613170669207528926259976488
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3981 |               29 |                3
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:10:37,764 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fb7cfed0>: 2851 training samples, 2851 neg, 0 pos, unbalanced ratio
+2024-02-19 11:10:41,546 INFO     util.util:102:enum_estimate Series   64/89, done at 2024-02-19 11:15:45, 0:18:45
+2024-02-19 11:10:42,069 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa26f55d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 326 slices, 6 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.323535944958374186208096541480
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2837 |                7 |                6
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:10:50,207 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549c54f9650>: 2092 training samples, 2092 neg, 0 pos, unbalanced ratio
+2024-02-19 11:10:54,556 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549f2f7a4d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 256 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.326057189095429101398977448288
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2049 |               24 |                8
+          Benign |                0 |                1 |                2 |                3
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:11:01,723 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154a025f0390>: 2061 training samples, 2061 neg, 0 pos, unbalanced ratio
+2024-02-19 11:11:06,023 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fec57850>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 280 slices, 3 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.330643702676971528301859647742
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2039 |               18 |                4
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:11:13,973 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fec54750>: 2538 training samples, 2538 neg, 0 pos, unbalanced ratio
+2024-02-19 11:11:18,060 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fff07810>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 265 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.334517907433161353885866806005
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2492 |               38 |                5
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                1 |                1
+2024-02-19 11:11:26,185 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549cdd20f90>: 2194 training samples, 2194 neg, 0 pos, unbalanced ratio
+2024-02-19 11:11:30,325 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a0886e250>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 308 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.338447145504282422142824032832
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2167 |               16 |               10
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:11:38,704 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa18ee350>: 3632 training samples, 3632 neg, 0 pos, unbalanced ratio
+2024-02-19 11:11:42,993 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a8f21d6d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 109 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.346115813056769250958550383763
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3591 |               29 |               10
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                1 |                0
+2024-02-19 11:11:47,956 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa281d650>: 1642 training samples, 1642 neg, 0 pos, unbalanced ratio
+2024-02-19 11:11:52,231 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa23fa550>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 258 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.395623571499047043765181005112
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1625 |               14 |                3
+          Benign |                1 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:11:59,919 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549cdd22850>: 4533 training samples, 4533 neg, 0 pos, unbalanced ratio
+2024-02-19 11:12:04,591 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa127d450>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 310 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.414288023902112119945238126594
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             4518 |               14 |                1
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:12:12,951 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa284fa90>: 4077 training samples, 4077 neg, 0 pos, unbalanced ratio
+2024-02-19 11:12:17,584 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa2347390>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 278 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.443400977949406454649939526179
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             4040 |               28 |                7
+          Benign |                0 |                0 |                1 |                1
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:12:25,474 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549cdd23090>: 2186 training samples, 2186 neg, 0 pos, unbalanced ratio
+2024-02-19 11:12:29,402 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa25eaad0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 137 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.466284753932369813717081722101
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2171 |               11 |                3
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:12:35,432 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa3a1f350>: 944 training samples, 944 neg, 0 pos, unbalanced ratio
+2024-02-19 11:12:39,349 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fff06d50>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 252 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.487745546557477250336016826588
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |              930 |                4 |                6
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:12:46,653 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2dbbcd0>: 1633 training samples, 1633 neg, 0 pos, unbalanced ratio
+2024-02-19 11:12:51,086 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fb7c76d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 166 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.550599855064600241623943717588
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1610 |               20 |                2
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:12:57,480 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fb7c6950>: 2157 training samples, 2157 neg, 0 pos, unbalanced ratio
+2024-02-19 11:13:02,032 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549cdd5bcd0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 133 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.592821488053137951302246128864
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2137 |               15 |                2
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:13:07,234 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa9234c50>: 1714 training samples, 1714 neg, 0 pos, unbalanced ratio
+2024-02-19 11:13:11,747 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154a087ae190>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 493 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.621916089407825046337959219998
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1694 |               11 |                8
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:13:23,312 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa271c710>: 4320 training samples, 4320 neg, 0 pos, unbalanced ratio
+2024-02-19 11:13:28,313 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa2839fd0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 484 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.658611160253017715059194304729
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             4305 |               12 |                2
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                1 |                1 |                0 |                0
+2024-02-19 11:13:39,465 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fec57210>: 3994 training samples, 3994 neg, 0 pos, unbalanced ratio
+2024-02-19 11:13:44,802 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa34c22d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 135 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.686193079844756926365065559979
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3933 |               49 |               12
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:13:50,112 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154a0887f290>: 1073 training samples, 1073 neg, 0 pos, unbalanced ratio
+2024-02-19 11:13:54,179 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fb7a94d0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 127 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.724562063158320418413995627171
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1068 |                3 |                1
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:13:59,549 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549fec54a50>: 1263 training samples, 1263 neg, 0 pos, unbalanced ratio
+2024-02-19 11:14:03,664 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fb7b4ed0>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 130 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.752756872840730509471096155114
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1245 |                2 |                8
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:14:09,086 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x1549cdd9b910>: 1367 training samples, 1367 neg, 0 pos, unbalanced ratio
+2024-02-19 11:14:12,812 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549c5505e90>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 141 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.776800177074349870648765614630
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1362 |                4 |                1
+          Benign |                1 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:14:18,741 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa1e8cb10>: 1054 training samples, 1054 neg, 0 pos, unbalanced ratio
+2024-02-19 11:14:22,763 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fb7b6490>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 426 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.805925269324902055566754756843
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1052 |                1 |                0
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:14:33,044 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa2839fd0>: 2774 training samples, 2774 neg, 0 pos, unbalanced ratio
+2024-02-19 11:14:37,344 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa34c2250>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 272 slices, 0 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.850739282072340578344345230132
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2763 |                5 |                5
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                1 |                0 |                0
+2024-02-19 11:14:44,900 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154a0886f490>: 2182 training samples, 2182 neg, 0 pos, unbalanced ratio
+2024-02-19 11:14:49,046 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa2575690>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 220 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.888615810685807330497715730842
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             2166 |               11 |                5
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:14:55,893 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa3d2a290>: 3154 training samples, 3154 neg, 0 pos, unbalanced ratio
+2024-02-19 11:15:00,740 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x1549fb7c7110>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 481 slices, 1 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.910607280658963002048724648683
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3143 |               10 |                0
+          Benign |                0 |                0 |                1 |                0
+       Malignant |                0 |                0 |                0 |                0
+2024-02-19 11:15:12,169 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa1e8cb10>: 4002 training samples, 4002 neg, 0 pos, unbalanced ratio
+2024-02-19 11:15:16,633 INFO     src_segmentation.preprocess_seg:310:__init__ <src_segmentation.preprocess_seg.Luna2dSegmentationDataset object at 0x154aa271c490>: 1{None: 'general', True: 'validation', False: 'training}[is_val_set_bool]series, 145 slices, 2 nodules
+1.3.6.1.4.1.14519.5.2.1.6279.6001.946129570505893110165820050204
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             3984 |               15 |                2
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                0 |                0 |                1
+2024-02-19 11:15:22,294 INFO     src_classification.preprocess_cls:213:__init__ <src_classification.preprocess_cls.LunaDataset object at 0x154aa3c9a510>: 1377 training samples, 1377 neg, 0 pos, unbalanced ratio
+2024-02-19 11:15:26,062 WARNING  util.util:111:enum_estimate Series ----/89, done at 2024-02-19 11:15:26
+1.3.6.1.4.1.14519.5.2.1.6279.6001.970428941353693253759289796610
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |             1355 |               18 |                2
+          Benign |                0 |                0 |                0 |                0
+       Malignant |                0 |                1 |                0 |                1
+Total
+                 |    Complete Miss |     Filtered Out |     Pred. Benign |  Pred. Malignant
+     Non-Nodules |                  |           227968 |             1392 |              346
+          Benign |               16 |                2 |               70 |               14
+       Malignant |                5 |                8 |                9 |               30
