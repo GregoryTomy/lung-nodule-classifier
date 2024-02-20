@@ -94,6 +94,10 @@ Positive predictions in Green. False positives in Red.
 
 ## Part 3: Classification of Nodules.
 
+To distinguish between malignant and non-malignant nodules, we employ a process known as fine-tuning. Fine-tuning involves making slight adjustments to a pre-trained model to tailor it more closely to the specific nuances of our current task. In this process, we specifically focus on retraining the model's final linear layer (also known as the head) and the last convolutional block. This approach allows us to adjust the model to new data while retaining the valuable insights learned from its previous training, ensuring that the bulk of the pre-trained model's weights remain unaltered.
+
+
+### Fine-tuning Results
 | Metric       | Value    |
 |--------------|----------|
 | Precision    | 0.7368   |
